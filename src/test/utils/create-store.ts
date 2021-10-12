@@ -1,8 +1,17 @@
 import { TestBed } from '@angular/core/testing';
 import { Actions, EffectsModule } from '@ngrx/effects';
-import { Store, StoreModule } from '@ngrx/store';
+import { Store, StoreModule, Action } from '@ngrx/store';
 
-export function createStore<T>(reducers: any = {}, effects: any[] = [], providers: any[] = [], imports: any[] = []) {
+interface ReducersDict {
+  [sliceId: string]: (state: any | undefined, action: Action) => any;
+}
+
+export function createStore<TAppState>(
+  reducers: ReducersDict = {},
+  effects: any[] = [],
+  providers: any[] = [],
+  imports: any[] = []
+) {
   const metaReducers: any[] = [];
 
   TestBed.configureTestingModule({
@@ -24,5 +33,5 @@ export function createStore<T>(reducers: any = {}, effects: any[] = [], provider
     ],
   });
 
-  return TestBed.get<Store<T>>(Store);
+  return TestBed.inject<Store<TAppState>>(Store);
 }
