@@ -18,10 +18,12 @@ export class SmartQuickSearchComponent implements OnInit {
   isLoading = false;
 
   searchResults$ = this.searchCtrl.valueChanges.pipe(
-    debounceTime(800),
+    // debounceTime(800),
     filter((q) => q.length >= QUERY_MIN_LENGTH),
     distinctUntilChanged(),
-    tap(() => this.isLoading = true),
+    tap((v) => {
+      this.isLoading = true;
+    }),
     switchMap((query) => this.playersApiService.searchPlayers(query)),
     tap(() => this.isLoading = false)
   );
