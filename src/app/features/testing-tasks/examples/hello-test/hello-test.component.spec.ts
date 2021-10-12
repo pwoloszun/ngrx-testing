@@ -3,6 +3,7 @@ import { render, screen, within } from '@testing-library/angular';
 import userEvent from '@testing-library/user-event';
 
 import { merge } from 'lodash';
+import { createEventEmitterSpy } from 'src/test/utils/create-spy';
 
 import { HelloTestComponent } from './hello-test.component';
 
@@ -45,9 +46,7 @@ async function renderComponent(props: Props) {
 }
 
 function generateProps(props: Props = {}): Props {
-  const emit = () => { };
-  const btnClick: any = { emit };
-  jest.spyOn(btnClick, 'emit');
+  const btnClick = createEventEmitterSpy();
 
   const defaultProps: Props = {
     myName: 'bob',
