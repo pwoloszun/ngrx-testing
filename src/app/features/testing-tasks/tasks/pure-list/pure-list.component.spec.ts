@@ -25,6 +25,14 @@ const template = `
 
 type Props = Partial<PureListComponent<any>>;
 
+// async function renderPureList(componentProperties: Props) {
+//   return render(PureListComponent, {
+//     componentProperties,
+//     template,
+//     imports: [SharedModule],
+//   });
+// }
+
 // const items = [
 //   { id: 100, secretIdentity: 'Peter Parker', name: 'Spider-Man' },
 //   { id: 200, secretIdentity: 'Bruce', name: 'Batman' },
