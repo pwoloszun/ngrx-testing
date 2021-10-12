@@ -4,13 +4,15 @@ import { merge } from 'lodash';
 
 import { HelloTestComponent } from './hello-test.component';
 
-
 describe('HelloTestComponent', () => { // test case aka test suite
 
-  it('should render component with its content', async () => {
+  fit('should render component with its content', async () => {
     const props = generateProps();
     const { myName } = props;
     await renderComponent(props);
+
+    await screen.findByText(/Kate/i);
+    await screen.findByText(/Stream msg: Mary/i);
 
     const greetingEl = screen.getByText(/Hello test!/i);
     const btn = screen.getByRole('button', { name: 'My Submit', hidden: true, exact: true });
