@@ -1,0 +1,30 @@
+<mat-card class="todos-form-container"
+          data-testid="todo-form">
+  <mat-card-title>Todo Form</mat-card-title>
+  <div class="form-container">
+
+    <form>
+      <mat-form-field>
+        <input matInput
+               [(ngModel)]="title"
+               placeholder="Title"
+               name="title" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput
+               [(ngModel)]="description"
+               placeholder="Description"
+               name="description" />
+      </mat-form-field>
+
+      <button (click)="onSubmit()"
+              [disabled]="!isFormValid"
+              mat-raised-button
+              color="primary">
+        Submit
+      </button>
+    </form>
+
+  </div>
+</mat-card>
