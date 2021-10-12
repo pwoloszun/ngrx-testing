@@ -36,8 +36,15 @@ describe('PureOptionPickerComponent', () => {
     expect(true).toEqual(false);
   });
 
-  xit('should select button for defined selectedItem prop', () => {
-    expect(true).toEqual(false);
+  fit('should select button for defined selectedItem prop', async () => {
+    const index = 2;
+    const props = generatePropos({}, index);
+
+    await renderComponent(props);
+
+    const pressedBtn = screen.getByRole('button', { hidden: true, pressed: true });
+    const buttons = screen.getAllByRole('button', { hidden: true });
+    expect(buttons[index]).toEqual(pressedBtn);
   });
 
   xit('should emit "itemSelect" event on button click', () => {
@@ -55,7 +62,7 @@ async function renderComponent(props: Props) {
   });
 }
 
-function generatePropos(props: Props = {}): Props {
+function generatePropos(props: Props = {}, selectedItemIndex?: number): Props {
   const title = 'mickey mouse';
   const items = [
     { id: 100, text: 'first item' },
@@ -64,7 +71,7 @@ function generatePropos(props: Props = {}): Props {
     { id: 400, text: 'fourth item' },
     { id: 500, text: 'fifth item' },
   ];
-  const selectedItem = undefined;
+  const selectedItem = selectedItemIndex ? items[selectedItemIndex] : undefined;
   const itemSelect = undefined;
   const defaultProps = {
     title,
