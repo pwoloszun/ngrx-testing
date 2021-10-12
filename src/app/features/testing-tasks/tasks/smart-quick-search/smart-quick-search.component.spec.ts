@@ -26,7 +26,11 @@ describe('SmartQuickSearchComponent', () => {
     // const quickSearch = screen.getByRole('search', { hidden: true });
 
     const responseJsonEntities = generateResponseJson();
-    stubServerApi.get('/api/players', responseJsonEntities);
+    stubServerApi.stub({
+      method: 'get',
+      path: '/api/players',
+      responseJson: responseJsonEntities,
+    });
 
     userEvent.type(quickSearch, 'leb');
 
