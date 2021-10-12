@@ -22,11 +22,11 @@ describe('SmartQuickSearchComponent', () => {
   fit('should fetch nba players by search query and render results', async () => {
     await renderComponent();
 
-    // const quickSearch = screen.getByLabelText(/Search/i);
-    const quickSearch = screen.getByRole('search', { hidden: true });
+    const quickSearch = screen.getByLabelText(/Search/i);
+    // const quickSearch = screen.getByRole('search', { hidden: true });
 
     const responseJsonEntities = generateResponseJson();
-    stubServerApi.get('/api/players', responseJsonEntities)
+    stubServerApi.get('/api/players', responseJsonEntities);
 
     userEvent.type(quickSearch, 'leb');
 
