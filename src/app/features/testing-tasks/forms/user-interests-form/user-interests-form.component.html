@@ -1,7 +1,6 @@
 <mat-card class="mat-elevation-z8">
   <form [formGroup]="myForm"
-        (ngSubmit)="submitHandler($event)"
-        role="form">
+        (ngSubmit)="submitHandler($event)">
     <div fxLayout="column"
          fxLayoutAlign="space-around stretch">
       <h3>User Interests form</h3>
@@ -28,8 +27,7 @@
       </mat-checkbox>
 
       <mat-card *ngIf="areDetailsEnabledControl.value"
-                class="mat-elevation-z8"
-                role="group">
+                class="mat-elevation-z8">
         <mat-card-header>Details</mat-card-header>
         <mat-card-content>
 
