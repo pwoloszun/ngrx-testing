@@ -13,9 +13,10 @@
     <!-- <cite>batman</cite> -->
   </h3>
 
-  <h3>Message: {{message}}</h3>
-
   <h3>Stream msg: {{myMessage2$ | async}}</h3>
 
-  <button>My Submit</button>
+  <h3>Message: {{message}}</h3>
+
+
+  <button (click)="handleMySubmitClick()">My Submit</button>
 </mat-card>

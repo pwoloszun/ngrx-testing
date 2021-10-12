@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
@@ -13,9 +13,16 @@ export class HelloTestComponent implements OnInit {
   myName = '';
   message = '';
 
+  @Output()
+  btnClick = new EventEmitter<string>();
+
   myMessage2$ = of('Mary').pipe(
     delay(800)
   );
+
+  handleMySubmitClick() {
+    this.btnClick.emit(`a qq!`);
+  }
 
   ngOnInit(): void {
     setTimeout(() => {
