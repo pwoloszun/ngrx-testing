@@ -9,12 +9,7 @@ import { TestingTasksRoutingModule } from './testing-tasks-routing.module';
 import { PureCmpPageComponent } from './pages/01-pure-cmp-page/pure-cmp-page.component';
 import { SmartCmpPageComponent } from './pages/02-smart-cmp-page/smart-cmp-page.component';
 import { ServicesPageComponent } from './pages/03-services-page/services-page.component';
-import { RoutingPageComponent } from './pages/routing-page/routing-page.component';
-import { DirectivesPageComponent } from './pages/directives-page/directives-page.component';
-import { PipesPageComponent } from './pages/pipes-page/pipes-page.component';
 import { ReactiveFormsPageComponent } from './pages/04-reactive-forms-page/reactive-forms-page.component';
-import { NgrxBuildingBlocksPageComponent } from './pages/ngrx-building-blocks-page/ngrx-building-blocks-page.component';
-import { NgrxFlowsPageComponent } from './pages/ngrx-flows-page/ngrx-flows-page.component';
 import { TestingContextMenuComponent } from './pages/testing-context-menu/testing-context-menu.component';
 import { TestingShellComponent } from './pages/testing-shell/testing-shell.component';
 import { PureOptionPickerComponent } from './tasks/pure-option-picker/pure-option-picker.component';
@@ -33,12 +28,7 @@ import { FormInfoComponent } from './forms/form-info/form-info.component';
     PureCmpPageComponent,
     SmartCmpPageComponent,
     ServicesPageComponent,
-    RoutingPageComponent,
-    DirectivesPageComponent,
-    PipesPageComponent,
     ReactiveFormsPageComponent,
-    NgrxBuildingBlocksPageComponent,
-    NgrxFlowsPageComponent,
     TestingContextMenuComponent,
     TestingShellComponent,
     PureOptionPickerComponent,
