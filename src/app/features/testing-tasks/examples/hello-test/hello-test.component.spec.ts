@@ -1,5 +1,5 @@
 import { SharedModule } from '@app/shared/shared.module';
-import { render, screen } from '@testing-library/angular';
+import { render, screen, within } from '@testing-library/angular';
 import { merge } from 'lodash';
 
 import { HelloTestComponent } from './hello-test.component';
@@ -11,7 +11,9 @@ describe('HelloTestComponent', () => { // test case aka test suite
     await renderComponent();
 
     const greetingEl = screen.getByText(/Hello test!/i);
-
+    const btn = screen.getByRole('button', { name: 'My Submit', hidden: true, exact: true });
+    const articleEl = screen.getByRole('article', { name: 'greeting details section', hidden: true });
+    const detailedGreetings = within(articleEl).getByText(/Hello my friends!/i);
   });
 
   it('should do smth when X', () => {
