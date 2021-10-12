@@ -22,6 +22,7 @@ import { SmartHeroesListComponent } from './tasks/smart-heroes-list/smart-heroes
 import { UserInterestsFormComponent } from './forms/user-interests-form/user-interests-form.component';
 import { LoginFormExampleComponent } from './forms/login-form-example/login-form-example.component';
 import { FormInfoComponent } from './forms/form-info/form-info.component';
+import { HelloTestComponent } from './examples/hello-test/hello-test.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { FormInfoComponent } from './forms/form-info/form-info.component';
     SmartHeroesListComponent,
     UserInterestsFormComponent,
     LoginFormExampleComponent,
-    FormInfoComponent
+    FormInfoComponent,
+    HelloTestComponent
   ],
   imports: [
     CommonModule,
