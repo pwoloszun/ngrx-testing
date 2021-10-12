@@ -21,7 +21,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTableModule } from '@angular/material/table';
-
+import { MatDialogModule } from '@angular/material/dialog';
 
 const MAT_COMPONENTS = [
   LayoutModule,
@@ -43,6 +43,7 @@ const MAT_COMPONENTS = [
   MatTabsModule,
   MatExpansionModule,
   MatTableModule,
+  MatDialogModule,
 ];
 
 @NgModule({
