@@ -7,7 +7,7 @@ import { HelloTestComponent } from './hello-test.component';
 
 describe('HelloTestComponent', () => { // test case aka test suite
 
-  fit('should render greeting text', async () => {
+  it('should render component with its content', async () => {
     const props = generateProps();
     const { myName } = props;
     await renderComponent(props);
@@ -18,16 +18,9 @@ describe('HelloTestComponent', () => { // test case aka test suite
     const detailedGreetings = within(articleEl).getByText(/Hello my friends!/i);
 
     screen.getByText(`Name: ${myName}`);
-
   });
 
-  it('should do smth when X', () => {
-
-    // const props = generateProps({ name: 'Batman' });
-    // const { name } = props;
-    // const component = renderComponent(props);
-
-    // expect(component.rtenderedName).toEqual('Batman');
+  xit('should do smth when X', () => {
     expect(true).toEqual(false);
   });
 
