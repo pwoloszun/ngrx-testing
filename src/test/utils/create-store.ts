@@ -6,12 +6,20 @@ interface ReducersDict {
   [sliceId: string]: (state: any | undefined, action: Action) => any;
 }
 
-export function createStore<TAppState>(
-  reducers: ReducersDict = {},
-  effects: any[] = [],
-  providers: any[] = [],
-  imports: any[] = []
-) {
+interface CreateStoreParams {
+  reducers: ReducersDict;
+  effects?: any[];
+  providers?: any[];
+  imports?: any[];
+}
+
+export function createStore<TAppState>(params: CreateStoreParams) {
+  const {
+    reducers = {},
+    effects = [],
+    imports = [],
+    providers = []
+  } = params;
   const metaReducers: any[] = [];
 
   TestBed.configureTestingModule({
