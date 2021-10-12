@@ -8,7 +8,7 @@ import { PureOptionPickerComponent } from './pure-option-picker.component';
 
 describe('PureOptionPickerComponent', () => {
 
-  fit('should render input title', async () => {
+  it('should render input title', async () => {
     const props = generatePropos({ title: 'imba!' });
 
     await renderComponent(props);
@@ -16,22 +16,20 @@ describe('PureOptionPickerComponent', () => {
     screen.getByText(/imba!/i);
   });
 
-  xit('should render button for each input item', () => {
-    //single el
-    // getByZZZ
-    // getByText
-    // getByRole
+  it('should render button for each input item', async () => {
+    const props = generatePropos();
+    const { items = [] } = props;
 
-    //many elements
-    // getAllByYYY
-    // getAllByRole
-    // getAllByText
-    // getAllByLabelText
+    await renderComponent(props);
 
+    const buttons = screen.getAllByRole('button', { hidden: true });
 
-    // expect(bntEl.textContent).toContain('imba!');
-    // expect(bntEl).toHaveTextContent('imba!');
-
+    expect(buttons.length).toEqual(items.length);
+    items.forEach((item, i) => {
+      const btn = buttons[i];
+      // expect(btn.textContent).toContain(item.text);
+      expect(btn).toHaveTextContent(item.text);
+    });
   });
 
   xit('should not select button for undefined selectedItem prop', () => {
