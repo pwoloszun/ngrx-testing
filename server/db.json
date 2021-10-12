@@ -65,6 +65,113 @@
       "id": 112
     }
   ],
+  "categories": [
+    {
+      "id": 10,
+      "text": "Primary",
+      "value": "primary"
+    },
+    {
+      "id": 20,
+      "text": "Offers",
+      "value": "offers"
+    },
+    {
+      "id": 30,
+      "text": "Notifications",
+      "value": "notifications"
+    }
+  ],
+  "messages": [
+    {
+      "id": 100,
+      "title": "qqq",
+      "content": "gggg",
+      "categoryId": 20,
+      "createdAt": "2020-10-10T20:22:38.026Z"
+    },
+    {
+      "id": 200,
+      "title": "imba",
+      "content": "imb",
+      "categoryId": 20,
+      "createdAt": "2020-10-09T20:22:38.026Z"
+    },
+    {
+      "id": 300,
+      "title": "aa",
+      "content": "a",
+      "categoryId": 10,
+      "createdAt": "2020-10-10T17:31:38.026Z"
+    },
+    {
+      "id": 400,
+      "title": "r",
+      "content": "rrr",
+      "categoryId": 10,
+      "createdAt": "2020-10-08T20:22:38.026Z"
+    },
+    {
+      "id": 1000,
+      "title": "batman",
+      "content": "lorem ips",
+      "categoryId": 20,
+      "createdAt": "2020-10-09T20:21:38.026Z"
+    },
+    {
+      "id": 2000,
+      "title": "spider-man",
+      "content": "smth",
+      "categoryId": 20,
+      "createdAt": "2020-10-10T22:09:38.026Z"
+    },
+    {
+      "id": 4000,
+      "title": "bob",
+      "content": "smith",
+      "categoryId": 20,
+      "createdAt": "2020-10-10T04:11:38.026Z"
+    },
+    {
+      "id": 10,
+      "title": "js weekly",
+      "content": "js lorem ips",
+      "categoryId": 30,
+      "createdAt": "2020-10-10T20:56:38.026Z"
+    },
+    {
+      "id": 30,
+      "title": "jQuery",
+      "content": "jq lorem",
+      "categoryId": 30,
+      "createdAt": "2020-10-10T19:33:38.026Z"
+    },
+    {
+      "id": 40,
+      "title": "angular",
+      "content": "ng lorem",
+      "categoryId": 30,
+      "createdAt": "2020-10-10T09:08:38.026Z"
+    },
+    {
+      "title": "bat",
+      "categoryId": 10,
+      "id": 4001,
+      "createdAt": "2020-10-10T23:23:38.026Z"
+    },
+    {
+      "title": "batat",
+      "categoryId": 10,
+      "createdAt": "2020-10-10T21:00:51.773Z",
+      "id": 4002
+    },
+    {
+      "title": "asasa",
+      "categoryId": 20,
+      "createdAt": "2021-10-12T22:39:49.630Z",
+      "id": 4003
+    }
+  ],
   "roomDetectors": [],
   "heroes": [
     {
