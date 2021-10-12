@@ -1,25 +1,44 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { SharedModule } from '@app/shared/shared.module';
+import { render, screen } from '@testing-library/angular';
+import { merge } from 'lodash';
 
 import { HelloTestComponent } from './hello-test.component';
 
-describe('HelloTestComponent', () => {
-  let component: HelloTestComponent;
-  let fixture: ComponentFixture<HelloTestComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ HelloTestComponent ]
-    })
-    .compileComponents();
+describe('HelloTestComponent', () => { // test case aka test suite
+
+  fit('should render greeting text', async () => { //
+    await renderComponent();
+
+    const greetingEl = screen.getByText(/Hello test!/i);
+
   });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(HelloTestComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  it('should do smth when X', () => {
+
+    // const props = generateProps({ name: 'Batman' });
+    // const { name } = props;
+    // const component = renderComponent(props);
+
+    // expect(component.rtenderedName).toEqual('Batman');
+    expect(true).toEqual(false);
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
 });
+
+
+// helper functions
+async function renderComponent() {
+  return render(HelloTestComponent, {
+    imports: [SharedModule],
+  });
+}
+
+function generateProps(props: any = {}): any {
+  const defaultProps: any = {
+    name: 'bob',
+    age: 133,
+    children: []
+  };
+  return merge({}, defaultProps, props);
+}
