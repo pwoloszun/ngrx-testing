@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'nts-hello-test',
@@ -7,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HelloTestComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  myName = '';
 
   ngOnInit(): void {
   }

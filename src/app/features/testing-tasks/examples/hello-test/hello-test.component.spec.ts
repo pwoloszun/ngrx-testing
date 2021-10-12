@@ -7,13 +7,18 @@ import { HelloTestComponent } from './hello-test.component';
 
 describe('HelloTestComponent', () => { // test case aka test suite
 
-  fit('should render greeting text', async () => { //
-    await renderComponent();
+  fit('should render greeting text', async () => {
+    const props = generateProps();
+    const { myName } = props;
+    await renderComponent(props);
 
     const greetingEl = screen.getByText(/Hello test!/i);
     const btn = screen.getByRole('button', { name: 'My Submit', hidden: true, exact: true });
     const articleEl = screen.getByRole('article', { name: 'greeting details section', hidden: true });
     const detailedGreetings = within(articleEl).getByText(/Hello my friends!/i);
+
+    screen.getByText(`Name: ${myName}`);
+
   });
 
   it('should do smth when X', () => {
@@ -28,19 +33,18 @@ describe('HelloTestComponent', () => { // test case aka test suite
 
 });
 
-
+type Props = Partial<HelloTestComponent>;
 // helper functions
-async function renderComponent() {
+async function renderComponent(props: Props) {
   return render(HelloTestComponent, {
+    componentProperties: props,
     imports: [SharedModule],
   });
 }
 
-function generateProps(props: any = {}): any {
-  const defaultProps: any = {
-    name: 'bob',
-    age: 133,
-    children: []
+function generateProps(props: Props = {}): Props {
+  const defaultProps: Props = {
+    myName: 'bob',
   };
   return merge({}, defaultProps, props);
 }
