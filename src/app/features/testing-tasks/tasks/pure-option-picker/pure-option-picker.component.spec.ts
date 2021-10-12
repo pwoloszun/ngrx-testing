@@ -36,7 +36,7 @@ describe('PureOptionPickerComponent', () => {
     expect(true).toEqual(false);
   });
 
-  fit('should select button for defined selectedItem prop', async () => {
+  it('should select button for defined selectedItem prop', async () => {
     const index = 2;
     const props = generatePropos({}, index);
 
