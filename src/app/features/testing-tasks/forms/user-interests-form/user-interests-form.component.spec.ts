@@ -5,6 +5,7 @@ import { render, screen, within } from '@testing-library/angular';
 import userEvent from '@testing-library/user-event';
 
 import { UserInterestsFormComponent } from './user-interests-form.component';
+import { SharedModule } from '../../../../shared/shared.module';
 
 describe('UserInterestsFormComponent', () => {
 
@@ -13,7 +14,9 @@ describe('UserInterestsFormComponent', () => {
   });
 
   fit('should toggle render Details group', async () => {
-    expect(true).toEqual(false);
+    await renderComponent();
+
+    // expect(true).toEqual(false);
   });
 
   xit('should send request with form DTO to server when form submitted', async () => {
@@ -21,6 +24,12 @@ describe('UserInterestsFormComponent', () => {
   });
 
 });
+
+async function renderComponent() {
+  return render(UserInterestsFormComponent, {
+    imports: [ReactiveFormsModule, SharedModule, HttpClientModule],
+  });
+}
 
 // const defaultDto = {
 //   fullName: 'Bob Smith',
