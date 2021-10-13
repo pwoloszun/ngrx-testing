@@ -44,7 +44,7 @@ describe('SmartRealEstateDetailsCardComponent', () => {
     const headingEl = await findHeading();
     within(headingEl).getByText(/Loading\.\.\./i);
 
-    const contentEl = await await findContent();
+    const contentEl = await findContent();
     within(contentEl).getByRole('progressbar', { hidden: true });
 
     await screen.findByText(/Price/i);
