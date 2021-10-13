@@ -12,7 +12,7 @@ describe('UserInterestsFormComponent', () => {
     expect(true).toEqual(false);
   });
 
-  xit('should toggle render Details group', async () => {
+  fit('should toggle render Details group', async () => {
     expect(true).toEqual(false);
   });
 

@@ -2,7 +2,7 @@
   # testing-library - types of queries:
   https://testing-library.com/docs/queries/about#types-of-queries
 
-  # use events:
+  # user events:
   https://testing-library.com/docs/ecosystem-user-event/
 
   # angular testing lib: specs examples:

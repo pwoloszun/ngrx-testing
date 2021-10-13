@@ -16656,6 +16656,26 @@
         "video gaming": false
       },
       "id": 3
+    },
+    {
+      "fullName": "asasasa",
+      "age": 211212,
+      "areDetailsEnabled": true,
+      "height": 12,
+      "country": "USA",
+      "selectedInterestsMap": {
+        "soccer": false,
+        "basketball": true,
+        "hockey": false,
+        "ski-jumping": false,
+        "patchwork": true,
+        "programming": true,
+        "video gaming": false,
+        "books": true,
+        "films": false,
+        "poetry": false
+      },
+      "id": 4
     }
   ],
   "counter-values": {
