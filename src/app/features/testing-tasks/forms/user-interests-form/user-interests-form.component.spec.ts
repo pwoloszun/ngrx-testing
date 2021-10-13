@@ -6,6 +6,7 @@ import userEvent from '@testing-library/user-event';
 
 import { UserInterestsFormComponent } from './user-interests-form.component';
 import { SharedModule } from '../../../../shared/shared.module';
+import { stubServerApi } from '../../../../../test/utils/server-stub';
 
 describe('UserInterestsFormComponent', () => {
 
@@ -27,6 +28,13 @@ describe('UserInterestsFormComponent', () => {
     // screen.getByRole('textbox', { name: 'Your name?', hidden: true });
 
     // screen.getByPlaceholderText(/Your name\?/i, { exact: false });
+
+    // stubServerApi.stub({
+    //   method: 'post',
+    //   path: '/api/ggg',
+    //   responseJson: {},
+    //   // params: {}
+    // });
 
     // expect(true).toEqual(false);
   });
