@@ -17,7 +17,7 @@ export function expectStateChanges(
     }
     expect(actualState).toEqual(expectedStateSnapshots[i]);
     if (i >= expectedStateSnapshots.length - 1) {
-      subscription.unsubscribe();
+      // subscription.unsubscribe();
       done();
     }
     i++;

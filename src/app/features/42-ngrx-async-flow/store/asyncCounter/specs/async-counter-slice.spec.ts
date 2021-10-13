@@ -15,11 +15,12 @@ import {
   effects,
 } from '../index';
 import { map } from 'rxjs/operators';
+import * as _ from 'lodash';
 
 describe('AsyncCounterRefactored slice', () => {
   describe('initial value', () => {
 
-    fit('should be initialized with defaults', (done) => {
+    it('should be initialized with defaults', (done) => {
       const store = createSliceStore();
 
       const stateSnapshots$ = store.pipe(
@@ -52,6 +53,31 @@ describe('AsyncCounterRefactored slice', () => {
 
       store.dispatch(actions.incrementAsyncCounterRequest({ incBy }));
 
+    });
+
+    it('AFTER REFACTOR should be initialized with defaults', (done) => {
+      const store = createSliceStore();
+
+      const incBy = 5;
+      const expectedSnapshotValues = [
+        { value: 100, isLoading: false },
+        // { value: 100, isLoading: true },
+        // { value: 105, isLoading: false },
+      ];
+
+      expectStateChanges(
+        store,
+        expectedSnapshotValues,
+        (state) => {
+          const value = selectors.selectAsyncCounterValue(state);
+          const isLoading = selectors.selectAsyncCounterIsLoading(state);
+          const stateSnapshot = { value, isLoading }
+          return stateSnapshot;
+        },
+        done
+      );
+
+      // store.dispatch(actions.incrementAsyncCounterRequest({ incBy }));
     });
 
     xit('should not be loading on init', (done) => {
