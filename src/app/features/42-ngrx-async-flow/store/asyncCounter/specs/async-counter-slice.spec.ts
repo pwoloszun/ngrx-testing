@@ -61,8 +61,8 @@ describe('AsyncCounterRefactored slice', () => {
       const incBy = 5;
       const expectedSnapshotValues = [
         { value: 100, isLoading: false },
-        // { value: 100, isLoading: true },
-        // { value: 105, isLoading: false },
+        { value: 100, isLoading: true },
+        { value: 105, isLoading: false },
       ];
 
       expectStateChanges(
@@ -77,7 +77,7 @@ describe('AsyncCounterRefactored slice', () => {
         done
       );
 
-      // store.dispatch(actions.incrementAsyncCounterRequest({ incBy }));
+      store.dispatch(actions.incrementAsyncCounterRequest({ incBy }));
     });
 
     xit('should not be loading on init', (done) => {
