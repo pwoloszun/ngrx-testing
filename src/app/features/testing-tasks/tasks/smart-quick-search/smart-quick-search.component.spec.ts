@@ -19,7 +19,7 @@ describe('SmartQuickSearchComponent', () => {
     expect(true).toEqual(false);
   });
 
-  fit('should fetch nba players by search query and render results', async () => {
+  it('should fetch nba players by search query and render results', async () => {
     await renderComponent();
 
     const quickSearch = screen.getByLabelText(/Search/i);
