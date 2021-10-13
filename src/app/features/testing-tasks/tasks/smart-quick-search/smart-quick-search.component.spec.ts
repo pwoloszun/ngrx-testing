@@ -30,11 +30,15 @@ describe('SmartQuickSearchComponent', () => {
       method: 'get',
       path: '/api/players',
       responseJson: responseJsonEntities,
+      options: { delay: 100 }
     });
 
     userEvent.type(quickSearch, 'leb');
 
+    await screen.findByRole('progressbar', { hidden: true });
+
     const items = await screen.findAllByRole('listitem', { hidden: true });
+
     expect(items.length).toEqual(responseJsonEntities.length);
   });
 

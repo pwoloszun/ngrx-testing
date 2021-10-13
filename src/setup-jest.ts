@@ -14,6 +14,6 @@ setupTime();
 // @ts-ignore
 jest.setTimeout(6000);
 
-// afterEach(() => {
-//   jest.useRealTimers();
-// });
+afterEach(() => {
+  jest.useRealTimers();
+});

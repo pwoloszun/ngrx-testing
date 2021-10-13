@@ -18,7 +18,8 @@ export class SmartQuickSearchComponent implements OnInit {
   isLoading = false;
 
   searchResults$ = this.searchCtrl.valueChanges.pipe(
-    // debounceTime(800),
+    debounceTime(800),
+    tap(() => console.log('after DEBOUNCE:',)),
     filter((q) => q.length >= QUERY_MIN_LENGTH),
     distinctUntilChanged(),
     tap((v) => {
