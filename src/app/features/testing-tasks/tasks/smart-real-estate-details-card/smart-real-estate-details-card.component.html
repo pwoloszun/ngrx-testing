@@ -5,11 +5,15 @@
 
     <ng-container *ngSwitchCase="'SUCCESS'">
       <nts-pure-my-card>
-        <div slot="header">
+        <div slot="header"
+             role="heading"
+             aria-label="Real Estate Heading">
           Street Addr.: {{entity.street}}
         </div>
 
-        <div slot="content">
+        <div slot="content"
+             role="banner"
+             aria-label="Real Estate Content">
           <p>Price: {{entity.price}}</p>
           <p>Type: {{entity.type}}</p>
           <p>Geo. coordinates: ({{entity.lat | number: '1.2-2'}}, {{entity.lng | number: '1.2-2'}})</p>
@@ -23,12 +27,17 @@
 
     <ng-container *ngSwitchCase="'PENDING'">
       <nts-pure-my-card>
-        <div slot="header">
+        <div slot="header"
+             role="heading"
+             aria-label="Real Estate Heading">
           Loading...
         </div>
 
-        <div slot="content">
-          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        <div slot="content"
+             role="banner"
+             aria-label="Real Estate Content">
+          <mat-progress-bar mode="indeterminate"
+                            role="progressbar"></mat-progress-bar>
         </div>
 
         <div slot="footer">

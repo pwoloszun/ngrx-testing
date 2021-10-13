@@ -2,7 +2,7 @@ import { RealEstatesApiService } from '@app/core/api/real-estates-api.service';
 import { ReactiveComponentModule } from '@ngrx/component';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '@app/shared/shared.module';
-import { render, screen } from '@testing-library/angular';
+import { render, screen, within } from '@testing-library/angular';
 import userEvent from '@testing-library/user-event';
 
 import { stubServerApi } from 'src/test/utils/server-stub';
@@ -22,7 +22,6 @@ describe('SmartRealEstateDetailsCardComponent', () => {
     });
     await renderComponent({ entityId });
 
-    await screen.findByText(/Loading\.\.\./i);
     await screen.findByRole('progressbar', { hidden: true });
 
     await screen.findByText(new RegExp(`Street Addr.: ${realEstateJson.street}`, 'i'));
@@ -35,20 +34,33 @@ describe('SmartRealEstateDetailsCardComponent', () => {
     stubServerApi.stub({
       method: 'get',
       path: `/api/real-estates/${entityId}`,
-      responseJson: realEstateJson
+      responseJson: realEstateJson,
+      options: { delay: 200 }
     });
     await renderComponent({ entityId });
 
     // rendered within header
-    await screen.findByText(/Loading\.\.\./i);
-    await screen.findByRole('progressbar', { hidden: true });
+    const headingEl = await screen.findByRole('heading', {
+      name: 'Real Estate Heading', hidden: true
+    });
+    within(headingEl).getByText(/Loading\.\.\./i);
 
-    // rendered within content
-    await screen.findByText(new RegExp(`Street Addr.: ${realEstateJson.street}`, 'i'));
-    await screen.findByText(new RegExp(`Type: ${realEstateJson.type}`, 'i'));
+    const contentEl = await screen.findByRole('banner', {
+      name: 'Real Estate Content', hidden: true
+    });
+    within(contentEl).getByRole('progressbar', { hidden: true });
 
-    // rendered within footer
-    await screen.findByText(/all rights/i);
+    // wait async for change
+    await screen.findByText(/Price/i);
+    const loadedHeadingEl = await screen.findByRole('heading', {
+      name: 'Real Estate Heading', hidden: true
+    });
+    within(loadedHeadingEl).getByText(new RegExp(`Street Addr.: ${realEstateJson.street}`, 'i'));
+
+    const loadedContentEl = await screen.findByRole('banner', {
+      name: 'Real Estate Content', hidden: true
+    });
+    within(loadedContentEl).getByText(new RegExp(`Type: ${realEstateJson.type}`, 'i'));
 
   });
 
