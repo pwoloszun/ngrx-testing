@@ -17,7 +17,7 @@ export class MainNavComponent {
 
   mainMenuSections = [
     fundamentalsSection,
-    // advancedSection,
+    advancedSection,
     unitIntegrationTestingSection,
     // e2eTestingSection,
   ];
