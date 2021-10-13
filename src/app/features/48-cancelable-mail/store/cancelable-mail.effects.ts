@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Action, Store } from '@ngrx/store';
-import { race, timer } from 'rxjs';
-import { delay, map, switchMap, tap } from 'rxjs/operators';
+import { race, timer, NEVER } from 'rxjs';
+import { delay, map, switchMap, tap, filter } from 'rxjs/operators';
 
 import * as actions from './cancelable-mail.actions';
 
@@ -17,17 +17,19 @@ export class CancelableMailEffects {
       ofType(actions.sendMailStarted),
       tap(() => {
         this.snackBarRef = this.matSnackBar.open('Sending...', 'Cancel');
+        this.snackBarRef.onAction().subscribe(() => {
+          this.store.dispatch(actions.cancelSendMailStarted());
+        });
       }),
       switchMap(() => {
         const timeToCancelExpired$ = timer(TIME_TO_EXP).pipe(
           map(() => actions.timeToCancelExpired())
         );
-        const cancelSendMailStarted$ = this.snackBarRef.onAction().pipe(
-          map(() => actions.cancelSendMailStarted())
-        );
         return race<Action>(
           timeToCancelExpired$,
-          cancelSendMailStarted$
+          this.cancelStartedAction$
+        ).pipe(
+          ofType(actions.timeToCancelExpired),
         );
       }),
     );
@@ -38,17 +40,20 @@ export class CancelableMailEffects {
       ofType(actions.timeToCancelExpired),
       tap(() => {
         this.snackBarRef = this.matSnackBar.open('Mail has been sent.', 'Revert');
+        this.snackBarRef.onAction().subscribe(() => {
+          this.store.dispatch(actions.revertSendMailStarted());
+        });
       }),
       switchMap(() => {
         const timeToRevertExpired$ = timer(TIME_TO_EXP).pipe(
           map(() => actions.timeToRevertExpired())
         );
-        const revertSendMailStarted$ = this.snackBarRef.onAction().pipe(
-          map(() => actions.revertSendMailStarted())
-        );
+        const revertSendMailStarted$ = this.revertStartedAction$;
         return race<Action>(
           timeToRevertExpired$,
           revertSendMailStarted$
+        ).pipe(
+          ofType(actions.timeToRevertExpired),
         );
       }),
     );
@@ -101,6 +106,12 @@ export class CancelableMailEffects {
   });
 
   private snackBarRef!: MatSnackBarRef<any>;
+  private cancelStartedAction$ = this.actions$.pipe(
+    ofType(actions.cancelSendMailStarted),
+  );
+  private revertStartedAction$ = this.actions$.pipe(
+    ofType(actions.revertSendMailStarted),
+  );
   // private snackPosition: any = { horizontalPosition: 'rigth', verticalPosition: 'bottom' };
 
   constructor(
