@@ -24,6 +24,15 @@ describe('AsyncCounterRefactored slice', () => {
   fit('should run send email flow if neither cancelled nor reverted', (done) => {
     expect(true).toEqual(false);
 
+    [
+      MailSendStage.Idle,
+      MailSendStage.SendingCancellable,
+      MailSendStage.SendingReversible,
+      MailSendStage.Sent,
+      MailSendStage.Idle,
+    ]
+
+
     jest.useFakeTimers();
 
     jest.advanceTimersByTime(500);
@@ -34,6 +43,14 @@ describe('AsyncCounterRefactored slice', () => {
   });
 
   xit('should run cancel send email flow if cancelled', (done) => {
+
+    [
+      MailSendStage.Idle,
+      MailSendStage.SendingCancellable,
+      MailSendStage.SendingCancelled,
+      MailSendStage.Idle,
+    ]
+
     expect(true).toEqual(false);
   });
 
