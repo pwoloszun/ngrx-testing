@@ -2,7 +2,7 @@ import { RealEstatesApiService } from '@app/core/api/real-estates-api.service';
 import { ReactiveComponentModule } from '@ngrx/component';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '@app/shared/shared.module';
-import { render, screen, within } from '@testing-library/angular';
+import { render, screen, waitFor, within } from '@testing-library/angular';
 import userEvent from '@testing-library/user-event';
 
 import { stubServerApi } from 'src/test/utils/server-stub';
@@ -45,9 +45,10 @@ describe('SmartRealEstateDetailsCardComponent', () => {
     within(headingEl).getByText(/Loading\.\.\./i);
 
     const contentEl = await findContent();
-    within(contentEl).getByRole('progressbar', { hidden: true });
+    const progressBaarEl = within(contentEl).getByRole('progressbar', { hidden: true });
 
-    await screen.findByText(/Price/i);
+    // wait untill progressbar disapears
+    await waitFor(() => expect(progressBaarEl).not.toBeInTheDocument());
 
     const loadedHeadingEl = await findHeading();
     within(loadedHeadingEl).getByText(new RegExp(`Street Addr.: ${realEstateJson.street}`, 'i'));
