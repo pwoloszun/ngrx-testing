@@ -48,7 +48,7 @@ describe('SmartRealEstateDetailsCardComponent', () => {
     const progressBaarEl = within(contentEl).getByRole('progressbar', { hidden: true });
 
     // wait untill progressbar disapears
-    await waitFor(() => expect(progressBaarEl).not.toBeInTheDocument());
+    await waitForElToNotBeInDoc(progressBaarEl);
 
     const loadedHeadingEl = await findHeading();
     within(loadedHeadingEl).getByText(new RegExp(`Street Addr.: ${realEstateJson.street}`, 'i'));
@@ -102,4 +102,9 @@ async function findContent() {
     name: 'Real Estate Content', hidden: true
   });
 }
+
+async function waitForElToNotBeInDoc(el: HTMLElement) {
+  return waitFor(() => expect(el).not.toBeInTheDocument());
+}
+
 
