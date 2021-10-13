@@ -19,8 +19,38 @@ import { map } from 'rxjs/operators';
 describe('AsyncCounterRefactored slice', () => {
   describe('initial value', () => {
 
-    xit('should be initialized with defaults', (done) => {
-      expect(true).toEqual(false);
+    fit('should be initialized with defaults', (done) => {
+      const store = createSliceStore();
+
+      const stateSnapshots$ = store.pipe(
+        map((state) => {
+          const value = selectors.selectAsyncCounterValue(state);
+          const isLoading = selectors.selectAsyncCounterIsLoading(state);
+          const stateSnapshot = { value, isLoading }
+          return stateSnapshot;
+        })
+      );
+
+      const incBy = 5;
+      const expectedSnapshotValues = [
+        { value: 100, isLoading: false },
+        { value: 100, isLoading: true },
+        { value: 105, isLoading: false },
+      ];
+
+      let i = 0;
+      stateSnapshots$.subscribe((actualSnapshot) => {
+        if (i >= expectedSnapshotValues.length) {
+          throw new Error(`Unexpected state change ${JSON.stringify(actualSnapshot)}`);
+        }
+        expect(actualSnapshot).toEqual(expectedSnapshotValues[i]);
+        i += 1;
+        if (i >= expectedSnapshotValues.length) {
+          done();
+        }
+      });
+
+      store.dispatch(actions.incrementAsyncCounterRequest({ incBy }));
 
     });
 
@@ -42,8 +72,11 @@ describe('AsyncCounterRefactored slice', () => {
 });
 
 function createSliceStore() {
-  // providers: [CounterValuesService],
-  // imports: [HttpClientModule]
+  return createStore<ApplicationState>({
+    reducers: { [asyncCounterFeatureKey]: reducer },
+    effects: [effects.AsyncCounterEffects],
+    providers: [CounterValuesService],
+    imports: [HttpClientModule]
+  });
 
-  return null as any; // TODO
 }

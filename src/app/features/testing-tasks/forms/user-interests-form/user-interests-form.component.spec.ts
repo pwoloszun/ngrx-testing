@@ -53,7 +53,8 @@ async function selectOptionFrom(selectEl: HTMLElement, optionText: string | RegE
 
 async function renderComponent() {
   return render(UserInterestsFormComponent, {
-    imports: [ReactiveFormsModule, SharedModule, HttpClientModule],
+    imports: [ReactiveFormsModule, SharedModule, HttpClientModule,
+    ],
   });
 }
 
