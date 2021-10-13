@@ -29,6 +29,29 @@ describe('SmartRealEstateDetailsCardComponent', () => {
     await screen.findByText(new RegExp(`Type: ${realEstateJson.type}`, 'i'));
   });
 
+  fit('should STRICTLY render loding info and fetched real estates data', async () => {
+    const entityId = 100;
+    const realEstateJson = generateEntityJson(entityId);
+    stubServerApi.stub({
+      method: 'get',
+      path: `/api/real-estates/${entityId}`,
+      responseJson: realEstateJson
+    });
+    await renderComponent({ entityId });
+
+    // rendered within header
+    await screen.findByText(/Loading\.\.\./i);
+    await screen.findByRole('progressbar', { hidden: true });
+
+    // rendered within content
+    await screen.findByText(new RegExp(`Street Addr.: ${realEstateJson.street}`, 'i'));
+    await screen.findByText(new RegExp(`Type: ${realEstateJson.type}`, 'i'));
+
+    // rendered within footer
+    await screen.findByText(/all rights/i);
+
+  });
+
   xit('should render loading info while waiting for async data', async () => {
     expect(true).toEqual(false);
   });
