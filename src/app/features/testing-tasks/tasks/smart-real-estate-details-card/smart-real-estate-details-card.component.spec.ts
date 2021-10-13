@@ -9,6 +9,7 @@ import { stubServerApi } from 'src/test/utils/server-stub';
 
 import { PureMyCardComponent } from '../pure-my-card/pure-my-card.component';
 import { SmartRealEstateDetailsCardComponent } from './smart-real-estate-details-card.component';
+import { waitForElementToBeRemoved } from '@testing-library/dom';
 
 describe('SmartRealEstateDetailsCardComponent', () => {
 
@@ -40,26 +41,18 @@ describe('SmartRealEstateDetailsCardComponent', () => {
     await renderComponent({ entityId });
 
     // rendered within header
-    const headingEl = await screen.findByRole('heading', {
-      name: 'Real Estate Heading', hidden: true
-    });
+    const headingEl = await findHeading();
     within(headingEl).getByText(/Loading\.\.\./i);
 
-    const contentEl = await screen.findByRole('banner', {
-      name: 'Real Estate Content', hidden: true
-    });
+    const contentEl = await await findContent();
     within(contentEl).getByRole('progressbar', { hidden: true });
 
-    // wait async for change
     await screen.findByText(/Price/i);
-    const loadedHeadingEl = await screen.findByRole('heading', {
-      name: 'Real Estate Heading', hidden: true
-    });
+
+    const loadedHeadingEl = await findHeading();
     within(loadedHeadingEl).getByText(new RegExp(`Street Addr.: ${realEstateJson.street}`, 'i'));
 
-    const loadedContentEl = await screen.findByRole('banner', {
-      name: 'Real Estate Content', hidden: true
-    });
+    const loadedContentEl = await findContent();
     within(loadedContentEl).getByText(new RegExp(`Type: ${realEstateJson.type}`, 'i'));
 
   });
@@ -97,4 +90,15 @@ function generateEntityJson(id: number) {
   };
 }
 
+async function findHeading() {
+  return screen.findByRole('heading', {
+    name: 'Real Estate Heading', hidden: true
+  });
+}
+
+async function findContent() {
+  return screen.findByRole('banner', {
+    name: 'Real Estate Content', hidden: true
+  });
+}
 
