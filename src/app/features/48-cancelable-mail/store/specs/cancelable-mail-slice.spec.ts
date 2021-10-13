@@ -21,7 +21,7 @@ import { timer } from 'rxjs';
 
 describe('AsyncCounterRefactored slice', () => {
 
-  fit('should run send email flow if neither cancelled nor reverted', (done) => {
+  it('should run send email flow if neither cancelled nor reverted', (done) => {
     expect(true).toEqual(false);
 
     [
@@ -42,25 +42,47 @@ describe('AsyncCounterRefactored slice', () => {
     jest.useRealTimers();
   });
 
-  xit('should run cancel send email flow if cancelled', (done) => {
-
-    [
+  fit('should run cancel send email flow if cancelled', (done) => {
+    const store = createSliceStore();
+    const expectedStateSnaphots = [
       MailSendStage.Idle,
       MailSendStage.SendingCancellable,
       MailSendStage.SendingCancelled,
       MailSendStage.Idle,
-    ]
+    ];
 
-    expect(true).toEqual(false);
+    const mappingFn = (state: AppState) => selectors.selectEmailSendStage(state);
+
+    expectStateChanges(
+      store,
+      expectedStateSnaphots,
+      mappingFn,
+      done
+    );
+
+    jest.useFakeTimers();
+
+    store.dispatch(
+      actions.sendMailStarted(generateEntity())
+    );
+    jest.advanceTimersByTime(500);
+    store.dispatch(
+      actions.cancelSendMailStarted()
+    );
+    jest.advanceTimersByTime(10_000);
+
+    jest.useRealTimers();
   });
 
 });
 
 function createSliceStore() {
-  // effects: [CancelableMailEffects],
-  // imports: [SharedModule, NoopAnimationsModule]
+  return createStore({
+    reducers: { [cancelableMailFeatureKey]: reducer },
+    effects: [CancelableMailEffects],
+    imports: [SharedModule, NoopAnimationsModule]
+  });
 
-  return null as any; // TODO
 }
 
 function generateEntity(): MailEntityParams {
