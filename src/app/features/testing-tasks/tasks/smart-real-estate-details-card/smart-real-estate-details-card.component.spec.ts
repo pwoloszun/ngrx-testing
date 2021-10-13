@@ -4,7 +4,7 @@ import { SmartRealEstateDetailsCardComponent } from './smart-real-estate-details
 
 describe('SmartRealEstateDetailsCardComponent', () => {
 
-  xit('should render fetched real estates data', async () => {
+  fit('should render loding info and fetched real estates data', async () => {
     expect(true).toEqual(false);
   });
 
