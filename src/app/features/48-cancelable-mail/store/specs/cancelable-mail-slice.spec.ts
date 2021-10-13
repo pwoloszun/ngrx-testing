@@ -21,8 +21,16 @@ import { timer } from 'rxjs';
 
 describe('AsyncCounterRefactored slice', () => {
 
-  xit('should run send email flow if neither cancelled nor reverted', (done) => {
+  fit('should run send email flow if neither cancelled nor reverted', (done) => {
     expect(true).toEqual(false);
+
+    jest.useFakeTimers();
+
+    jest.advanceTimersByTime(500);
+
+    jest.advanceTimersByTime(12_000);
+
+    jest.useRealTimers();
   });
 
   xit('should run cancel send email flow if cancelled', (done) => {
