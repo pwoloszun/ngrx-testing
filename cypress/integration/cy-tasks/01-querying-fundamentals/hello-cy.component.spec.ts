@@ -1,5 +1,4 @@
 // import { visitQueryingPage } from './helpers';
-import { interval } from 'rxjs';
 import { getMainNavigationContentAs, getMainPageContentAs } from '../../helpers';
 
 describe('cy tasks: querying fundamentals > HelloCy component', () => {
@@ -93,6 +92,7 @@ function messagesListShouldHaveItemsCount(n: number) {
 
 function findMessagesListItems(fn: Function) {
   cy.findByRole('list', { name: 'Hello Cy Messages' })
+    .scrollIntoView()
     .within(() => {
       cy.findAllByRole('listitem')
         .should('be.visible')
