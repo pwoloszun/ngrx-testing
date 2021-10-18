@@ -1,7 +1,7 @@
 import { getMainNavigationContentAs, getMainPageContentAs } from 'cypress/integration/helpers';
 import { selectMatOption, visitTestingTasksReactiveForms } from './helpers';
 
-describe('login-form-example.component.component', () => {
+describe('login-form-example.component', () => {
 
   before(() => {
     visitTestingTasksReactiveForms();

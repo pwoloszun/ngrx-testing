@@ -1,6 +1,6 @@
 import { getMainNavigationContentAs, getMainPageContentAs } from 'cypress/integration/helpers';
 
-describe('login-form-example.component.component', () => {
+describe('reactive-forms-page.component', () => {
 
   xit('should TD', () => {
     getMainNavigationContentAs('mainNav');
