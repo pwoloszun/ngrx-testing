@@ -6,7 +6,7 @@ describe('smart-quick-search.component', () => {
     visitSmartComponentsPage();
   });
 
-  it('should perform quick search', () => {
+  xit('should perform quick search', () => {
     const playersFixturePath = 'testing-tasks/02-smart-cmp-page/players.json';
     expect(true).to.deep.eq(false);
   });
