@@ -1,3 +1,5 @@
+import { NbaPlayer } from '@api/nba/nba-players-api.service';
+
 import { visitSmartComponentsPage } from './helpers';
 
 describe('smart-quick-search.component', () => {
@@ -39,13 +41,38 @@ describe('smart-quick-search.component', () => {
     cy.findByText(/Search results/i)
       .should('be.visible');
 
-    // list, listitem within
-
     // assert listitems count === playersJson.length
+    // declaratively check list items count
+    cy.findByRole('list')
+      .within(() => {
+        cy.findAllByRole('listitem')
+          .its('length')
+          .then((listItemsSize) => {
+            cy.get('@playersJson')
+              .its('length')
+              .should('equal', listItemsSize);
+          });
+      });
 
     // forEach: listitem.textContent "contains" playersJson[i].last_name
     // forEach: listitem.textContent "contains" playersJson[i].first_name
-
+    cy.findByRole('list')
+      .within(() => {
+        cy.findAllByRole('listitem')
+          .then(($listItems) => {
+            cy.get<NbaPlayer[]>('@playersJson')
+              .then((playersJsonData) => {
+                playersJsonData.forEach((playerEntity, i) => {
+                  // const listItemEl = $listItems[i];
+                  // const expectedText = `${playerEntity.last_name}, ${playerEntity.first_name}`;
+                  // expect(listItemEl.textContent).to.contain(expectedText);
+                  const $listItem = $listItems.eq(i);
+                  const expectedText = `${playerEntity.last_name}, ${playerEntity.first_name}`;
+                  expect($listItem.text()).to.contain(expectedText);
+                });
+              });
+          });
+      });
 
   });
 
