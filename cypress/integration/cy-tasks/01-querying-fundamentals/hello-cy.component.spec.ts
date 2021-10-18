@@ -27,19 +27,66 @@ describe('cy tasks: querying fundamentals > HelloCy component', () => {
   it.only('should mutate list item on btn click', () => {
     cy.visit('/cy-tasks/querying');
 
-    cy.findByRole('button', { name: /Mutate index/i })
-      .click();
-
     cy.findByRole('list', { name: 'Hello Cy Messages' })
+      .as('messagesList') // create alias
       .within(() => {
         cy.findAllByRole('listitem')
           .its('length')
           .should('eq', 4);
-        // cy.findAllByRole('listitem')
-        //   .then(($listItems) => {
-        //     expect($listItems.length).to.eq(4);
-        //   });
+      });
+
+    cy.findByRole('button', { name: /Mutate index/i })
+      .click();
+
+    // cy.get('@messageListItems')
+    cy.findByRole('list', { name: 'Hello Cy Messages' })
+      .within(() => {
+        cy.findAllByRole('listitem')
+          .should('be.visible')
+          .its('length')
+          .should('eq', 4);
       });
   });
 
+  it.only('should mutate list item on btn click 1st REFACTOR', () => {
+    cy.visit('/cy-tasks/querying');
+
+    messagesListShouldHaveItemsCount(4);
+
+    cy.findByRole('button', { name: /Mutate index/i })
+      .click();
+
+    messagesListShouldHaveItemsCount(4);
+  });
+
+  it.only('should mutate list item on btn click 2nd REFACTOR', () => {
+    cy.visit('/cy-tasks/querying');
+
+    findMessagesListItems(($listItems: any) => {
+      expect($listItems.length).to.eq(4);
+    });
+
+    cy.findByRole('button', { name: /Mutate index/i })
+      .click();
+
+    findMessagesListItems(($listItems: any) => {
+      expect($listItems.length).to.eq(4);
+    });
+  });
+
 });
+
+function messagesListShouldHaveItemsCount(n: number) {
+  findMessagesListItems(($listItems: any) => {
+    expect($listItems.length).to.eq(4);
+  });
+}
+
+function findMessagesListItems(fn: Function) {
+  cy.findByRole('list', { name: 'Hello Cy Messages' })
+    .within(() => {
+      cy.findAllByRole('listitem')
+        .should('be.visible')
+        .then(fn as any);
+    });
+}
