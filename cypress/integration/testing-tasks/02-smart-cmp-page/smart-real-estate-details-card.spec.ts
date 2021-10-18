@@ -2,16 +2,22 @@ import { visitSmartComponentsPage } from './helpers';
 
 describe('smart-real-estate-details-card.component', () => {
 
-  before(() => {
+  xit('should render async card details if REQ SUCCESSFUL', () => {
     visitSmartComponentsPage();
+    // cy.intercept()
+    expect(true).to.deep.eq(false);
+
   });
 
-  it.skip('should render async card details if REQ SUCCESSFUL', () => {
-    expect(true).to.deep.eq(false);
-  });
+  it('should render error if any Error', () => {
+    cy.intercept(
+      { method: 'GET', path: '/api/real-estates/*' },
+      { statusCode: 400 }
+    );
 
-  it.skip('should render error if any Error', () => {
-    expect(true).to.deep.eq(false);
+    visitSmartComponentsPage();
+
+    cy.findByText(/Error/i);
   });
 
 });
