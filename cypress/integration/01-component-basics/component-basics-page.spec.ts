@@ -12,8 +12,13 @@ describe('Component Basics page', () => {
     });
 
     it.only('should render single personal data', () => {
-      // TODO
-      expect(true).to.deep.equal(false);
+      cy.visit('/component-basics');
+
+      cy.findByText('Batman', { timeout: 3500 });
+
+      cy.findByText('batman!!')
+        .should('not.be.visible');
+
     });
 
     xit('should render running clock', () => {

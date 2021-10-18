@@ -11,7 +11,7 @@ describe('cy tasks: querying fundamentals > HelloCy component', () => {
     cy.visit('/cy-tasks/querying');
 
     cy.findByText(/Hello Cy/i)
-      .should('exist')
+      .scrollIntoView()
       .should('be.visible')
       .then(($h3El) => {
         console.log('then qq:', $h3El);
