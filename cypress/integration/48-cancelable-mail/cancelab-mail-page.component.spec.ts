@@ -4,7 +4,22 @@ describe('cancelab-mail-page.component', () => {
     // TODO
   });
 
-  it.skip('should successfully send cancelable and reversible mail', () => {
+  it.only('should successfully send cancelable and reversible mail', () => {
+    // visit page
+
+    // click Create Mail btn
+
+    // wihin dialog click Send btn
+
+
+    //within snackbar text should contain /Sending/i
+    // cy.get('snack-bar-container')
+    //   .should('have.length', 1);
+
+    // ===
+    //within snackbar text should contain /Mail has been sent/i
+
+
     expect(true).to.deep.eq(false);
   });
 
