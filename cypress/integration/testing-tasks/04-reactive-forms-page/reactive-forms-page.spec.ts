@@ -13,12 +13,11 @@ describe('reactive-forms-page.component', () => {
       });
   });
 
-  it.only('should manually navigate to reactive forms page', () => {
+  it('should manually navigate to reactive forms page', () => {
     cy.visit('/');
 
     getMainNavigationContentAs('mainNav');
     getMainPageContentAs('mainContent');
-
 
     cy.get('@mainNav')
       .within(() => {
