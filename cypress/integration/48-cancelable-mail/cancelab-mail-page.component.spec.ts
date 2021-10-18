@@ -24,10 +24,22 @@ describe('cancelab-mail-page.component', () => {
       .should('have.length', 1)
       .within(() => {
         cy.findByText(/Sending/i);
+        cy.findByRole('button', { name: /Cancel/i });
       });
 
     // ===
     //within snackbar text should contain /Mail has been sent/i
+    // cy.get('snack-bar-container', { timeout: 5000 })
+    //   .should('have.length', 1)
+    //   .should('contain.text', 'Mail has been sent');
+    waitUntilSnackbarContains(/Mail has been sent/i);
+
+    cy.get('snack-bar-container')
+      .should('have.length', 1)
+      .within(() => {
+        cy.findByText(/Mail has been sent/i);
+        cy.findByRole('button', { name: /Revert/i });
+      });
 
   });
 
@@ -46,5 +58,13 @@ function visitCancelableMailPage() {
 }
 
 function waitUntilSnackbarContains(re: RegExp) {
-  // TODO
+  cy.waitUntil(() => {
+    console.log('QQ waitUntil');
+    return cy.get('snack-bar-container')
+      .should('have.length', 1)
+      .then(($snackbar) => {
+        const text = $snackbar.text();
+        return text.match(re) !== null;
+      });
+  });
 }
