@@ -11,8 +11,9 @@ describe('Component Basics page', () => {
       // - scoped search
     });
 
-    xit('should render single personal data', () => {
+    it.only('should render single personal data', () => {
       // TODO
+      expect(true).to.deep.equal(false);
     });
 
     xit('should render running clock', () => {
