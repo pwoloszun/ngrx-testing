@@ -1,19 +1,21 @@
 import * as faker from 'faker';
-import { Todo } from '@api/models/todos.models';
+
+import { Todo } from 'src/app/core/api/models/todos.models';
 
 import { stubFetchTodosAs, getTodoListItemsAs } from './helpers';
 
 describe('Adv. Todos page: update Todo sub-feature', () => {
 
-  it('should be a optimistic locking update', () => {
+  xit('should be a optimistic locking update', () => {
     stubFetchTodosAs('getTodosRequest', 'todosJSON');
 
     const index = 3;
-    const todoChanges: Partial<Todo> = {
-      title: faker.lorem.words(3),
-      description: faker.lorem.words(6),
+    const todoChanges = {
+      title: faker.lorem.words(3) as string,
+      description: faker.lorem.words(6) as string,
     };
 
+    // === stub Update server response
     cy.get<Todo[]>('@todosJSON')
       .then((todos) => {
         const toUpdateTodo = todos[index];
@@ -21,106 +23,39 @@ describe('Adv. Todos page: update Todo sub-feature', () => {
           ...toUpdateTodo,
           ...todoChanges,
         };
-        cy.intercept({
-          method: 'PUT',
-          pathname: `/api/todos/${toUpdateTodo.id}`,
-        }, {
-          body: nextTodo,
-        }).as('updateTodoRequest');
+
+        // TODO: stub "Update Todo" request to return nextTodo as response
       });
 
-    cy.visit('/advanced-todos');
-
+    cy.visit('/adv-todos');
     cy.wait('@getTodosRequest');
 
     getTodoListItemsAs('todoListItems');
 
-    cy.get<Todo[]>('@todosJSON')
-      .then((todos) => {
-        const todoDuringEdition = todos[index];
-        cy.get('@todoListItems')
-          .eq(index)
-          .should('contain', todoDuringEdition.title)
-          .findByText('Edit')
-          .click();
-      });
+    // TODO: find list item by Todo title & click 'Edit' btn
 
-    // Edit and Save
-    getTodoListItemsAs('todoListItems')
-      .eq(index)
-      .scrollIntoView()
-      .within(() => {
-        cy.findByLabelText('Edit title')
-          .clear()
-          .type(todoChanges.title);
-        cy.findByLabelText('Edit description')
-          .clear()
-          .type(todoChanges.description);
-        cy.findByText('Save')
-          .click();
-      });
+    // === Edit and Save
+    // TODO: change title & description & Save
 
-    // Saving...
-    getTodoListItemsAs('todoListItems')
-      .eq(index)
-      .scrollIntoView()
-      .within(() => {
-        cy.findByText('Saving...')
-          .should('be.visible');
-        cy.findByText(todoChanges.title)
-          .should('be.visible');
-        cy.findByText(todoChanges.description)
-          .should('be.visible');
+    // === While Saving...
+    // TODO: assert:
+    //    - edition: text fields & btns should disappear AND
+    //    - 'Saving...' & new title & description are visible AND
+    //    - 'Edit' & 'Remove' btns should be visible BUT disabled
 
-        cy.findByLabelText('Edit title')
-          .should('not.exist');
-        cy.findByLabelText('Edit description')
-          .should('not.exist');
 
-        cy.findByText('Save')
-          .should('not.exist');
-        cy.findByText('Cancel')
-          .should('not.exist');
+    // === wait for server response
+    cy.wait('@updateTodoRequest');
 
-        cy.contains('button', 'Edit')
-          .should('be.visible')
-          .and('be.disabled');
-        cy.contains('button', 'Remove')
-          .should('be.visible')
-          .and('be.disabled');
-      });
+    // === wait for list rerender
+    // GOTCHA TODO: wait until item list is rerendered:
+    //    - use waitUntil() command
+    //    - updated list item text() should NOT contain 'Saving...'
 
-    cy.wait('@updateTodoRequest')
-      .then(({ request }) => {
-        expect(request.body).to.deep.equal(todoChanges);
-      });
+    // === Successfully Updated
+    // TODO: find updated list item, then inside it:
+    //    - assert: new title & description are rendered
+    //    - assert: 'Edit' &'Remove' btns are rendered AND enabled
 
-    // Gotcha: wait until item list is rerendered
-    cy.waitUntil(() => {
-      return getTodoListItemsAs('todoListItems')
-        .then(($listItems) => {
-          const $updatedTodoListItem = $listItems.eq(index);
-          const text = $updatedTodoListItem.text();
-          const isSaving = Boolean(text.match(/Saving\.\.\./));
-          return !isSaving;
-        });
-    });
-
-    // Successfully Updated
-    getTodoListItemsAs('todoListItems')
-      .eq(index)
-      .should('not.contain', 'Saving...')
-      .within(() => {
-        cy.findByText(todoChanges.title)
-          .should('be.visible');
-        cy.findByText(todoChanges.description)
-          .should('be.visible');
-        cy.contains('button', 'Edit')
-          .should('be.visible')
-          .and('not.be.disabled');
-        cy.contains('button', 'Remove')
-          .should('be.visible')
-          .and('not.be.disabled');
-      });
   });
 });

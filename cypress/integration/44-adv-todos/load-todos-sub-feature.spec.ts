@@ -1,47 +1,18 @@
-import { Todo } from '@api/models/todos.models';
-
+import { Todo } from 'src/app/core/api/models/todos.models';
 import { stubFetchTodosAs, getTodoListItemsAs } from './helpers';
 
 describe('Adv. Todos page: load todos sub-feature', () => {
 
+  xit('should render todo title for every fetched todo', () => {
+    // TODO: stub server
 
-  it('should render todo title for every fetched todo', () => {
-    stubFetchTodosAs('getTodosRequest', 'todosJSON');
+    // TODO: visit page & wait for ajax response
 
-    cy.visit('/advanced-todos');
-    cy.wait('@getTodosRequest');
-
-    getTodoListItemsAs('todoListItems');
-
-    cy.get<Todo[]>('@todosJSON')
-      .then((todos) => {
-        todos.forEach((todo, i) => {
-          const { title, description = '' } = todo;
-          cy.get('@todoListItems')
-            .eq(i)
-            .scrollIntoView()
-            .within(() => {
-              cy.findByText(title)
-                .should('be.visible');
-              if (description.trim().length > 0) {
-                cy.findByText(description)
-                  .should('be.visible');
-              }
-            });
-        });
-      });
+    // check rendered list - compare with todos JSON data
   });
 
-  it('should render progress bar before Todos are loaded, and hide it afterwards', () => {
-    stubFetchTodosAs('getTodosRequest', 'todosJSON');
-
-    cy.visit('/advanced-todos');
-    cy.findByTestId('load-todos-progressbar')
-      .should('be.visible');
-
-    cy.wait('@getTodosRequest');
-    cy.findByTestId('load-todos-progressbar')
-      .should('not.exist');
+  xit('should render progress bar before Todos are loaded, and hide it afterwards', () => {
+    // TODO
   });
 
 });
