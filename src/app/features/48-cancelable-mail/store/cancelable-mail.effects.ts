@@ -25,16 +25,15 @@ export class CancelableMailEffects {
         const timeToCancelExpired$ = timer(TIME_TO_EXP).pipe(
           map(() => actions.timeToCancelExpired())
         );
-        // return race<Action>(
-        //   timeToCancelExpired$,
-        //   this.cancelStartedAction$
-        // ).pipe(
-        //   ofType(actions.timeToCancelExpired),
-        // );
-        return NEVER;
+        return race<Action>(
+          timeToCancelExpired$,
+          this.cancelStartedAction$
+        ).pipe(
+          ofType(actions.timeToCancelExpired),
+        );
       }),
     );
-  }, { dispatch: false });
+  });
 
   continueSendMailFlow$ = createEffect(() => {
     return this.actions$.pipe(
