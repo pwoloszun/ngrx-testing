@@ -14,12 +14,31 @@ describe('reactive-forms-page.component', () => {
   });
 
   it.only('should manually navigate to reactive forms page', () => {
-    expect(true).to.deep.eq(false);
+    cy.visit('/');
+
+    getMainNavigationContentAs('mainNav');
+    getMainPageContentAs('mainContent');
 
 
-    const expectedUrl = fullAppUrl('/some/path');
+    cy.get('@mainNav')
+      .within(() => {
+        cy.findByText(/Unit, Integration Testing/i)
+          .click();
+        cy.findByText(/Testing tasks/i)
+          .click();
+      });
+
+    cy.get('@mainContent')
+      .within(() => {
+        cy.findByText(/Reactive Forms/i)
+          .click();
+        cy.findByText(/reactive-forms-page/i)
+          .should('be.visible');
+      });
+
+    const expectedUrl = fullAppUrl('/testing-tasks/reactive-forms');
     cy.url()
-      .should('smth TODO', expectedUrl);
+      .should('equal', expectedUrl);
   });
 
 });
