@@ -13,3 +13,7 @@ export function getMainPageContentAs(alias: string) {
   return cy.get(`[role='main']`)
     .as(alias);
 }
+
+export function throwError(message: string): never {
+  throw new Error(message);
+}

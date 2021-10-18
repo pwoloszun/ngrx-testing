@@ -1,7 +1,7 @@
 {
   "$schema": "https://on.cypress.io/cypress.schema.json",
   "chromeWebSecurity": false,
-  "baseUrl": "http://localhost:3000",
+  "baseUrl": "http://localhost:4000",
   "video": false,
   "ignoreTestFiles": "**/integration/examples/*.ts",
   "testFiles": "**/*.spec.ts",
