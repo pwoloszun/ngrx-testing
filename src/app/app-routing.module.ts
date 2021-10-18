@@ -61,27 +61,27 @@ const appRoutes: Routes = [
   },
 
   // e2e testing
-  // {
-  //   path: 'component-basics',
-  //   loadChildren: () =>
-  //     import('./features/01-component-basics/component-basics.module').then((m) => m.ComponentBasicsModule),
-  // },
-  // {
-  //   path: 'binding-examples',
-  //   loadChildren: () =>
-  //     import('./features/02-binding-examples/binding-examples.module').then((m) => m.BindingExamplesModule),
-  // },
-  // {
-  //   path: 'inputs-outputs-examples',
-  //   loadChildren: () =>
-  //     import('./features/03-inputs-outputs-examples/inputs-outputs-examples.module').then(
-  //       (m) => m.InputsOutputsExamplesModule
-  //     ),
-  // },
-  // {
-  //   path: 'cy-tasks',
-  //   loadChildren: () => import('./features/cy-tasks/cy-tasks.module').then((m) => m.CyTasksModule),
-  // },
+  {
+    path: 'component-basics',
+    loadChildren: () =>
+      import('./features/01-component-basics/component-basics.module').then((m) => m.ComponentBasicsModule),
+  },
+  {
+    path: 'binding-examples',
+    loadChildren: () =>
+      import('./features/02-binding-examples/binding-examples.module').then((m) => m.BindingExamplesModule),
+  },
+  {
+    path: 'inputs-outputs-examples',
+    loadChildren: () =>
+      import('./features/03-inputs-outputs-examples/inputs-outputs-examples.module').then(
+        (m) => m.InputsOutputsExamplesModule
+      ),
+  },
+  {
+    path: 'cy-tasks',
+    loadChildren: () => import('./features/cy-tasks/cy-tasks.module').then((m) => m.CyTasksModule),
+  },
 
   { path: '**', component: PageNotFoundComponent },
 ];

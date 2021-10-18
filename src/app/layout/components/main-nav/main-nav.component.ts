@@ -19,7 +19,7 @@ export class MainNavComponent {
     fundamentalsSection,
     advancedSection,
     unitIntegrationTestingSection,
-    // e2eTestingSection,
+    e2eTestingSection,
   ];
 
   isHandset$: Observable<boolean> = this.breakpointObserver
