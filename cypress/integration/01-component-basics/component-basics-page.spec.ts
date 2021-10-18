@@ -14,7 +14,23 @@ describe('Component Basics page', () => {
     it.only('should render single personal data', () => {
       cy.visit('/component-basics');
 
-      cy.findByText('Batman', { timeout: 3500 });
+      cy.findByRole('region', { name: /Personl Data/i })
+        .should('be.visible')
+        .within(($region) => {
+          cy.findByText(/Batman/i, { timeout: 3500 });;
+        });
+
+      cy.findByText('batman!!')
+        .should('not.be.visible');
+
+    });
+
+    it('should render single personal data with FIND', () => {
+      cy.visit('/component-basics');
+
+      cy.get('div.personal-data')
+        .contains('Batman')
+      // cy.findByText('Batman', { timeout: 3500 });
 
       cy.findByText('batman!!')
         .should('not.be.visible');
