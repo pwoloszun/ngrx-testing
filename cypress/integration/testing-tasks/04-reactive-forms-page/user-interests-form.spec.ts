@@ -6,7 +6,9 @@ describe('user-interests-form.component', () => {
     visitTestingTasksReactiveForms();
   });
 
-  xit('should select mat select option', () => {
+  it.only('should select mat select option', () => {
+    const path = '/testing-tasks/reactive-forms';
+
     selectMatOption(/Select Your Country/i, /USA/i);
 
     cy.findByLabelText(/Select Your Country/i)

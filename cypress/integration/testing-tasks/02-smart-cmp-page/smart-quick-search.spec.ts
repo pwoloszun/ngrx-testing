@@ -8,7 +8,7 @@ describe('smart-quick-search.component', () => {
     visitSmartComponentsPage();
   });
 
-  it.only('should perform quick search', () => {
+  it('should perform quick search', () => {
     const pagePath = '/testing-tasks/smart-components';
     const playersFixturePath = 'testing-tasks/02-smart-cmp-page/players.json';
 
