@@ -24,12 +24,22 @@ describe('cy tasks: querying fundamentals > HelloCy component', () => {
 
   });
 
-  xit('should render page heading', () => {
-    expect(true).to.deep.eq(false);
-  });
+  it.only('should mutate list item on btn click', () => {
+    cy.visit('/cy-tasks/querying');
 
-  xit('should mutate list item on btn click', () => {
-    expect(true).to.deep.eq(false);
+    cy.findByRole('button', { name: /Mutate index/i })
+      .click();
+
+    cy.findByRole('list', { name: 'Hello Cy Messages' })
+      .within(() => {
+        cy.findAllByRole('listitem')
+          .its('length')
+          .should('eq', 4);
+        // cy.findAllByRole('listitem')
+        //   .then(($listItems) => {
+        //     expect($listItems.length).to.eq(4);
+        //   });
+      });
   });
 
 });
