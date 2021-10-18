@@ -1,10 +1,19 @@
 // import { visitQueryingPage } from './helpers';
 import { interval } from 'rxjs';
+import { getMainNavigationContentAs, getMainPageContentAs } from '../../helpers';
 
 describe('cy tasks: querying fundamentals > HelloCy component', () => {
 
-  before(() => {
-    // TODO refactor
+
+  xit('should TD', () => {
+    getMainNavigationContentAs('mainNav');
+
+    getMainPageContentAs('mainContent');
+
+    cy.get('@mainNav')
+      .within(() => {
+
+      });
   });
 
   it('should render page heading', () => {
@@ -24,7 +33,7 @@ describe('cy tasks: querying fundamentals > HelloCy component', () => {
 
   });
 
-  it.only('should mutate list item on btn click', () => {
+  it('should mutate list item on btn click', () => {
     cy.visit('/cy-tasks/querying');
 
     cy.findByRole('list', { name: 'Hello Cy Messages' })
@@ -48,7 +57,7 @@ describe('cy tasks: querying fundamentals > HelloCy component', () => {
       });
   });
 
-  it.only('should mutate list item on btn click 1st REFACTOR', () => {
+  it('should mutate list item on btn click 1st REFACTOR', () => {
     cy.visit('/cy-tasks/querying');
 
     messagesListShouldHaveItemsCount(4);
@@ -59,7 +68,7 @@ describe('cy tasks: querying fundamentals > HelloCy component', () => {
     messagesListShouldHaveItemsCount(4);
   });
 
-  it.only('should mutate list item on btn click 2nd REFACTOR', () => {
+  it('should mutate list item on btn click 2nd REFACTOR', () => {
     cy.visit('/cy-tasks/querying');
 
     findMessagesListItems(($listItems: any) => {
