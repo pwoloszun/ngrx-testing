@@ -1,19 +1,6 @@
 // import { visitQueryingPage } from './helpers';
-import { getMainNavigationContentAs, getMainPageContentAs } from '../../helpers';
 
 describe('cy tasks: querying fundamentals > HelloCy component', () => {
-
-
-  xit('should TD', () => {
-    getMainNavigationContentAs('mainNav');
-
-    getMainPageContentAs('mainContent');
-
-    cy.get('@mainNav')
-      .within(() => {
-
-      });
-  });
 
   it('should render page heading', () => {
     cy.visit('/cy-tasks/querying');
