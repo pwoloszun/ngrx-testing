@@ -3,5 +3,8 @@ export function visitTestingTasksReactiveForms() {
 }
 
 export function selectMatOption(selectLabel: string | RegExp, optionText: string | RegExp) {
-  // TODO
+  cy.findByLabelText(selectLabel)
+    .click();
+  cy.findByText(optionText)
+    .click();
 }

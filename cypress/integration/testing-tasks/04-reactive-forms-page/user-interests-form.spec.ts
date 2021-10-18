@@ -6,15 +6,11 @@ describe('user-interests-form.component', () => {
     visitTestingTasksReactiveForms();
   });
 
-  it.only('should select mat select option', () => {
-    const path = '/testing-tasks/reactive-forms';
-
+  it('should select mat select option', () => {
     selectMatOption(/Select Your Country/i, /USA/i);
 
     cy.findByLabelText(/Select Your Country/i)
       .should('have.text', 'USA');
-
-    expect(true).to.deep.eq(false);
   });
 
   xit('should send form data to server', () => {
