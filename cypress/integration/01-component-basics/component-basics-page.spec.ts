@@ -11,7 +11,7 @@ describe('Component Basics page', () => {
       // - scoped search
     });
 
-    it.only('should render single personal data', () => {
+    it('should render single personal data', () => {
       cy.visit('/component-basics');
 
       cy.findByRole('region', { name: /Personl Data/i })
