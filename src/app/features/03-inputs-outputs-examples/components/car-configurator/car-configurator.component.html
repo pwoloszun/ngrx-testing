@@ -1,0 +1,29 @@
+<div class="car-configurator">
+  <h5>CarConfigurator</h5>
+  <div class="chosen-config">
+    <h3>Current config</h3>
+    <p>Engine: {{selectedEngine}}</p>
+    <p>Color: {{selectedColor}}</p>
+    <p>Drive Wheel: {{selectedDriveWheel}}</p>
+  </div>
+
+  <div>
+    <nts-option-picker
+      label="Choose engine type"
+      [options]="engines"
+      (optionSelect)="selectEngine($event)"
+    ></nts-option-picker>
+
+    <nts-option-picker
+      label="Select color"
+      [options]="colors"
+      (optionSelect)="selectColor($event)"
+    ></nts-option-picker>
+  
+    <nts-option-picker
+      label="Your drive wheel?"
+      [options]="driveWheels"
+      (optionSelect)="selectDriveWheel($event)"
+    ></nts-option-picker>
+  </div>
+</div>
