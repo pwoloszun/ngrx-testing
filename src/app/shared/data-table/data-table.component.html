@@ -1,22 +1,24 @@
-<div *ngIf="items"
-     class="list">
+<div class="list">
   <table class="data-table">
     <thead class="list-header">
       <tr>
-        <td *ngFor="let meta of metaData">
-          <a>{{meta.text}}</a>
+        <td>
+          <a>col 1</a>
+        </td>
+        <td>
+          <a>col 2</a>
         </td>
       </tr>
     </thead>
     <tbody class="items-container">
-      <tr *ngFor="let item of items"
-          [ngClass]="{'highlighted': selectedItem === item}"
-          (click)="onRowClick(item)"
-          class="list-item"
-          [attr.aria-selected]="selectedItem === item">
-        <td *ngFor="let meta of metaData">
-          {{item[meta.value]}}
-        </td>
+      <tr class="list-item">
+        <td> res 11 </td>
+        <td> res 12 </td>
+      </tr>
+
+      <tr class="list-item">
+        <td> res 21 </td>
+        <td> res 22 </td>
       </tr>
     </tbody>
   </table>

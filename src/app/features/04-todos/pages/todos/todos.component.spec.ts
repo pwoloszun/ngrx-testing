@@ -19,79 +19,20 @@ import { MyManageTodosService } from '../../services/my-manage-todos.service';
 
 describe('TodosComponent', () => {
 
-  it('should render todos', async () => {
-    const expectedTitles = TODOS_DATA.map(({ title }) => title);
-    await renderTodosComponent();
-
-    const itemRows = getAllItemRows();
-
-    expect(itemRows.length).toEqual(TODOS_DATA.length);
-    itemRows.forEach((row, i) => {
-      const expectedTitle = expectedTitles[i];
-      expect(row.textContent).toMatch(new RegExp(expectedTitle));
-    });
+  xit('should render todos', async () => {
+    expect(false).toEqual(true);
   });
 
-  it('should remove todo when remove btn clicked', async () => {
-    const originalTitles = TODOS_DATA.map(({ title }) => title);
-    const originalTodosCount = originalTitles.length;
-    const removeIndex = 1;
-    const removeTitle = originalTitles[removeIndex];
-    await renderTodosComponent();
-
-    const originalItemRows = getAllItemRows();
-    const rowToRemove = originalItemRows[removeIndex];
-    const btn = within(rowToRemove).getByRole('button', { hidden: true });
-    userEvent.click(btn);
-
-    // await waitForElementToBeRemoved(() => screen.getByText(removeTitle));
-    const itemRows = getAllItemRows();
-    expect(itemRows.length).toEqual(originalTodosCount - 1);
-    itemRows.forEach((row) => {
-      expect(row.textContent).not.toMatch(new RegExp(removeTitle));
-    });
+  xit('should remove todo when remove btn clicked', async () => {
+    expect(false).toEqual(true);
   });
 
-  it('should create todo when todo form data submitted', async () => {
-    const component = await renderTodosComponent();
-    const originalTodosCount = getAllItemRows().length;
-
-    const titleControl = component.getByTestId('title');
-    const descriptionControl = component.getByTestId('description');
-    const submitBtn = component.getByText('Submit');
-
-    const expectedTitle = 'some new title';
-    const expectedDescription = 'my new desc';
-    userEvent.type(titleControl, expectedTitle);
-    userEvent.type(descriptionControl, expectedDescription);
-    userEvent.click(submitBtn);
-
-    await waitFor(() => screen.getByText(expectedTitle));
-    const itemRows = getAllItemRows();
-
-    expect(itemRows.length).toEqual(originalTodosCount + 1);
-    const lastRow = last(itemRows) as HTMLElement;
-    expect(lastRow.textContent).toMatch(expectedTitle);
+  xit('should create todo when todo form data submitted', async () => {
+    expect(false).toEqual(true);
   });
 
 });
 
 async function renderTodosComponent() {
-  return render(TodosComponent, {
-    providers: [
-      MyManageTodosService
-    ],
-    imports: [
-      SharedModule,
-      FormsModule,
-    ],
-    declarations: [
-      TodosListComponent,
-      TodosFormComponent,
-    ],
-  });
-}
-
-function getAllItemRows() {
-  return screen.getAllByRole('listitem', { hidden: true });
+  //TODO
 }

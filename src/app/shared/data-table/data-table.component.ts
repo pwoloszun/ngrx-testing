@@ -18,13 +18,4 @@ interface DataTableItem {
 })
 export class DataTableComponent<T extends DataTableItem> {
 
-  @Input() items: T[] | null = [];
-  @Input() selectedItem: T | null = null;
-  @Input() metaData!: MetaData[];
-  @Output() itemClick = new EventEmitter<T>();
-
-  onRowClick(item: T) {
-    this.itemClick.emit(item);
-  }
-
 }

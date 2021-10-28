@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { MetaData } from '@shared/data-table/meta-data';
 
 import { ManageRealEstatesService } from '../../services/manage-real-estates.service';
-import { RealEstate } from '../../services/real-estate.model';
 
 @Component({
   selector: 'nts-real-estates',
@@ -12,17 +11,15 @@ import { RealEstate } from '../../services/real-estate.model';
 })
 export class RealEstatesComponent implements OnInit {
 
-  listHeaders!: MetaData[];
+  listHeaders: MetaData[] = [
+    { value: 'street', text: 'Ulica' },
+    { value: 'lat', text: 'Wysokosc geo.' },
+    { value: 'lng', text: 'Dlugosc geo.' },
+  ];
 
-  constructor(public manageService: ManageRealEstatesService) {
-  }
+  constructor(public manageService: ManageRealEstatesService) { }
 
   ngOnInit() {
-    this.listHeaders = [
-      { value: 'street', text: 'Ulica' },
-      { value: 'lat', text: 'Wysokosc geo.' },
-      { value: 'lng', text: 'Dlugosc geo.' },
-    ];
     this.manageService.fetch();
   }
 

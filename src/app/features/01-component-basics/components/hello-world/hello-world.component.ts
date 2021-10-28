@@ -13,3 +13,10 @@ export class HelloWorldComponent implements OnInit {
   }
 
 }
+
+// const people = [
+//   { id: 100, name: 'bob' },
+//   { id: 200, name: 'ed' },
+//   { id: 300, name: 'kate' },
+//   { id: 400, name: 'helen' },
+// ];

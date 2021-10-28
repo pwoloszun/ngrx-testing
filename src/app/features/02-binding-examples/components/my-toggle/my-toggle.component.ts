@@ -7,19 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyToggleComponent implements OnInit {
 
-  isVisible = true;
-  label = 'Toggle Hide';
-
-  get toggleButtonCss() {
-    return { 'mat-warn': !this.isVisible };
-  }
-
+  // TODO
   ngOnInit() {
-  }
-
-  toggleClickHandler() {
-    this.isVisible = !this.isVisible;
-    this.label = this.isVisible ? 'Toggle Hide' : 'Toggle Show';
   }
 
 }

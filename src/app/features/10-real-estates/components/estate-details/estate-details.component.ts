@@ -6,7 +6,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./estate-details.component.css']
 })
 export class EstateDetailsComponent {
-
-  @Input() item: any;
-
+  // TODO
 }

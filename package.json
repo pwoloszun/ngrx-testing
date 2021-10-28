@@ -1,6 +1,6 @@
 {
-  "name": "ngrx-fundamentals-tasks",
-  "version": "0.2.0",
+  "name": "ngrx-testing",
+  "version": "0.2.4",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port 4000 --proxy-config proxy.conf.json",

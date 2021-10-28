@@ -17,26 +17,15 @@ export interface Todo extends TodoParams {
 })
 export class MyManageTodosService {
 
-  private loadedTodos$ = new BehaviorSubject<Todo[]>([]);
-
-  allTodos$ = this.loadedTodos$.asObservable();
-
   loadTodos(): void {
-    this.loadedTodos$.next([...TODOS_DATA]);;
+    //TODO
   }
 
   create({ title, description }: TodoParams): void {
-    const createdTodo = {
-      id: Math.random(),
-      title,
-      description
-    };
-    const nextTodos = [...this.loadedTodos$.value, createdTodo];
-    this.loadedTodos$.next(nextTodos);
+    //TODO
   }
 
   remove(todo: Todo): void {
-    const nextTodos = this.loadedTodos$.value.filter((t) => t.id !== todo.id);
-    this.loadedTodos$.next(nextTodos);
+    //TODO
   }
 }

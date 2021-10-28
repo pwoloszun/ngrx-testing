@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { fundamentalsSection } from './route-sections/fundamentals-section';
+import { designPrinciplesSection } from './route-sections/design-principles-section';
 import { advancedSection } from './route-sections/advanced-section';
 import { unitIntegrationTestingSection } from './route-sections/unit-integration-testing-section';
 import { e2eTestingSection } from './route-sections/e2e-testing-section';
@@ -17,6 +18,7 @@ export class MainNavComponent {
 
   mainMenuSections = [
     fundamentalsSection,
+    designPrinciplesSection,
     // advancedSection,
     unitIntegrationTestingSection,
     // e2eTestingSection,

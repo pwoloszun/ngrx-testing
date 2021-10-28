@@ -11,18 +11,15 @@ import { MetaData } from '@shared/data-table/meta-data';
 export class HeroesComponent implements OnInit {
   heroes!: Hero[];
   selectedHero!: Hero;
-  heroesMetaData!: MetaData[];
+  heroesMetaData: MetaData[] = [
+    { value: 'universe', text: 'Komiksowe Uniwersum' },
+    { value: 'name', text: 'Imie' },
+    { value: 'secretIdentity', text: 'Tozsamosc' },
+  ];
 
-  constructor(private heroesService: HeroesService) {
-  }
+  constructor(private heroesService: HeroesService) { }
 
   ngOnInit(): void {
-    this.heroesMetaData = [
-      { value: 'universe', text: 'Komiksowe Uniwersum' },
-      { value: 'name', text: 'Imie' },
-      { value: 'secretIdentity', text: 'Tozsamosc' },
-    ];
-
     this.heroesService.getAll().subscribe((data: Hero[]) => {
       // console.log('data table PAGE', data);
       this.heroes = data;

@@ -1,15 +1,13 @@
 <mat-card class="todos-list-container">
-  <mat-card-title>Todos List ({{items?.length}})</mat-card-title>
+  <mat-card-title>Todos List (TODO)</mat-card-title>
 
   <mat-list role="list">
-    <mat-list-item *ngFor="let todo of items"
-                   role="listitem">
+    <mat-list-item>
       <mat-divider></mat-divider>
       <h2 matLine>
-        {{todo.title}}
+        TITLE_TODO
       </h2>
-      <button (click)="deleteTodo(todo)"
-              mat-icon-button
+      <button mat-icon-button
               class="remove-btn"
               aria-label="Remove"
               role="button">
@@ -17,11 +15,10 @@
       </button>
 
       <p matLine>
-        <span class="demo-2"> {{todo.description}} </span>
+        <span class="demo-2"> TITLE_DESCRIPTION </span>
       </p>
     </mat-list-item>
   </mat-list>
 
-  <mat-progress-bar *ngIf="!hasItems()"
-                    mode="indeterminate"></mat-progress-bar>
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
 </mat-card>

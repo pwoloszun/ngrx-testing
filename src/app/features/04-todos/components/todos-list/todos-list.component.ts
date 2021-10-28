@@ -18,18 +18,8 @@ interface TodoListItem {
 })
 export class TodosListComponent<T extends TodoListItem> implements OnInit {
 
-  @Input() items: T[] | null = [];
-
-  @Output() deleteItem = new EventEmitter<T>();
+  //TODO
 
   ngOnInit() {
-  }
-
-  deleteTodo(todo: T) {
-    this.deleteItem.emit(todo);
-  }
-
-  hasItems() {
-    return this.items && this.items.length > 0;
   }
 }

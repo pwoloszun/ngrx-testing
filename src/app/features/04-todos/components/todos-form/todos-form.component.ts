@@ -12,25 +12,8 @@ export interface TodoFormVm {
 })
 export class TodosFormComponent implements OnInit {
 
-  @Output() createItem = new EventEmitter<TodoFormVm>();
-
-  title = '';
-  description = '';
-
-  public onSubmit() {
-    const { title, description } = this;
-    this.createItem.emit({
-      title,
-      description
-    });
-    this.resetForm();
-  }
-
+  // TODO
   ngOnInit() {
   }
 
-  private resetForm() {
-    this.title = '';
-    this.description = '';
-  }
 }
