@@ -1,0 +1,12 @@
+<h3>my-dashboard-task</h3>
+
+<div>
+  <input [formControl]="searchFormCtrl" />
+
+  <nts-flexible-list [items]="searchResults$ | async">
+    <ng-template let-result="item">
+      <h3>{{result}}</h3>
+    </ng-template>
+  </nts-flexible-list>
+
+</div>

@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-
 import { fundamentalsSection } from './route-sections/fundamentals-section';
 import { designPrinciplesSection } from './route-sections/design-principles-section';
 import { advancedSection } from './route-sections/advanced-section';
-import { unitIntegrationTestingSection } from './route-sections/unit-integration-testing-section';
-import { e2eTestingSection } from './route-sections/e2e-testing-section';
+import { extrasSection } from './route-sections/extras-section';
+import { streamsSection } from './route-sections/streams-section';
+import { testingSection } from './route-sections/testing-section';
 
 @Component({
   selector: 'nts-main-nav',
@@ -19,9 +19,10 @@ export class MainNavComponent {
   mainMenuSections = [
     fundamentalsSection,
     designPrinciplesSection,
-    // advancedSection,
-    unitIntegrationTestingSection,
-    // e2eTestingSection,
+    advancedSection,
+    extrasSection,
+    testingSection,
+    streamsSection,
   ];
 
   isHandset$: Observable<boolean> = this.breakpointObserver

@@ -45,30 +45,57 @@ const appRoutes: Routes = [
     loadChildren: () => import('./features/10-real-estates/real-estates.module').then((m) => m.RealEstatesModule),
   },
 
-  // {
-  //   path: 'dynamic-components',
-  //   loadChildren: () =>
-  //     import('./features/12-dynamic-components/dynamic-components.module').then((m) => m.DynamicComponentsModule),
-  // },
-  // {
-  //   path: 'custom-directives',
-  //   loadChildren: () =>
-  //     import('./features/13-custom-directives/custom-directives.module').then((m) => m.CustomDirectivesModule),
-  // },
-  // {
-  //   path: 'custom-pipes',
-  //   loadChildren: () => import('./features/15-custom-pipes/custom-pipes.module').then((m) => m.CustomPipesModule),
-  // },
-  // {
-  //   path: 'content-projection',
-  //   loadChildren: () =>
-  //     import('./features/21-content-projection/content-projection.module').then((m) => m.ContentProjectionModule),
-  // },
-  // {
-  //   path: 'refs-to-template-elements',
-  //   loadChildren: () =>
-  //     import('./features/22-refs-to-template-elements/refs-to-template-elements.module').then((m) => m.RefsToTemplateElementsModule),
-  // },
+  {
+    path: 'routing-tasks',
+    loadChildren: () => import('./features/routing-tasks/routing-tasks.module').then((m) => m.RoutingTasksModule),
+  },
+
+  {
+    path: 'forms-tasks',
+    loadChildren: () => import('./features/11-forms-tasks/forms-tasks.module').then((m) => m.FormsTasksModule),
+  },
+  {
+    path: 'dynamic-components',
+    loadChildren: () =>
+      import('./features/12-dynamic-components/dynamic-components.module').then((m) => m.DynamicComponentsModule),
+  },
+  {
+    path: 'custom-directives',
+    loadChildren: () =>
+      import('./features/13-custom-directives/custom-directives.module').then((m) => m.CustomDirectivesModule),
+  },
+  {
+    path: 'di-providers-examples',
+    loadChildren: () =>
+      import('./features/14-di-providers-examples/di-providers-examples.module').then(
+        (m) => m.DiProvidersExamplesModule
+      ),
+  },
+  {
+    path: 'custom-pipes',
+    loadChildren: () => import('./features/15-custom-pipes/custom-pipes.module').then((m) => m.CustomPipesModule),
+  },
+  {
+    path: 'content-projection',
+    loadChildren: () =>
+      import('./features/21-content-projection/content-projection.module').then((m) => m.ContentProjectionModule),
+  },
+  {
+    path: 'refs-to-template-elements',
+    loadChildren: () =>
+      import('./features/22-refs-to-template-elements/refs-to-template-elements.module').then((m) => m.RefsToTemplateElementsModule),
+  },
+
+  // RxJS
+  {
+    path: 'rxjs-gui-tasks',
+    loadChildren: () => import('./features/39-rxjs-gui-tasks/rxjs-gui-tasks.module').then((m) => m.RxjsGuiTasksModule),
+  },
+  {
+    path: 'rxjs-github-repos',
+    loadChildren: () =>
+      import('./features/51-rxjs-github-repos/rxjs-github-repos.module').then((m) => m.RxjsGithubReposModule),
+  },
 
   // {
   //   path: 'ngrx-basics',
