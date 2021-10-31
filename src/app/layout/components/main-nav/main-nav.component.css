@@ -15,3 +15,8 @@
   top: 0;
   z-index: 1;
 }
+
+.mat-expansion-panel-header span {
+  line-height: 24px;
+  padding: 0 8px;
+}

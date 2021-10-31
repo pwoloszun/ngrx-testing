@@ -16,7 +16,7 @@
                       [attr.aria-label]="section.title">
               {{section.icon.value}}
             </mat-icon>
-            {{section.title}}
+            <span>{{section.title}}</span>
           </mat-panel-title>
         </mat-expansion-panel-header>
         <mat-nav-list dense>
@@ -38,7 +38,7 @@
               *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>ng-fundamentals-solutions</span>
+      <span>ngrx-testing</span>
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
