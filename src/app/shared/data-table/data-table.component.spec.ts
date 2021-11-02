@@ -8,8 +8,13 @@ describe('DataTableComponent', () => {
 
   describe('@Inputs', () => {
     fit('should render row for each item', async () => {
-      
-      expect(false).toEqual(true);
+      const props = generateDataTableInputs();
+      const { items } = props;
+      await renderComponent(props);
+
+      const dataRowEls = await findAllDataRowsWithinTable();
+
+      expect(dataRowEls.length).toEqual(items.length);
     });
 
     xit('should sort cells in metaData order', async () => {
@@ -32,6 +37,12 @@ describe('DataTableComponent', () => {
   });
 });
 
+async function renderComponent(props = {}) {
+  return render(DataTableComponent, {
+    componentProperties: props
+  });
+}
+
 function generateDataTableInputs(inputs = {}) {
   const items = [
     { id: 100, name: 'bob', age: 12 },
@@ -45,4 +56,10 @@ function generateDataTableInputs(inputs = {}) {
   const selectedItem = null;
   const defaultInputs = { items, metaData, selectedItem };
   return merge({}, defaultInputs, inputs);
+}
+
+async function findAllDataRowsWithinTable() {
+  const tableEl = await screen.findByRole('table', { hidden: true });
+  const allRowEls = await within(tableEl).findAllByRole('row', { hidden: true });
+  return allRowEls.slice(1);
 }
