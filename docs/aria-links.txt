@@ -4,3 +4,6 @@
 
   # using ARIA: roles & states
   https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques
+
+  # how role name is calculated:
+  https://www.tpgi.com/what-is-an-accessible-name/
