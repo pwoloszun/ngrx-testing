@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/angular';
+import { render, screen, within } from '@testing-library/angular';
 import userEvent from '@testing-library/user-event';
 import { spy } from 'sinon';
 
@@ -18,11 +18,25 @@ describe('MyCounterComponent', () => {
       const props = generateProps({ label, value });
       await renderComponent(props);
 
-      const labelEl = await screen.findByText(/my label/i, {}, { timeout: 1000 });
+      await screen.findByText(/my label/i, {}, { timeout: 1000 });
 
       await screen.findByText(/123/i);
 
-      // expect(labelEl).toBeInTheDocument();
+      await screen.findByRole('button', { name: /Increment/i, hidden: true });
+    });
+
+    it('RESTRICTED should render label', async () => {
+      const label = 'my label';
+      const value = 123;
+
+      const props = generateProps({ label, value });
+      await renderComponent(props);
+
+      const headingEl = await screen.findByRole('heading', { name: /Label Heading/i, hidden: true });
+
+      await within(headingEl).findByText(/my label/i);
+
+      await screen.findByRole('button', { name: /Increment/i, hidden: true });
     });
 
     xit('should render value', async () => {
