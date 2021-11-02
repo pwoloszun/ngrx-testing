@@ -17,21 +17,14 @@ export class MyForDirective {
 
   @Input()
   set ntsMyForOf(items: any[]) {
-    this.viewContainerRef.clear();
+    // TODO 1: clear viewCont
 
-    items.forEach((item, index) => {
-      const context = {
-        $implicit: item,
-        myIndex: index,
-      };
-      this.viewContainerRef.createEmbeddedView(this.templateRef, context);
-    });
+    // TODO 2: create embedded view, using template for each item
   }
 
   constructor(
     private templateRef: TemplateRef<MyForContext>,
     private viewContainerRef: ViewContainerRef
-  ) {
-  }
+  ) { }
 
 }
