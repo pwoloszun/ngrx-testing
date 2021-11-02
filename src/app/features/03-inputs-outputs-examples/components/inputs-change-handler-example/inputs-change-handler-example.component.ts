@@ -22,6 +22,7 @@ export class InputsChangeHandlerExampleComponent implements OnInit, OnChanges {
   currentAge!: number;
 
   ngOnChanges(changes: SimpleChanges) {
+    console.log('changes:', changes);
     if (changes.firstName && !changes.firstName.isFirstChange) {
 
     }
