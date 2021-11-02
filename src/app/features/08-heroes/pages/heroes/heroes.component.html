@@ -11,7 +11,10 @@
     </nts-data-table> -->
 
     <!-- TODO -->
-    <nts-data-table [items]="heroes"></nts-data-table>
+    <nts-data-table [items]="heroes"
+                    [selectedItem]="selectedHero"
+                    (itemClick)="onHeroClick($event)">
+    </nts-data-table>
 
   </div>
 </div>

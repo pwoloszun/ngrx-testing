@@ -12,8 +12,11 @@
     </thead>
     <tbody class="items-container">
 
+      <!-- css class: highlighted -->
+
       <tr *ngFor="let item of items"
-          class="list-item">
+          class="list-item"
+          [ngClass]="{'ggg-hhh': true}">
         <td> {{ item.universe }} </td>
         <td> {{ item.secretIdentity }} </td>
       </tr>

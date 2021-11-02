@@ -10,7 +10,7 @@ import { MetaData } from '@shared/data-table/meta-data';
 })
 export class HeroesComponent implements OnInit {
   heroes!: Hero[];
-  selectedHero!: Hero;
+  selectedHero!: Hero | null;
   heroesMetaData: MetaData[] = [
     { value: 'universe', text: 'Komiksowe Uniwersum' },
     { value: 'name', text: 'Imie' },
