@@ -27,6 +27,13 @@ import { MarkerViewModel } from './viewmodels/marker.vm';
   templateUrl: './leaflet-map.component.html',
   styleUrls: ['./leaflet-map.component.css']
 })
-export class LeafletMapComponent<T extends LatLng>  {
+export class LeafletMapComponent<T extends LatLng> implements AfterViewInit {
 
+  @ViewChild('mapCont')
+  divCont!: ElementRef<HTMLDivElement>;
+
+  ngAfterViewInit() {
+    const divDomEl = this.divCont.nativeElement;
+    const map = new MapViewModel(divDomEl);
+  }
 }
