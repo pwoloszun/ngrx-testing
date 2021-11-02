@@ -21,4 +21,12 @@ export class DataTableComponent {
 
   @Input() items: Hero[] = [];
 
+  @Input() selectedItem: Hero | null = null;
+
+  @Output() itemClick = new EventEmitter<Hero>();
+
+  rowClickHandler(item: Hero) {
+    this.itemClick.emit(item);
+  }
+
 }

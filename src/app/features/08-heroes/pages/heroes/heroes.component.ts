@@ -27,7 +27,7 @@ export class HeroesComponent implements OnInit {
   }
 
   onHeroClick(hero: Hero) {
-    // console.log('data table PAGE, selected:', hero);
+    console.log('data table PAGE, selected:', hero);
     this.selectedHero = hero;
   }
 

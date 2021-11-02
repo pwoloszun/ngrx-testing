@@ -15,8 +15,9 @@
       <!-- css class: highlighted -->
 
       <tr *ngFor="let item of items"
+          (click)="rowClickHandler(item)"
           class="list-item"
-          [ngClass]="{'ggg-hhh': true}">
+          [ngClass]="{'highlighted': selectedItem?.id === item.id}">
         <td> {{ item.universe }} </td>
         <td> {{ item.secretIdentity }} </td>
       </tr>
