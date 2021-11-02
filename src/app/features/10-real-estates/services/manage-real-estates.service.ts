@@ -7,21 +7,25 @@ import { RealEstate } from './real-estate.model';
 @Injectable()
 export class ManageRealEstatesService {
 
-  realEstates!: any[];
+  realEstates: RealEstate[] = [];
 
-  selectedRealEstate: any;
+  selectedRealEstate: RealEstate | null = null;
 
   constructor(private apiService: RealEstatesApiService) { }
 
   fetch(): void {
-    // TODO: get all RealEstate entities
-    this.apiService.getAll().subscribe(() => {
-      //TODO
+    this.apiService.getAll().subscribe((data) => {
+      this.realEstates = data;
+      this.selectedRealEstate = null;
     });
   }
 
   toggleRealEstate(estate: RealEstate) {
-    // TODO toggle selected
+    if (this.selectedRealEstate === estate) {
+      this.selectedRealEstate = null;
+    } else {
+      this.selectedRealEstate = estate;
+    }
   }
 
 }
