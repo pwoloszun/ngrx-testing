@@ -13,7 +13,7 @@ export class ChildComponent implements OnInit {
   childText!: string;
 
   sendMessage() {
-    this.messageSent.emit(this.childText);
+    this.messageSent.emit('a qq!');
   }
 
   ngOnInit() {
