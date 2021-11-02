@@ -7,7 +7,8 @@ import { DataTableComponent } from './data-table.component';
 describe('DataTableComponent', () => {
 
   describe('@Inputs', () => {
-    xit('should render row for each item', async () => {
+    fit('should render row for each item', async () => {
+      
       expect(false).toEqual(true);
     });
 
