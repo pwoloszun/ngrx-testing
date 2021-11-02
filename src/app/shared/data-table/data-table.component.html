@@ -3,23 +3,21 @@
     <thead class="list-header">
       <tr>
         <td>
-          <a>col 1</a>
+          <a>Komik uniw.</a>
         </td>
         <td>
-          <a>col 2</a>
+          <a>Imie</a>
         </td>
       </tr>
     </thead>
     <tbody class="items-container">
-      <tr class="list-item">
-        <td> res 11 </td>
-        <td> res 12 </td>
+
+      <tr *ngFor="let item of items"
+          class="list-item">
+        <td> {{ item.universe }} </td>
+        <td> {{ item.secretIdentity }} </td>
       </tr>
 
-      <tr class="list-item">
-        <td> res 21 </td>
-        <td> res 22 </td>
-      </tr>
     </tbody>
   </table>
 </div>

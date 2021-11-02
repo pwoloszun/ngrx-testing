@@ -4,6 +4,7 @@ import {
   Input,
   Output,
 } from '@angular/core';
+import { Hero } from '@app/core/api/models/hero.model';
 
 import { MetaData } from './meta-data';
 
@@ -17,5 +18,7 @@ interface DataTableItem {
   styleUrls: ['./data-table.component.css']
 })
 export class DataTableComponent {
+
+  @Input() items: Hero[] = [];
 
 }
