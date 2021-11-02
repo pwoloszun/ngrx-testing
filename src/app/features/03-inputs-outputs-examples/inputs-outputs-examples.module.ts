@@ -8,6 +8,7 @@ import { CarConfiguratorComponent } from './components/car-configurator/car-conf
 import { OptionPickerComponent } from './components/option-picker/option-picker.component';
 import { InputsOutputsExamplesComponent } from './pages/inputs-outputs-examples/inputs-outputs-examples.component';
 import { InputsOutputsExamplesRoutingModule } from './inputs-outputs-examples-routing.module';
+import { InputsChangeHandlerExampleComponent } from './components/inputs-change-handler-example/inputs-change-handler-example.component';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { InputsOutputsExamplesRoutingModule } from './inputs-outputs-examples-ro
     CarConfiguratorComponent,
     OptionPickerComponent,
     InputsOutputsExamplesComponent,
+    InputsChangeHandlerExampleComponent,
   ],
 })
 export class InputsOutputsExamplesModule {
