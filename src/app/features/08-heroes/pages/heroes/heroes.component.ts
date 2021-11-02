@@ -21,7 +21,7 @@ export class HeroesComponent implements OnInit {
 
   ngOnInit(): void {
     this.heroesService.getAll().subscribe((data: Hero[]) => {
-      // console.log('data table PAGE', data);
+      console.log('data table PAGE', data);
       this.heroes = data;
     });
   }
