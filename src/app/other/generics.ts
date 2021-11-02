@@ -1,5 +1,9 @@
 function myMap() {
+  return [];
+}
 
+function myReduce() {
+  return [];
 }
 
 // generics constraints
