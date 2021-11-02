@@ -12,6 +12,7 @@ import { MapViewModel } from './viewmodels/map.vm';
 import { LatLng } from './viewmodels/lat-lng.interface';
 import { OnChanges, SimpleChanges } from '@angular/core';
 import { MarkerViewModel } from './viewmodels/marker.vm';
+import { forEach } from 'lodash';
 
 // TODO 1a: @ViewChild('gggHhh') myEl: ElementRef;
 // TODO 1b: map = new MapViewModel(this.myEl.nativeElement);
@@ -27,13 +28,25 @@ import { MarkerViewModel } from './viewmodels/marker.vm';
   templateUrl: './leaflet-map.component.html',
   styleUrls: ['./leaflet-map.component.css']
 })
-export class LeafletMapComponent<T extends LatLng> implements AfterViewInit {
+export class LeafletMapComponent<T extends LatLng> implements AfterViewInit, OnChanges {
+
+  @Input() geoObjects: LatLng[] | null = null;
 
   @ViewChild('mapCont')
   divCont!: ElementRef<HTMLDivElement>;
 
+  private map: MapViewModel | null = null;
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (this.map && changes.geoObjects && !changes.geoObjects.isFirstChange()) {
+      this.geoObjects!.forEach((singleGeoObj: LatLng) => {
+        this.map!.createMarker(singleGeoObj);
+      });
+    }
+  }
+
   ngAfterViewInit() {
     const divDomEl = this.divCont.nativeElement;
-    const map = new MapViewModel(divDomEl);
+    this.map = new MapViewModel(divDomEl);
   }
 }
