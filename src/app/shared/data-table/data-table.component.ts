@@ -16,6 +16,6 @@ interface DataTableItem {
   templateUrl: './data-table.component.html',
   styleUrls: ['./data-table.component.css']
 })
-export class DataTableComponent<T extends DataTableItem> {
+export class DataTableComponent {
 
 }
