@@ -7,13 +7,29 @@ import { Component, OnInit, OnChanges, SimpleChanges, Input } from '@angular/cor
 })
 export class InputsChangeHandlerExampleComponent implements OnInit, OnChanges {
 
+  private _firstName = '';
+
   @Input()
-  firstName!: string;
+  set firstName(nextFirstName: string) {
+    this._firstName = nextFirstName;
+  };
+
+  get firstName(): string {
+    return this._firstName;
+  }
 
   @Input()
   currentAge!: number;
 
   ngOnChanges(changes: SimpleChanges) {
+    if (changes.firstName && !changes.firstName.isFirstChange) {
+
+    }
+
+    if (changes.currentAge && !changes.currentAge.isFirstChange) {
+
+    }
+
     console.log('on changes:', changes);
   }
 
