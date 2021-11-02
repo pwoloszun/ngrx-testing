@@ -10,22 +10,26 @@ import { PersonDetailsComponent } from '../person-details/person-details.compone
 export class ViewChildExampleComponent implements OnInit, AfterViewInit {
 
   // ng Component ref
-  @ViewChild(PersonDetailsComponent) personComp!: PersonDetailsComponent;
+  @ViewChild(PersonDetailsComponent)
+  personComp!: PersonDetailsComponent;
+
   @ViewChild('myTmplVariable') personComp2!: PersonDetailsComponent;
 
   // list of ng Components
   @ViewChildren(PersonDetailsComponent) allPDC!: QueryList<PersonDetailsComponent>;
 
   // DOM ref
-  @ViewChild('myTmplVariable', { read: ElementRef }) pc2El!: ElementRef;
+  @ViewChild('myTmplVariable', { read: ElementRef }) pc2El!: ElementRef<HTMLSpanElement>;
 
-  // @ViewChild('mySecondSpan', { read: ElementRef, static: false }) secSpan: ElementRef;
+  @ViewChild('mySecondSpan', { read: ElementRef }) secSpan!: ElementRef;
   // @ViewChildren('mySpanList', { read: ElementRef }) mySpans: QueryList<ElementRef>;
 
   // constructor(private cd: ChangeDetectorRef) {
   // }
 
   ngAfterViewInit() {
+    this.secSpan.nativeElement.innerHTML = 'a qq!';
+
     console.log('ViewChildExampleComponent::ngAfterViewInit');
     // this.personComp.setName('bob');
     console.log('pc1', this.personComp.name, this.personComp.getName());
