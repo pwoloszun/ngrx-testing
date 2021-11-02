@@ -3,20 +3,20 @@
 <div fxLayout="row"
      fxLayoutAlign="center center">
   <div fxFlex="66">
-    <!-- <nts-leaflet-map [geoObjects]="manageService.realEstates$ | async"
-                     [selected]="manageService.selectedRealEstate$ | async"
-                     (markerClick)="onRealEstateClick($event)"></nts-leaflet-map> -->
+    <nts-leaflet-map [geoObjects]="manageService.realEstates"
+                     [selected]="manageService.selectedRealEstate"
+                     (markerClick)="onRealEstateClick($event)"></nts-leaflet-map>
   </div>
 
   <div fxFlex="33">
-    <!-- <nts-estate-details [item]="manageService.selectedRealEstate$ | async"></nts-estate-details> -->
+    <!-- <nts-estate-details [item]="manageService.selectedRealEstate"></nts-estate-details> -->
   </div>
 
 </div>
 
 <div>
-  <!-- <nts-data-table [items]="manageService.realEstates$ | async"
-                  [selectedItem]="manageService.selectedRealEstate$ | async"
+  <nts-data-table [items]="manageService.realEstates"
+                  [selectedItem]="manageService.selectedRealEstate"
                   [metaData]="listHeaders"
-                  (itemClick)="onRealEstateClick($event)"></nts-data-table> -->
+                  (itemClick)="onRealEstateClick($event)"></nts-data-table>
 </div>
