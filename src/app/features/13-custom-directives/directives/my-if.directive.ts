@@ -12,13 +12,7 @@ export class MyIfDirective {
 
   @Input()
   set ntsMyIf(value: boolean) {
-    if (value && !this.isViewEmbedded) {
-      this.viewContainerRef.createEmbeddedView(this.templateRef);
-      this.isViewEmbedded = true;
-    } else if (!value && this.isViewEmbedded) {
-      this.viewContainerRef.clear();
-      this.isViewEmbedded = false;
-    }
+    // TODO render embedded view OR clear embeded view
   }
 
   private isViewEmbedded = false;

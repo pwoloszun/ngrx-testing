@@ -7,9 +7,8 @@ export class MyRenderDelayDirective implements OnDestroy {
 
   @Input()
   set ntsMyRenderDelay(time: number) {
-    // console.log('MyRenderDelayDirective input [ntsMyRenderDelay]', time);
-    this.clearTemplateContent();
-    this.renderTemplateContent(time);
+    // TODO 1: clearTemplateContent
+    // TODO 2: renderTemplateContent with delay
   }
 
   private timeoutId: any;
@@ -20,18 +19,7 @@ export class MyRenderDelayDirective implements OnDestroy {
   ) { }
 
   ngOnDestroy() {
-    // console.log('MyRenderDelayDirective destroy:');
-    this.clearTemplateContent();
+    // TODO: clearTemplateContent
   }
 
-  private renderTemplateContent(time: number) {
-    this.timeoutId = setTimeout(() => {
-      this.viewContainerRef.createEmbeddedView(this.templateRef);
-    }, time);
-  }
-
-  private clearTemplateContent() {
-    clearTimeout(this.timeoutId);
-    this.viewContainerRef.clear();
-  }
 }

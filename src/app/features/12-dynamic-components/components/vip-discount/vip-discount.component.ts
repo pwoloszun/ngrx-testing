@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { Discount } from '../discount';
 
@@ -9,8 +9,8 @@ import { Discount } from '../discount';
 })
 export class VipDiscountComponent implements OnInit, Discount {
 
-  value = 99;
-  percentage = 50;
+  @Input() value = 99;
+  @Input() percentage = 50;
 
   ngOnInit() {
   }

@@ -3,9 +3,9 @@
 <div>
   <h5>My render delay</h5>
 
-  <div *ntsMyRenderDelay="deayInMs">
+  <!-- <div *ntsMyRenderDelay="deayInMs">
     Hello <q>delay</q>!
-  </div>
+  </div> -->
 
   <!-- <div *ngFor="let item of people; let i = index">
     <div *ntsMyRenderDelay="500 * i">
@@ -19,10 +19,12 @@
 <div>
   <h5>My Tooltip example</h5>
   <div>
-    <p *ntsMyTooltip="tooltipText"
+
+    <!-- <p *ntsMyTooltip="tooltipText"
        class="my-box">
       Click me for tooltip!
-    </p>
+    </p> -->
+
   </div>
 </div>
 <hr />
@@ -30,21 +32,26 @@
 
 <div>
   <h5>My Highlight example</h5>
-  <p ntsMyHighlight
+
+  <!-- <p ntsMyHighlight
      class="my-box">
     default red
-  </p>
-  <p [ntsMyHighlight]=" '#00f' "
+  </p> -->
+
+  <!-- <p [ntsMyHighlight]=" '#00f' "
      class="my-box">
     custom blue
-  </p>
+  </p> -->
+
 </div>
 <hr />
 
 
 <div>
   <h5>My IF example</h5>
-  <p *ntsMyIf="isVisible">lorem ipsum...</p>
+
+  <!-- <p *ntsMyIf="isVisible">lorem ipsum...</p> -->
+
   <button (click)="toggleVisibilityHandler()">Toggle Visibility</button>
 </div>
 <hr />
@@ -53,7 +60,7 @@
 <div>
   <h5>My FOR example</h5>
   <ul>
-    <li *ntsMyFor="let person of people; let i = myIndex">
+    <!-- <li *ntsMyFor="let person of people; let i = myIndex">
       Item: {{ person.name }}
       <p>
         <small>Index: {{ i }}</small>
@@ -61,6 +68,6 @@
       <p>
         <small>Other: TODO</small>
       </p>
-    </li>
+    </li> -->
   </ul>
 </div>

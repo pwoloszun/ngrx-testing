@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { Discount } from '../discount';
 
@@ -9,9 +9,9 @@ import { Discount } from '../discount';
 })
 export class TimeRangeDiscountComponent implements OnInit, Discount {
 
-  value!: number;
-  startDt!: Date;
-  endDt!: Date;
+  @Input() value!: number;
+  @Input() startDt!: Date;
+  @Input() endDt!: Date;
 
   ngOnInit() {
   }
