@@ -4,6 +4,17 @@ import { HeroesService } from '@api/hero.service';
 import { Hero } from '@api/models/hero.model';
 import { MetaData } from '@shared/data-table/meta-data';
 
+
+// const entity = {
+//   id: 123,
+//   firstName: 'bob',
+//   age: 4556
+// };
+
+// entity.firstName
+// entity['firstName']
+
+
 @Component({
   selector: 'nts-heroes',
   templateUrl: './heroes.component.html',
