@@ -30,9 +30,9 @@ import { forEach } from 'lodash';
 })
 export class LeafletMapComponent<T extends LatLng> implements AfterViewInit, OnChanges {
 
-  @Input() geoObjects: LatLng[] | null = null;
-  @Input() selected: LatLng | null = null;
-  @Output() markerClick = new EventEmitter<LatLng>();
+  @Input() geoObjects: T[] | null = null;
+  @Input() selected: T | null = null;
+  @Output() markerClick = new EventEmitter<T>();
 
 
   @ViewChild('mapCont')
@@ -57,10 +57,10 @@ export class LeafletMapComponent<T extends LatLng> implements AfterViewInit, OnC
   }
 
   private renderMarkers() {
-    this.markers = this.geoObjects!.map((singleGeoObj: LatLng) => {
+    this.markers = this.geoObjects!.map((singleGeoObj) => {
       const marker = this.map!.createMarker(singleGeoObj);
       marker.on('click', (geoObj) => {
-        this.markerClick.emit(geoObj);
+        this.markerClick.emit(geoObj as T);
       });
       return marker;
     });
