@@ -8,7 +8,8 @@ import { Hero } from '@app/core/api/models/hero.model';
 
 import { MetaData } from './meta-data';
 
-interface DataTableItem {
+interface IDataTableItem {
+  id: number | string;
   [key: string]: any;
 }
 
@@ -17,15 +18,15 @@ interface DataTableItem {
   templateUrl: './data-table.component.html',
   styleUrls: ['./data-table.component.css']
 })
-export class DataTableComponent {
+export class DataTableComponent<T extends IDataTableItem> {
 
-  @Input() items: Hero[] = [];
+  @Input() items: T[] = [];
+  @Input() selectedItem: T | null = null;
+  @Input() metaData: MetaData[] = [];
 
-  @Input() selectedItem: Hero | null = null;
+  @Output() itemClick = new EventEmitter<T>();
 
-  @Output() itemClick = new EventEmitter<Hero>();
-
-  rowClickHandler(item: Hero) {
+  rowClickHandler(item: T) {
     this.itemClick.emit(item);
   }
 

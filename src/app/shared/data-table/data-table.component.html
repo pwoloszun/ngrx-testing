@@ -2,12 +2,11 @@
   <table class="data-table">
     <thead class="list-header">
       <tr>
-        <td>
-          <a>Komik uniw.</a>
+
+        <td *ngFor="let meta of metaData">
+          <a>{{ meta.text }}</a>
         </td>
-        <td>
-          <a>Imie</a>
-        </td>
+
       </tr>
     </thead>
     <tbody class="items-container">
@@ -18,8 +17,10 @@
           (click)="rowClickHandler(item)"
           class="list-item"
           [ngClass]="{'highlighted': selectedItem?.id === item.id}">
-        <td> {{ item.universe }} </td>
-        <td> {{ item.secretIdentity }} </td>
+
+        <td *ngFor="let meta of metaData">
+          <a>{{ item[meta.value] }}</a>
+        </td>
       </tr>
 
     </tbody>
