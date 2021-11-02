@@ -1,0 +1,17 @@
+<div>
+  <p>my-simple-container</p>
+
+  <ng-container #firstCont></ng-container>
+
+  <ng-container #secondCont></ng-container>
+
+  <ng-template #myTmpl
+               let-gggHhh
+               let-name="firstName">
+    <div class="my-person-cont">
+      <h3>Main val: {{gggHhh}}</h3>
+      <p>Name: {{name}}</p>
+    </div>
+  </ng-template>
+
+</div>

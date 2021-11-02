@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { Discount } from '../discount';
 
@@ -9,6 +9,7 @@ import { Discount } from '../discount';
 })
 export class RegularCustomerDiscountComponent implements OnInit, Discount {
 
+  @Input()
   percentage = 0;
 
   ngOnInit() {

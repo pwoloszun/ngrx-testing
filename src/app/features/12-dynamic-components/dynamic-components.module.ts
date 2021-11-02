@@ -7,6 +7,9 @@ import { SharedModule } from '../../shared/shared.module';
 import { TimeRangeDiscountComponent } from './components/time-range-discount/time-range-discount.component';
 import { RegularCustomerDiscountComponent } from './components/regular-customer-discount/regular-customer-discount.component';
 import { VipDiscountComponent } from './components/vip-discount/vip-discount.component';
+import { MySimpleContainerComponent } from './components/my-simple-container/my-simple-container.component';
+import { MySimpleBoxComponent } from './components/my-simple-box/my-simple-box.component';
+import { DiscountBannerComponent } from './components/discount-banner/discount-banner.component';
 
 
 @NgModule({
@@ -16,6 +19,9 @@ import { VipDiscountComponent } from './components/vip-discount/vip-discount.com
     TimeRangeDiscountComponent,
     RegularCustomerDiscountComponent,
     VipDiscountComponent,
+    MySimpleContainerComponent,
+    MySimpleBoxComponent,
+    DiscountBannerComponent,
   ],
   imports: [
     CommonModule,
@@ -24,9 +30,7 @@ import { VipDiscountComponent } from './components/vip-discount/vip-discount.com
   ],
   entryComponents: [
     // create factories for dynamic components
-    TimeRangeDiscountComponent,
-    RegularCustomerDiscountComponent,
-    VipDiscountComponent,
+    // TODO
   ],
 })
 export class DynamicComponentsModule {
