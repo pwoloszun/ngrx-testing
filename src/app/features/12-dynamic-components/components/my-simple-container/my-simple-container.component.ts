@@ -31,7 +31,7 @@ export class MySimpleContainerComponent implements OnInit, AfterViewInit {
   ngOnInit(): void { }
 
   ngAfterViewInit() {
-    // this.createHostViewUsingComponent();
+    this.createHostViewUsingComponent();
     this.createEmbededViewUsingTemplate();
 
     // trigger angulr change detection
