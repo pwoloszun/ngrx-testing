@@ -1,13 +1,21 @@
-<div class="mc-container">
-  <div class="mc-header">
+<div class="mc-container"
+     role="region"
+     aria-label="Card">
+  <div class="mc-header"
+       role="region"
+       aria-label="Card Header">
     <!-- HEADER_PLACEHOLDER -->
     <ng-content select="[slot='header']"></ng-content>
   </div>
-  <div class="mc-content">
+  <div class="mc-content"
+       role="region"
+       aria-label="Card Body">
     <!-- CONTENT_PLACEHOLDER -->
     <ng-content select="[slot='content']"></ng-content>
   </div>
-  <div class="mc-footer">
+  <div class="mc-footer"
+       role="region"
+       aria-label="Card Footer">
     <!-- FOOTER_PLACEHOLDER -->
     <ng-content select="[slot='footer']"></ng-content>
   </div>

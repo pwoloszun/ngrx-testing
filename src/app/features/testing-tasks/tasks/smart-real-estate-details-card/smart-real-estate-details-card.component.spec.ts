@@ -1,29 +1,44 @@
+import { HttpClientModule } from '@angular/common/http';
 import { RealEstatesApiService } from '@app/core/api/real-estates-api.service';
 import { SharedModule } from '@app/shared/shared.module';
 import { ReactiveComponentModule } from '@ngrx/component';
-import { render } from '@testing-library/angular';
-import userEvent from '@testing-library/user-event';
-import { PureMyCardComponent } from '../pure-my-card/pure-my-card.component';
+import { render, screen, within, waitForElementToBeRemoved } from '@testing-library/angular';
+import { stubServerApi } from 'src/test/utils/server-stub';
 
+import { PureMyCardComponent } from '../pure-my-card/pure-my-card.component';
 import { SmartRealEstateDetailsCardComponent } from './smart-real-estate-details-card.component';
-import { HttpClientModule } from '@angular/common/http';
 
 describe('SmartRealEstateDetailsCardComponent', () => {
 
-  fit('should render fetched real estates data', async () => {
+  it('should render fetched real estates data', async () => {
+    const realEstateJson = generateRelEstateEntityJson(100);
+    stubServerApi.stub({
+      method: 'get',
+      path: '/api/real-estates/100',
+      responseJson: realEstateJson
+    });
+
     const props = generateProps();
     await renderComponent(props);
 
-    // request
+    const { body, header } = await findCardElements();
 
-    // loading, progressbar
+    await within(header).findByText(/Loading\.\.\./i);
+    await within(body).findByRole('progressbar', { hidden: true });
 
-    // after data fetched:
-    //    card header content
-    //    card body content
-    //    card footer content
+    await waitForElementToBeRemoved(() => screen.queryByRole('progressbar', { hidden: true }));
 
-    expect(true).toEqual(false);
+    const { street, price, lat, lng } = realEstateJson;
+    const { body: bodyWithData, header: headerwithData } = await findCardElements();
+
+    const headerContent = await within(headerwithData).findByText(/Street Addr/i);
+    expect(headerContent).toHaveTextContent(street);
+
+    const priceEl = await within(bodyWithData).findByText(/Price/i);
+    expect(priceEl).toHaveTextContent(`${price}`);
+
+    const geoEl = await within(bodyWithData).findByText(/Geo/i);
+    expect(geoEl).toHaveTextContent(`${lat.toFixed(2)}, ${lng.toFixed(2)}`);
   });
 
   xit('should render loading info while waiting for async data', async () => {
@@ -55,18 +70,31 @@ async function renderComponent(props: Props) {
   });
 }
 
+async function findCardElements() {
+  const card = await screen.findByRole('region', { name: 'Card', hidden: true });
+  const header = await within(card).findByRole('region', { name: /Card Header/i, hidden: true });
+  const body = await within(card).findByRole('region', { name: /Card Body/i, hidden: true });
+  const footer = await within(card).findByRole('region', { name: /Card Footer/i, hidden: true });
+  return {
+    header, body, footer
+  };
+}
+
 function generateProps(): Props {
   return {
     entityId: 100
   };
 }
 
-// const entityJson = {
-//   id,
-//   "builtAt": "Sun Mar 12 2007 16:11:54 GMT+0100 (CET)",
-//   "lat": 53.997123,
-//   "lng": 20.230891,
-//   "price": 997.997,
-//   "street": "Sezam St.",
-//   "type": "COM"
-// };
+function generateRelEstateEntityJson(id: number) {
+  return {
+    id,
+    "builtAt": "Sun Mar 12 2007 16:11:54 GMT+0100 (CET)",
+    "lat": 53.997123,
+    "lng": 20.230891,
+    "price": 997.997,
+    "street": "Sezam St.",
+    "type": "COM"
+  };
+}
+
