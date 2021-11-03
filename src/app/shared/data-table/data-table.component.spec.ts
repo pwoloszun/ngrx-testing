@@ -10,12 +10,16 @@ describe('DataTableComponent', () => {
 
     fit('should render row for each item', async () => {
       const props = generateDataTableInputs();
-      const { items } = props;
+      const { items, metaData } = props;
 
       await renderComponent(props);
 
       const dataRowEls = await findAllDataRowsWithinTable();
       expect(dataRowEls.length).toEqual(items.length);
+
+      // el.textContent
+
+      // expect().toHaveTextContent()
     });
 
     xit('should sort cells in metaData order', async () => {
