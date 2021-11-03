@@ -14,6 +14,15 @@ describe('SmartRealEstateDetailsCardComponent', () => {
     const props = generateProps();
     await renderComponent(props);
 
+    // request
+
+    // loading, progressbar
+
+    // after data fetched:
+    //    card header content
+    //    card body content
+    //    card footer content
+
     expect(true).toEqual(false);
   });
 
