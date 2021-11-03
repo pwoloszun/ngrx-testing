@@ -2,6 +2,8 @@ import { render, screen, within } from '@testing-library/angular';
 import userEvent from '@testing-library/user-event';
 import { spy } from 'sinon';
 
+import { createEventEmitterSpy } from 'src/test/utils/create-spy';
+
 import { SharedModule } from '@shared/shared.module';
 import { MyCounterComponent } from './my-counter.component';
 import { merge } from 'lodash';
@@ -81,10 +83,7 @@ async function renderComponent(props?: any) {
 }
 
 function generateProps(props = {}) {
-  const incrementSpy = {
-    emit(...args: any[]) { }
-  };
-  jest.spyOn(incrementSpy, 'emit');
+  const incrementSpy = createEventEmitterSpy();
 
   const defaultProps = {
     label: 'default label',
