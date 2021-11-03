@@ -58,7 +58,7 @@ function generateDataTableInputs(inputs = {}, selectedItemIndex?: number) {
     { value: 'age', text: 'User Age' },
     { value: 'name', text: 'Full Name' },
   ];
-  const selectedItem = selectedItemIndex !== undefined ? items[selectedItemIndex] : nulll;
+  const selectedItem = selectedItemIndex !== undefined ? items[selectedItemIndex] : null;
   const defaultInputs = { items, metaData, selectedItem };
   return merge({}, defaultInputs, inputs);
 }
