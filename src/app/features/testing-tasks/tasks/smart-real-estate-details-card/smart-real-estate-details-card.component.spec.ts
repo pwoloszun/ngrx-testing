@@ -1,10 +1,19 @@
+import { RealEstatesApiService } from '@app/core/api/real-estates-api.service';
+import { SharedModule } from '@app/shared/shared.module';
+import { ReactiveComponentModule } from '@ngrx/component';
+import { render } from '@testing-library/angular';
 import userEvent from '@testing-library/user-event';
+import { PureMyCardComponent } from '../pure-my-card/pure-my-card.component';
 
 import { SmartRealEstateDetailsCardComponent } from './smart-real-estate-details-card.component';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('SmartRealEstateDetailsCardComponent', () => {
 
-  xit('should render fetched real estates data', async () => {
+  fit('should render fetched real estates data', async () => {
+    const props = generateProps();
+    await renderComponent(props);
+
     expect(true).toEqual(false);
   });
 
@@ -19,6 +28,29 @@ describe('SmartRealEstateDetailsCardComponent', () => {
 });
 
 type Props = Partial<SmartRealEstateDetailsCardComponent>;
+
+async function renderComponent(props: Props) {
+  return render(SmartRealEstateDetailsCardComponent, {
+    componentProperties: props,
+    imports: [
+      SharedModule,
+      ReactiveComponentModule,
+      HttpClientModule,
+    ],
+    providers: [
+      RealEstatesApiService
+    ],
+    declarations: [
+      PureMyCardComponent
+    ]
+  });
+}
+
+function generateProps(): Props {
+  return {
+    entityId: 100
+  };
+}
 
 // const entityJson = {
 //   id,

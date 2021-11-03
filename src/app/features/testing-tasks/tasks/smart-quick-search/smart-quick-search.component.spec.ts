@@ -11,7 +11,7 @@ import { SmartQuickSearchComponent } from './smart-quick-search.component';
 
 describe('SmartQuickSearchComponent', () => {
 
-  fit('should render search field', async () => {
+  it('should render search field', async () => {
     await renderComponent();
 
     const playersJson = generatePlayerEntitesJson();
