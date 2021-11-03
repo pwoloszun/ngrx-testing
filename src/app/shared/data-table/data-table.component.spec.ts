@@ -8,7 +8,7 @@ describe('DataTableComponent', () => {
 
   describe('@Inputs', () => {
 
-    fit('should render row for each item', async () => {
+    it('should render row for each item', async () => {
       const props = generateDataTableInputs();
       const { items, metaData } = props;
 
@@ -17,9 +17,12 @@ describe('DataTableComponent', () => {
       const dataRowEls = await findAllDataRowsWithinTable();
       expect(dataRowEls.length).toEqual(items.length);
 
-      // el.textContent
-
-      // expect().toHaveTextContent()
+      items.forEach((item, index) => {
+        const { name, age } = item;
+        const rowEl = dataRowEls[index];
+        expect(rowEl).toHaveTextContent(name);
+        expect(rowEl).toHaveTextContent(`${age}`);
+      });
     });
 
     xit('should sort cells in metaData order', async () => {
