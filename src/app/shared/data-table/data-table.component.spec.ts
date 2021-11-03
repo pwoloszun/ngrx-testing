@@ -3,6 +3,7 @@ import { render, screen, within } from '@testing-library/angular';
 import userEvent from '@testing-library/user-event';
 
 import { DataTableComponent } from './data-table.component';
+import { createEventEmitterSpy } from '../../../test/utils/create-spy';
 
 describe('DataTableComponent', () => {
 
@@ -39,9 +40,21 @@ describe('DataTableComponent', () => {
   });
 
   describe('@Outputs()', () => {
-    xit('should emit item linked with clicked row', async () => {
-      expect(false).toEqual(true);
+
+    it('should emit item linked with clicked row', async () => {
+      const index = 2;
+      const props = generateDataTableInputs();
+      const { items, itemClick } = props;
+      await renderComponent(props);
+
+      const dataRowEls = await findAllDataRowsWithinTable();
+      userEvent.click(dataRowEls[index]);
+
+      expect(itemClick.emit).toHaveBeenCalledTimes(1);
+      const expectedItem = items[index];
+      expect(itemClick.emit).toHaveBeenCalledWith(expectedItem);
     });
+
   });
 });
 
@@ -61,8 +74,9 @@ function generateDataTableInputs(inputs = {}, selectedItemIndex?: number) {
     { value: 'age', text: 'User Age' },
     { value: 'name', text: 'Full Name' },
   ];
+  const itemClick = createEventEmitterSpy();
   const selectedItem = selectedItemIndex !== undefined ? items[selectedItemIndex] : null;
-  const defaultInputs = { items, metaData, selectedItem };
+  const defaultInputs = { items, metaData, selectedItem, itemClick };
   return merge({}, defaultInputs, inputs);
 }
 

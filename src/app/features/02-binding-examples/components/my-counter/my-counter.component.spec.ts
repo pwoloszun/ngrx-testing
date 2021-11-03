@@ -69,10 +69,6 @@ describe('MyCounterComponent', () => {
       expect(increment.emit).toHaveBeenCalledWith(124);
     });
 
-    xit('should increment value by 1', () => {
-      expect(false).toEqual(true);
-    });
-
   });
 });
 
