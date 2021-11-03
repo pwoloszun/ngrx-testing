@@ -7,13 +7,14 @@ import { DataTableComponent } from './data-table.component';
 describe('DataTableComponent', () => {
 
   describe('@Inputs', () => {
+
     fit('should render row for each item', async () => {
       const props = generateDataTableInputs();
       const { items } = props;
+
       await renderComponent(props);
 
       const dataRowEls = await findAllDataRowsWithinTable();
-
       expect(dataRowEls.length).toEqual(items.length);
     });
 
@@ -43,7 +44,7 @@ async function renderComponent(props = {}) {
   });
 }
 
-function generateDataTableInputs(inputs = {}) {
+function generateDataTableInputs(inputs = {}, selectedItemIndex?: number) {
   const items = [
     { id: 100, name: 'bob', age: 12 },
     { id: 200, name: 'ed', age: 34 },
@@ -53,13 +54,13 @@ function generateDataTableInputs(inputs = {}) {
     { value: 'age', text: 'User Age' },
     { value: 'name', text: 'Full Name' },
   ];
-  const selectedItem = null;
+  const selectedItem = selectedItemIndex !== undefined ? items[selectedItemIndex] : nulll;
   const defaultInputs = { items, metaData, selectedItem };
   return merge({}, defaultInputs, inputs);
 }
 
 async function findAllDataRowsWithinTable() {
   const tableEl = await screen.findByRole('table', { hidden: true });
-  const allRowEls = await within(tableEl).findAllByRole('row', { hidden: true });
-  return allRowEls.slice(1);
+  const tbodyEl = await within(tableEl).findByRole('rowgroup', { name: /Data Table Body/i, hidden: true });
+  return within(tbodyEl).findAllByRole('row', { hidden: true });
 }
