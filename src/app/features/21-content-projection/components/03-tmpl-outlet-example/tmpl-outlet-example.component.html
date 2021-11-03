@@ -5,14 +5,10 @@
   <h5>Template with context</h5>
   <div>
     <!-- for myCtx1 -->
-    <ng-container *ngTemplateOutlet="myParametrizedTmpl; context: myCtx1"></ng-container>
+    <ng-container *ngTemplateOutlet="myParametrizedTmpl; context: myCtx1">
+    </ng-container>
 
 
-    <!-- for myCtx2 -->
-    <!-- TODO -->
-    <!-- <ng-container *ngTemplateOutlet="myParametrizedTmpl; context: myCtx2"></ng-container> -->
-
-    <!-- template -->
     <ng-template #myParametrizedTmpl
                  let-tttYyy
                  let-name="firstName"

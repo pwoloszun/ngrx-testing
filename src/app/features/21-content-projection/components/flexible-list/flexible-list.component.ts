@@ -11,9 +11,8 @@ interface TmplContext {
 })
 export class FlexibleListComponent implements OnInit {
 
-  // TODO items
+  @Input() items: any[] | null = [];
 
-  // TODO template ref
   @ContentChild(TemplateRef)
   tmpl!: TemplateRef<any>;
 
