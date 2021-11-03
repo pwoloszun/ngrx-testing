@@ -45,10 +45,10 @@ const appRoutes: Routes = [
     loadChildren: () => import('./features/10-real-estates/real-estates.module').then((m) => m.RealEstatesModule),
   },
 
-  // {
-  //   path: 'routing-tasks',
-  //   loadChildren: () => import('./features/routing-tasks/routing-tasks.module').then((m) => m.RoutingTasksModule),
-  // },
+  {
+    path: 'routing-tasks',
+    loadChildren: () => import('./features/routing-tasks/routing-tasks.module').then((m) => m.RoutingTasksModule),
+  },
 
   // {
   //   path: 'forms-tasks',
@@ -71,15 +71,15 @@ const appRoutes: Routes = [
         (m) => m.DiProvidersExamplesModule
       ),
   },
-  // {
-  //   path: 'custom-pipes',
-  //   loadChildren: () => import('./features/15-custom-pipes/custom-pipes.module').then((m) => m.CustomPipesModule),
-  // },
-  // {
-  //   path: 'content-projection',
-  //   loadChildren: () =>
-  //     import('./features/21-content-projection/content-projection.module').then((m) => m.ContentProjectionModule),
-  // },
+  {
+    path: 'custom-pipes',
+    loadChildren: () => import('./features/15-custom-pipes/custom-pipes.module').then((m) => m.CustomPipesModule),
+  },
+  {
+    path: 'content-projection',
+    loadChildren: () =>
+      import('./features/21-content-projection/content-projection.module').then((m) => m.ContentProjectionModule),
+  },
   {
     path: 'refs-to-template-elements',
     loadChildren: () =>

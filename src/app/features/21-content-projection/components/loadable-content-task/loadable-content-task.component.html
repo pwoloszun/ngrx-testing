@@ -1,0 +1,15 @@
+<h3>loadable-content-task</h3>
+
+<div>
+  <button (click)="getDataHandler()">Get data</button>
+</div>
+
+<div>
+  <nts-loader [isLoading]="isFetching">
+    <ul>
+      <li *ngFor="let result of searchResults">
+        {{ result }}
+      </li>
+    </ul>
+  </nts-loader>
+</div>
