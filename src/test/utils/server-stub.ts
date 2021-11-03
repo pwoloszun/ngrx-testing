@@ -11,6 +11,21 @@ interface StubOptions {
   delay?: number;
 }
 
+interface ServerStubParams {
+  method: ServerMethod;
+  path: string;
+  params?: any; // TODO
+  responseJson: any;
+  options?: StubOptions;
+}
+
+export const stubServerApi = {
+  stub(stubParams: ServerStubParams) {
+    const { method, path, responseJson, options = {} } = stubParams;
+    serverUseJsonApi(method, path, responseJson, options);
+  },
+};
+
 function serverUseJsonApi(method: ServerMethod, path: string, respJsonData: any, options: StubOptions): void {
   const fullUrl = getApiUrl(path);
   server.use(
@@ -26,19 +41,6 @@ function serverUseJsonApi(method: ServerMethod, path: string, respJsonData: any,
   );
 }
 
-export const stubServerApi = {
-  get(path: string, respJsonData: any, options: StubOptions = {}): void {
-    serverUseJsonApi('get', path, respJsonData, options);
-  },
-
-  patch(path: string, respJsonData: any, options: StubOptions = {}): void {
-    serverUseJsonApi('patch', path, respJsonData, options);
-  },
-
-  post(path: string, respJsonData: any, options: StubOptions = {}): void {
-    serverUseJsonApi('post', path, respJsonData, options);
-  },
-};
 
 const BASE_URL = ``;
 

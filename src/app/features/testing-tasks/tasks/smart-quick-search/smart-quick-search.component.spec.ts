@@ -1,12 +1,28 @@
-import { render, screen, within } from '@testing-library/angular';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '@app/shared/shared.module';
+import { render, screen } from '@testing-library/angular';
 import userEvent from '@testing-library/user-event';
 
+import { stubServerApi } from 'src/test/utils/server-stub';
+
+import { PureListComponent } from '../pure-list/pure-list.component';
 import { SmartQuickSearchComponent } from './smart-quick-search.component';
 
 describe('SmartQuickSearchComponent', () => {
 
-  xit('should render search field', async () => {
-    expect(true).toEqual(false);
+  fit('should render search field', async () => {
+    await renderComponent();
+
+    // stubServerApi
+
+    const searchField = await screen.findByLabelText(/Search/i);
+
+    userEvent.type(searchField, 'my phrase');
+
+    await screen.findByRole('progressbar', { hidden: true });
+
+    // expect(true).toEqual(false);
   });
 
   xit('should render progress while waiting for response from server', async () => {
@@ -15,6 +31,19 @@ describe('SmartQuickSearchComponent', () => {
 
 });
 
+async function renderComponent() {
+  return render(SmartQuickSearchComponent, {
+    // componentProperties: {}
+    imports: [
+      SharedModule,
+      ReactiveFormsModule,
+      HttpClientModule,
+    ],
+    declarations: [
+      PureListComponent
+    ],
+  });
+}
 
 // const jsonEntities = [
 //   {
