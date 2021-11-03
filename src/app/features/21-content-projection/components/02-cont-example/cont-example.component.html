@@ -1,0 +1,10 @@
+<mat-card>
+  <mat-card-title>02-cont-example</mat-card-title>
+
+  <!-- TODO: multiple structural directives -->
+  <ng-container *ngFor="let p of people">
+    <h5>Name: {{p.name}}</h5>
+    <p>Age: {{p.age}}</p>
+  </ng-container>
+
+</mat-card>

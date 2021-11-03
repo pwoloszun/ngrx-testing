@@ -1,0 +1,46 @@
+<h3>Pipes examples</h3>
+
+<div>
+  <h6>Animate number change</h6>
+  <input [(ngModel)]="tmpValue"
+         type="number" />
+  <button (click)="animate()">animate!</button>
+  <h3>Current Value: {{animateValue | animateCountToNumber:1000}}</h3>
+</div>
+<hr />
+
+<div>
+  <h6>JSON pipe</h6>
+  <pre>
+    {{jsonData | json}}
+  </pre>
+</div>
+<hr />
+
+
+<div>
+  <h6>Reverse</h6>
+  <input [(ngModel)]="message">
+  <p>Original: {{message}}</p>
+  <p>Reversed: {{message | reverse}}</p>
+</div>
+<hr />
+
+
+<div>
+  <h6>Multiply</h6>
+  <input [(ngModel)]="m1"
+         type="number">
+  <input [(ngModel)]="m2"
+         type="number">
+  <p>Result: {{m1 | multiply:m2}}</p>
+</div>
+<hr />
+
+
+<div>
+  <h3>Now is {{ nowDt | formatDate:currentFormat }}</h3>
+  <h3>Current format: {{ currentFormat }}</h3>
+
+  <button (click)="toggleFormat()">Toggle Format</button>
+</div>
