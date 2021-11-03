@@ -1,11 +1,12 @@
 <div class="simple-container">
   <h5>my-simple-content</h5>
 
-  <ng-content></ng-content>
+  <ng-content select="[slot='myBody']"></ng-content>
 
   <!-- TODO: slots -->
-  <!-- <div class="main-info">
+  <div class="main-info">
     MAIN_PLACEHOLDER
-  </div> -->
+    <ng-content select="[slot='myHeader']"></ng-content>
+  </div>
 
 </div>
