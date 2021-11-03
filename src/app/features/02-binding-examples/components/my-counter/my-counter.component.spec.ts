@@ -53,8 +53,18 @@ describe('MyCounterComponent', () => {
 
   describe('@Outputs()', () => {
 
-    xit('should be called with current value on increment button click', () => {
-      expect(false).toEqual(true);
+    it('should be called with current value on increment button click', async () => {
+      const props = generateProps({
+        value: 123
+      });
+      const { increment } = props;
+      await renderComponent(props);
+
+      const btnEl = await screen.findByRole('button', { name: /Increment/i, hidden: true });
+      userEvent.click(btnEl);
+
+      expect(increment.emit).toHaveBeenCalledTimes(1);
+      expect(increment.emit).toHaveBeenCalledWith(124);
     });
 
     xit('should increment value by 1', () => {
@@ -64,16 +74,22 @@ describe('MyCounterComponent', () => {
   });
 });
 
-async function renderComponent(props: any) {
+async function renderComponent(props?: any) {
   return render(MyCounterComponent, {
     componentProperties: props
   });
 }
 
 function generateProps(props = {}) {
+  const incrementSpy = {
+    emit(...args: any[]) { }
+  };
+  jest.spyOn(incrementSpy, 'emit');
+
   const defaultProps = {
     label: 'default label',
     value: 100,
+    increment: incrementSpy
   };
   return merge({}, defaultProps, props);
 }
