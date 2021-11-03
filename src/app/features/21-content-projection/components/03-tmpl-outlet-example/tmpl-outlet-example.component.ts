@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ContentChild } from '@angular/core';
 
 @Component({
   selector: 'nts-tmpl-outlet-example',

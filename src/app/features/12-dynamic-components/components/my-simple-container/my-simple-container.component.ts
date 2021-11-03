@@ -17,10 +17,11 @@ export class MySimpleContainerComponent implements OnInit, AfterViewInit {
   @ViewChild('firstCont', { read: ViewContainerRef })
   firstCont!: ViewContainerRef;
 
-  // TODO
-  // secondCont!: ViewContainerRef;
-  // // TODO
-  // myTmpl!: TemplateRef<any>;
+  @ViewChild('secondCont', { read: ViewContainerRef })
+  secondCont!: ViewContainerRef;
+
+  @ViewChild('myTmpl', { read: TemplateRef })
+  myTmpl!: TemplateRef<MyTmplContext>;
 
   constructor(
     private cd: ChangeDetectorRef,
@@ -30,20 +31,21 @@ export class MySimpleContainerComponent implements OnInit, AfterViewInit {
   ngOnInit(): void { }
 
   ngAfterViewInit() {
-    this.createHostViewUsingComponent();
-    // this.createEmbededViewUsingTemplate();
+    // this.createHostViewUsingComponent();
+    this.createEmbededViewUsingTemplate();
 
     // trigger angulr change detection
     this.cd.detectChanges();
   }
 
   private createEmbededViewUsingTemplate() {
-    // const tmplContext = {
-    //   $implicit: `my implicit val`,
-    //   firstName: `bob`,
-    //   currentAge: 123,
-    // };
+    const tmplContext = {
+      $implicit: `my implicit val22222`,
+      firstName: `bob`,
+      currentAge: 123,
+    };
 
+    this.secondCont.createEmbeddedView(this.myTmpl, tmplContext);
     // TODO: viewCont.createEmbeddedView
   }
 
