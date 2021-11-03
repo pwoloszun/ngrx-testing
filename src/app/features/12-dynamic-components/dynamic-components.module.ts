@@ -28,9 +28,11 @@ import { DiscountBannerComponent } from './components/discount-banner/discount-b
     SharedModule,
     DynamicComponentsRoutingModule
   ],
+
   entryComponents: [
     // create factories for dynamic components
     // TODO
+    MySimpleBoxComponent
   ],
 })
 export class DynamicComponentsModule {

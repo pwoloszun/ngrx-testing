@@ -14,12 +14,13 @@ interface MyTmplContext {
 })
 export class MySimpleContainerComponent implements OnInit, AfterViewInit {
 
-  // TODO
+  @ViewChild('firstCont', { read: ViewContainerRef })
   firstCont!: ViewContainerRef;
+
   // TODO
-  secondCont!: ViewContainerRef;
-  // TODO
-  myTmpl!: TemplateRef<any>;
+  // secondCont!: ViewContainerRef;
+  // // TODO
+  // myTmpl!: TemplateRef<any>;
 
   constructor(
     private cd: ChangeDetectorRef,
@@ -32,7 +33,8 @@ export class MySimpleContainerComponent implements OnInit, AfterViewInit {
     this.createHostViewUsingComponent();
     // this.createEmbededViewUsingTemplate();
 
-    // TODO
+    // trigger angulr change detection
+    this.cd.detectChanges();
   }
 
   private createEmbededViewUsingTemplate() {
@@ -47,9 +49,18 @@ export class MySimpleContainerComponent implements OnInit, AfterViewInit {
 
   private createHostViewUsingComponent() {
     // TODO 1a: resolveComponentFactory
+    const compFactory = this.resolver.resolveComponentFactory(MySimpleBoxComponent);
+
     // TODO 1b: viewCont.createComponent
+    const comRef: ComponentRef<MySimpleBoxComponent> = this.firstCont
+      .createComponent(compFactory);
 
     // TODO 2: pass input props
+    const comp = comRef.instance;
+
+    setTimeout(() => {
+      comp.boxColor = '#00f';
+    }, 2000);
   }
 
 }
