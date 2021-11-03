@@ -6,19 +6,24 @@
   <div>
     <!-- for myCtx1 -->
     <ng-container *ngTemplateOutlet="myParametrizedTmpl; context: myCtx1"></ng-container>
+
+
     <!-- for myCtx2 -->
     <!-- TODO -->
-    <ng-container *ngTemplateOutlet="myParametrizedTmpl; context: myCtx2"></ng-container>
+    <!-- <ng-container *ngTemplateOutlet="myParametrizedTmpl; context: myCtx2"></ng-container> -->
 
     <!-- template -->
     <ng-template #myParametrizedTmpl
-                 let-myName="firstName"
+                 let-tttYyy
+                 let-name="firstName"
                  let-myAge="age">
       <div>
-        <h3>Name: {{myName}}</h3>
-        <h3>Age: {{myAge}}</h3>
+        <h1>MAIN VAL: {{ tttYyy }}</h1>
+        <h3>Name: {{ name }}</h3>
+        <h3>Age: {{ myAge }}</h3>
       </div>
     </ng-template>
+
   </div>
 
 </mat-card>

@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TmplOutletExampleComponent implements OnInit {
 
-  myCtx1 = { firstName: 'Mickey Mouse', age: 123 };
+  myCtx1 = { $implicit: `DEF VA`, firstName: 'Mickey Mouse', age: 123 };
   myCtx2 = { firstName: 'Donald Duck', age: 456 };
 
   ngOnInit(): void {

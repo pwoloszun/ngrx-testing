@@ -3,14 +3,24 @@
 <div>
   <input [formControl]="searchFormCtrl" />
 
-  <!--
-  <nts-flexible-list [items]="searchResults$ | async">
+
+  <!-- <nts-flexible-list [items]="searchResults$ | async">
     <ng-template let-myResult="item"
                  let-tmIndex="index">
-      <h3>{{ myResult }}</h3>
+      <div>
+        <h1>{{ myResult }}</h1>
+        <small> {{ tmIndex }}</small>
+      </div>
+
     </ng-template>
   </nts-flexible-list>
- -->
+
+  <nts-flexible-list [items]="searchResults$ | async">
+    <ng-template let-myResult="item">
+      <p>{{ myResult }}</p>
+    </ng-template>
+  </nts-flexible-list> -->
+
 
   <div>
     <code>
