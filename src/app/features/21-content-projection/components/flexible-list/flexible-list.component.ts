@@ -14,6 +14,8 @@ export class FlexibleListComponent implements OnInit {
   // TODO items
 
   // TODO template ref
+  @ContentChild(TemplateRef)
+  tmpl!: TemplateRef<any>;
 
   ngOnInit(): void { }
 
