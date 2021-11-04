@@ -1,6 +1,8 @@
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 
+import getApiUrl from 'src/api/getApiUrl';
+
 import { handlers } from './default-handlers';
 
 export const server = setupServer(...handlers);
@@ -11,8 +13,24 @@ interface StubOptions {
   delay?: number;
 }
 
+interface ServerStubParams {
+  method: ServerMethod;
+  path: string;
+  params?: any; // TODO
+  responseJson: any;
+  options?: StubOptions;
+}
+
+export const stubServerApi = {
+  stub(stubParams: ServerStubParams) {
+    const { method, path, responseJson, options = {} } = stubParams;
+    serverUseJsonApi(method, path, responseJson, options);
+  },
+};
+
 function serverUseJsonApi(method: ServerMethod, path: string, respJsonData: any, options: StubOptions): void {
   const fullUrl = getApiUrl(path);
+
   server.use(
     rest[method](fullUrl, (req, res, ctx) => {
       const args = [
@@ -24,24 +42,4 @@ function serverUseJsonApi(method: ServerMethod, path: string, respJsonData: any,
       return res(...args);
     }),
   );
-}
-
-export const stubServerApi = {
-  get(path: string, respJsonData: any, options: StubOptions = {}): void {
-    serverUseJsonApi('get', path, respJsonData, options);
-  },
-
-  patch(path: string, respJsonData: any, options: StubOptions = {}): void {
-    serverUseJsonApi('patch', path, respJsonData, options);
-  },
-
-  post(path: string, respJsonData: any, options: StubOptions = {}): void {
-    serverUseJsonApi('post', path, respJsonData, options);
-  },
-};
-
-const BASE_URL = ``;
-
-function getApiUrl(path: string): string {
-  return `${BASE_URL}${path}`;
 }
