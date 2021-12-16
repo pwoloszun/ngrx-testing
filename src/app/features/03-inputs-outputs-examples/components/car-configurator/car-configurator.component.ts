@@ -8,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 export class CarConfiguratorComponent implements OnInit {
 
   // TODO
-  engines = ['Petrol', 'Diesel', 'Tesla'];
-  colors = ['Black', 'White', 'Red', 'Yellow'];
-  driveWheels = ['4X', 'Front-Wheel-Drive', 'Rear-Wheel-Drive'];
+  engines = [
+    { id: 1, value: 'Petrol' },
+    { id: 2, value: 'Diesel' },
+    { id: 3, value: 'Tesla' },
+  ];
+
+  colors = [
+    { id: 1, value: 'Black' },
+    { id: 2, value: 'White' },
+    { id: 3, value: 'Red' },
+    { id: 4, value: 'Yellow' },
+  ];
+  driveWheels = [
+    { id: 11, value: '4X' },
+    { id: 12, value: 'Front-Wheel-Drive' },
+    { id: 13, value: 'Rear-Wheel-Drive' },
+  ];
 
   ngOnInit() {
   }
