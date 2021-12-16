@@ -10,3 +10,8 @@
   color: #fff;
   padding: 8px;
 }
+
+.option-picker button.highlighted {
+  background-color: #00a;
+  color: #fff;
+}

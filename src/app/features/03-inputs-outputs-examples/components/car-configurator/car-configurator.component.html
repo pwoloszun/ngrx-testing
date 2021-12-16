@@ -2,13 +2,16 @@
   <h5>CarConfigurator</h5>
   <div class="chosen-config">
     <h3>Current config</h3>
-    <h3>Engine: ENGINE_TODO</h3>
+    <h3>Engine: {{ selectedEngine?.value}}</h3>
     <h3>Color: COLOR_TODO</h3>
     <h3>Drive Wheel: DRIVE_WHEEL_TODO</h3>
   </div>
 
   <div>
-    <nts-option-picker label="Choose engine type" options=""></nts-option-picker>
+    <nts-option-picker label="Choose engine type"
+                       [options]="engines"
+                       [selectedOption]="selectedEngine"
+                       (optionSelect)="engineSelectHandler($event)"></nts-option-picker>
 
     <nts-option-picker label="Select color"></nts-option-picker>
 

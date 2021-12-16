@@ -13,8 +13,18 @@ export interface IOptionPickerOption {
   styleUrls: ['./option-picker.component.css']
 })
 export class OptionPickerComponent implements OnInit {
-  // TODO
+  @Input() label = defaultLabel;
+  @Input() options: IOptionPickerOption[] = [];
+  @Input() selectedOption: IOptionPickerOption | null = null;
+
+  @Output() optionSelect = new EventEmitter<IOptionPickerOption>();
+
+  buttonClickHandler(option: IOptionPickerOption) {
+    this.optionSelect.emit(option);
+  }
 
   ngOnInit() {
   }
+
+
 }

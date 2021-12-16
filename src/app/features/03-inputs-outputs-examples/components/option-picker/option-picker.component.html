@@ -1,11 +1,9 @@
 <div class="option-picker">
-  <span>LABEL_TODO</span>
+  <span>{{label}}</span>
 
-  <button>
-    OPTION_TODO
-  </button>
-
-  <button>
-    OPTION_TODO
+  <button *ngFor="let opt of options"
+          [ngClass]="{highlighted: selectedOption?.id === opt.id}"
+          (click)="buttonClickHandler(opt)">
+    {{ opt.value }}
   </button>
 </div>

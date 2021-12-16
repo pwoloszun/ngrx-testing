@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IOptionPickerOption } from '../option-picker/option-picker.component';
 
 @Component({
   selector: 'nts-car-configurator',
@@ -25,6 +26,12 @@ export class CarConfiguratorComponent implements OnInit {
     { id: 12, value: 'Front-Wheel-Drive' },
     { id: 13, value: 'Rear-Wheel-Drive' },
   ];
+
+  selectedEngine: IOptionPickerOption | null = null;
+
+  engineSelectHandler(engine: IOptionPickerOption) {
+    this.selectedEngine = engine;
+  }
 
   ngOnInit() {
   }
