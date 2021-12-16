@@ -3,7 +3,14 @@
 
   <div>
     <p>Message text: {{message.text}}</p>
-    <input [(ngModel)]="message.text" />
+
+    <input [(ngModel)]="message.text"
+           type="text" />
+
+
+    abcd
+    <input [ngModel]="message.text"
+           (ngModelChange)="messageChangeHandler($event)" />
   </div>
 
   <hr />
@@ -11,7 +18,8 @@
   <div>
     <p>Message type: {{message.type}}</p>
     <select [(ngModel)]="message.type">
-      <option *ngFor="let t of types" [value]="t">{{t}}</option>
+      <option *ngFor="let t of types"
+              [value]="t">{{t}}</option>
     </select>
   </div>
 </div>

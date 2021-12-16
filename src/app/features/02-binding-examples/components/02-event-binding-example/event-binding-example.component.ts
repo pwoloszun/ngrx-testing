@@ -9,7 +9,7 @@ export class EventBindingExampleComponent implements OnInit {
 
   value = 0;
 
-  increment() {
+  increment(n: number, s: string) {
     this.value += 1;
   }
 

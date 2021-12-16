@@ -6,9 +6,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PropertyBindingExampleComponent implements OnInit {
 
-  bob!: any;
+  // state
+  bob = { name: 'Uncle Bob', sex: 'M' };
   isBtnDisabled!: boolean;
   url!: string;
+
+  get personName() {
+    return this.bob.name.toUpperCase();
+  }
 
   ngOnInit() {
     this.bob = { name: 'Uncle Bob', sex: 'M' };

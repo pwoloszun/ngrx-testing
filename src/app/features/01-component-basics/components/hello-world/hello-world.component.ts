@@ -7,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HelloWorldComponent implements OnInit {
 
-  myData = 'batman!!';
+  // state
+  myData = `batman!! ${Math.random()}`;
 
   ngOnInit() {
   }

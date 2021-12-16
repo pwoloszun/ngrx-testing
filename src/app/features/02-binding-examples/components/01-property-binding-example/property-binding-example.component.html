@@ -1,17 +1,29 @@
 <h3>Property Binding Examples</h3>
 
-<div *ngIf="bob">
+<div>
   <div>
-    <input [value]="bob.name"/>
+    <input [value]="bob.name" />
+    <!-- pseudo code -->
+    const inputDom = ...
+    inputDom.value = bob.name; // 'Uncle Bob'
+    inputDom['value'] = bob.name; // 'Uncle Bob'
+
+
+    {{ bob.name }}
+
   </div>
-  <hr/>
+  <hr />
+
+  <p [innerText]=" 'batman' ">a qq!</p>
+
 
   <div>
     <button [disabled]="isBtnDisabled">Click me!</button>
   </div>
-  <hr/>
+  <hr />
 
   <div>
-    <img [src]="url" class="small-img"/>
+    <img [src]="url"
+         class="small-img" />
   </div>
 </div>

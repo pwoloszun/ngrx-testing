@@ -7,8 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TwoWayBindingExampleComponent implements OnInit {
 
+  // state
   message: any;
   types: string[] = [];
+
+  messageChangeHandler($event: string) {
+    this.message.text = $event.toUpperCase();
+  }
 
   ngOnInit(): void {
     this.types = [
@@ -18,9 +23,13 @@ export class TwoWayBindingExampleComponent implements OnInit {
     ];
 
     this.message = {
-      text: 'Imba!',
+      text: 'abcd',
       type: this.types[0]
     };
+
+    setTimeout(() => {
+      this.message.text = 'a qqqqq!!!!!';
+    }, 2000);
   }
 
 }
