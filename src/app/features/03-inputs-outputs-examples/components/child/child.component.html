@@ -2,14 +2,14 @@
   <h3>Child</h3>
   <div>
     <p>
-      Child received: {{text}}
+      Child received: {{textMessage}}
     </p>
   </div>
   <div>
-    <input [(ngModel)]="childText"/>
+    <input [(ngModel)]="childText" />
     <p>Child text: {{childText}}</p>
   </div>
   <div>
-    <button (click)="sendMessage()">Send</button>
+    <button (click)="sendMessageHandler()">Send</button>
   </div>
 </div>
