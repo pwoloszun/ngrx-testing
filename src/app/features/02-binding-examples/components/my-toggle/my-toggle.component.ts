@@ -1,33 +1,41 @@
 import { Component, OnInit } from '@angular/core';
 
+
+const selectCssClass = (isVisible: boolean) => {
+  if (isVisible) {
+    return { 'mat-warn': true };
+  } else {
+    return { 'mat-primary': true };
+  }
+};
+
+
 @Component({
   selector: 'nts-my-toggle',
   templateUrl: './my-toggle.component.html',
   styleUrls: ['./my-toggle.component.css']
 })
 export class MyToggleComponent implements OnInit {
-  // css classes
-  // 'mat-primary'
-  // 'mat-warn'
-
-  // state
+  // primary/essential state
   isVisible = true;
-  cssClasses: any = { 'mat-primary': true };
-  btnText = 'Toggle Hide';
 
-  toggleHandler() {
+  // derived/computed state
+  get cssClasses() {
+    return selectCssClass(this.isVisible);
+  }
+
+  get btnText() {
     if (this.isVisible) {
-      this.isVisible = false;
-      this.cssClasses = { 'mat-warn': true };
-      this.btnText = 'Toggle Show';
+      return 'Toggle Hide';
     } else {
-      this.isVisible = true;
-      this.cssClasses = { 'mat-primary': true };
-      this.btnText = 'Toggle Hide';
+      return 'Toggle Show';
     }
   }
 
-  // TODO
+  toggleHandler() {
+    this.isVisible = !this.isVisible;
+  }
+
   ngOnInit() {
   }
 
