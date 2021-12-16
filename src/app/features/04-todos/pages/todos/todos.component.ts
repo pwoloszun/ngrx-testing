@@ -11,7 +11,11 @@ import { MyManageTodosService, Todo } from '../../services/my-manage-todos.servi
 })
 export class TodosComponent implements OnInit {
 
-  constructor() { }
+  todos = TODOS_DATA;
+
+  deleteTodo(toRemoveTodo: Todo) {
+    this.todos = this.todos.filter((todo) => todo.id !== toRemoveTodo.id);
+  }
 
   ngOnInit() {
     // TODO
