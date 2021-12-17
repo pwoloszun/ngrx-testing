@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 
 interface TodoListItem {
+  id: number | string;
   title: string;
   description?: string;
 }
@@ -18,7 +19,7 @@ interface TodoListItem {
 })
 export class TodosListComponent<T extends TodoListItem> implements OnInit {
 
-  @Input() items: T[] = [];
+  @Input() items!: T[];
   @Output() deleteItem = new EventEmitter<T>();
 
   removeBtnHandler(item: T) {

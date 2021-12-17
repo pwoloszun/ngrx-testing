@@ -17,7 +17,13 @@ export class TodosComponent implements OnInit {
     this.todos = this.todos.filter((todo) => todo.id !== toRemoveTodo.id);
   }
 
+  createTodo($event: TodoFormVm) {
+
+  }
+
   ngOnInit() {
     // TODO
+
+    const id = Math.random();
   }
 }
