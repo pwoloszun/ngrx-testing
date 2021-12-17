@@ -14,6 +14,7 @@ export type TodoParams = Omit<Todo, 'id'>;
 export class MyManageTodosService {
 
   // TODO readonly todos
+  readonly todos = [];
 
   loadTodos(): void {
     //TODO
