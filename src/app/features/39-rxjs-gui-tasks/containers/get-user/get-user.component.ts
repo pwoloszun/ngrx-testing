@@ -23,16 +23,13 @@ export class GetUserComponent implements OnDestroy {
   }
 
   handleDownloadUser() {
-    const sub = this.fakeApiService.failedRequest$('/user/100', `Cant't find User ID=100`)
-      .pipe(
-        retry(2),
-        catchError((err: Error) => {
-          this.openErrorSnackBar(err.message, 10);
-          this.logError(err);
-          return NEVER;
-        }),
-      ).subscribe(fullObserver('Download User'));
-    this.allSubscriptions.push(sub);
+    const userId = 100;
+
+    // TODO: fail fetch '/user/:id' with error `Cant't find User ID=100`
+    //  then: retry up to 2 times (of total 3)
+    //  then: handle error:
+    //    show snackbar with error msg for 10secs
+    //    & log error at: '/log/error'
   }
 
   ngOnDestroy() {
