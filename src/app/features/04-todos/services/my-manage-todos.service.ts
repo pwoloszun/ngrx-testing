@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { TODOS_DATA } from '../fake-data/todos-data';
 
 export interface Todo {
   id: number;
@@ -14,17 +15,19 @@ export type TodoParams = Omit<Todo, 'id'>;
 export class MyManageTodosService {
 
   // TODO readonly todos
-  readonly todos = [];
+  todos: Todo[] = [];
 
   loadTodos(): void {
-    //TODO
+    this.todos = TODOS_DATA;
   }
 
   create({ title, description }: TodoParams): void {
-    //TODO
+    const id = Math.random();
+    const newTodo = { id, title, description };
+    this.todos = [...this.todos, newTodo];
   }
 
-  remove(todo: Todo): void {
-    //TODO
+  remove(toRemoveTodo: Todo): void {
+    this.todos = this.todos.filter((todo) => todo.id !== toRemoveTodo.id);
   }
 }
