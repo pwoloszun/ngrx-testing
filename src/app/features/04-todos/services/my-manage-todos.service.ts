@@ -1,7 +1,4 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-
-import { TODOS_DATA } from '../fake-data/todos-data';
 
 export interface TodoParams {
   title: string;
@@ -16,6 +13,8 @@ export interface Todo extends TodoParams {
   providedIn: 'root'
 })
 export class MyManageTodosService {
+
+  // TODO readonly todos
 
   loadTodos(): void {
     //TODO
