@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 
-export interface TodoParams {
+export interface Todo {
+  id: number;
   title: string;
   description?: string;
 }
 
-export interface Todo extends TodoParams {
-  id: number;
-}
+export type TodoParams = Omit<Todo, 'id'>;
 
 @Injectable({
   providedIn: 'root'

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { cloneDeep } from 'lodash';
 
 export interface TodoFormVm {
   title: string;
@@ -15,14 +16,15 @@ export class TodosFormComponent implements OnInit {
   @Output()
   createItem = new EventEmitter<TodoFormVm>();
 
-  titleTmp = '';
-  descriptionTmp = '';
+  formValues: TodoFormVm = {
+    title: '',
+    description: ''
+  };
 
   submitHandler() {
-    this.createItem.emit({
-      title: this.titleTmp,
-      description: this.descriptionTmp,
-    });
+    // validations
+    const formValuesCpy = cloneDeep(this.formValues);
+    this.createItem.emit(formValuesCpy);
   }
 
   ngOnInit() {

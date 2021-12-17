@@ -4,14 +4,14 @@
 
     <form (submit)="submitHandler()">
       <mat-form-field>
-        <input [(ngModel)]="titleTmp"
+        <input [(ngModel)]="formValues.title"
                matInput
                placeholder="Title"
                name="title" />
       </mat-form-field>
 
       <mat-form-field>
-        <input [(ngModel)]="descriptionTmp"
+        <input [(ngModel)]="formValues.description"
                matInput
                placeholder="Description"
                name="description" />

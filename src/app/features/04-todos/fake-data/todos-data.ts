@@ -1,4 +1,6 @@
-const TODOS_DATA = [
+import { Todo } from '../services/my-manage-todos.service';
+
+const TODOS_DATA: Todo[] = [
   {
     title: 'rrrr',
     description: 'sd',
