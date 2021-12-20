@@ -7,16 +7,17 @@
       <mat-form-field>
         <input [formControl]="searchTextCtrl"
                matInput
-               placeholder="Search" />
+               placeholder="Search"
+               type="text" />
       </mat-form-field>
     </div>
 
     <div>
       <h5>Search results</h5>
       <ul>
-        <li>result 1 TODO</li>
-        <li>result 2 TODO</li>
-        <li>result 3 TODO</li>
+        <li *ngFor="let result of resultsTmp">
+          {{result}}
+        </li>
       </ul>
     </div>
   </mat-card-content>

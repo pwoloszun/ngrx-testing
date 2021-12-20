@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { of } from 'rxjs';
-import { debounceTime, distinctUntilChanged, mergeMap, concatMap, switchMap, filter } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, mergeMap, concatMap, switchMap, filter, map, mergeAll, switchAll } from 'rxjs/operators';
 
 import { SearchApiService } from '@api/search-api.service';
 
@@ -12,11 +12,9 @@ const MIN_SEARCH_QUERY_LENGTH = 2;
   templateUrl: './my-search.component.html',
   styleUrls: ['./my-search.component.css']
 })
-export class MySearchComponent {
+export class MySearchComponent implements OnInit {
 
   searchTextCtrl = new FormControl('');
-
-  // ggg = this.searchTextCtrl.valueChanges.
 
   // TODO searchResults$
   //  handle search query value changes:
@@ -26,12 +24,21 @@ export class MySearchComponent {
   //    then send querySearch$ request to server & cancel any previous pending request(s)
   //    then render search results on UI
 
-  searchResults$ = of([
-    'bob',
-    'batman',
-    'imba!'
-  ]);
+  searchResults$ = this.searchTextCtrl.valueChanges.pipe(
+    debounceTime(400),
+    filter<string>((query) => query.length >= MIN_SEARCH_QUERY_LENGTH),
+    distinctUntilChanged(),
+    switchMap((query) => this.searchApiService.querySearch$(query))
+  );
+
+  resultsTmp: string[] = [];
 
   constructor(private searchApiService: SearchApiService) { }
+
+  ngOnInit() {
+    this.searchResults$.subscribe((inner$) => {
+      this.resultsTmp = inner$;
+    });
+  }
 
 }
