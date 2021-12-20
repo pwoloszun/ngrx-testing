@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { of } from 'rxjs';
 import { debounceTime, distinctUntilChanged, mergeMap, concatMap, switchMap, filter, map, mergeAll, switchAll } from 'rxjs/operators';
@@ -12,7 +12,7 @@ const MIN_SEARCH_QUERY_LENGTH = 2;
   templateUrl: './my-search.component.html',
   styleUrls: ['./my-search.component.css']
 })
-export class MySearchComponent implements OnInit {
+export class MySearchComponent implements OnInit, OnDestroy {
 
   searchTextCtrl = new FormControl('');
 
@@ -33,12 +33,19 @@ export class MySearchComponent implements OnInit {
 
   resultsTmp: string[] = [];
 
+  private subscriptions: Subscription[] = [];
+
   constructor(private searchApiService: SearchApiService) { }
 
   ngOnInit() {
-    this.searchResults$.subscribe((inner$) => {
+    const sub = this.searchResults$.subscribe((inner$) => {
       this.resultsTmp = inner$;
     });
+    this.subscriptions.push(sub);
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach((s) => s.unsubscribe());
   }
 
 }
