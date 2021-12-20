@@ -1,15 +1,26 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
+
+enum Status {
+  Pending = 'PENDING',
+  Loaded = 'LOADED',
+  Error = 'ERROR',
+}
 
 @Component({
   selector: 'nts-loader',
   templateUrl: './loader.component.html',
   styleUrls: ['./loader.component.css']
 })
-export class LoaderComponent implements OnInit {
+export class LoaderComponent {
 
-  @Input() isLoading: boolean | null = false;
+  // TODO isLoading
 
-  ngOnInit() {
+  // TODO error
+  error?: Error | string | null = null;
+
+  get errorMessage(): string {
+    // TODO typeof this.error === 'string'
+    return 'Some error TODO';
   }
 
 }

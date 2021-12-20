@@ -1,9 +1,10 @@
 .loader {
   position: relative;
   display: block;
+  min-height: 200px;
 }
 
-.loader .spinner {
+.loader .loader-spinner {
   position: absolute;
   display: flex;
   justify-content: center;
@@ -18,4 +19,10 @@
   opacity: 0.7;
   color: #000;
   z-index: 2;
+}
+
+.loader .loader-error {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
 }

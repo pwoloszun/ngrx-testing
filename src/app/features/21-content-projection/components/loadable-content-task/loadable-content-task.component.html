@@ -5,11 +5,12 @@
 </div>
 
 <div>
-  <nts-loader [isLoading]="isFetching">
+  <!-- <nts-loader [isLoading]="isFetching$ | async"
+              [error]="searchError$ | async">
     <ul>
-      <li *ngFor="let result of searchResults">
+      <li *ngFor="let result of searchResults$ | async">
         {{ result }}
       </li>
     </ul>
-  </nts-loader>
+  </nts-loader> -->
 </div>
