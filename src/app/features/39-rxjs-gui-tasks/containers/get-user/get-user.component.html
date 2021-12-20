@@ -14,7 +14,12 @@
     </button>
 
 
-    {{userData$ | async}}
+    <h3>USer data</h3>
+    <code>
+      {{userData$ | async  | json}}
+    </code>
+
+    
 
   </mat-card-actions>
 </mat-card>
