@@ -15,7 +15,7 @@
     <div>
       <h5>Search results</h5>
       <ul>
-        <li *ngFor="let result of resultsTmp">
+        <li *ngFor="let result of searchResults$ | async">
           {{result}}
         </li>
       </ul>

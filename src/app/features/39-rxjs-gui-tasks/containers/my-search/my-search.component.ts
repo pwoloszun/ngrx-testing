@@ -31,21 +31,21 @@ export class MySearchComponent implements OnInit, OnDestroy {
     switchMap((query) => this.searchApiService.querySearch$(query))
   );
 
-  resultsTmp: string[] = [];
+  // resultsTmp: string[] = [];
 
-  private subscriptions: Subscription[] = [];
+  // private subscriptions: Subscription[] = [];
 
   constructor(private searchApiService: SearchApiService) { }
 
   ngOnInit() {
-    const sub = this.searchResults$.subscribe((inner$) => {
-      this.resultsTmp = inner$;
-    });
-    this.subscriptions.push(sub);
+    // const sub = this.searchResults$.subscribe((inner$) => {
+    //   this.resultsTmp = inner$;
+    // });
+    // this.subscriptions.push(sub);
   }
 
   ngOnDestroy() {
-    this.subscriptions.forEach((s) => s.unsubscribe());
+    //   this.subscriptions.forEach((s) => s.unsubscribe());
   }
 
 }
