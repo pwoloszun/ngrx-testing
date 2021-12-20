@@ -16,6 +16,8 @@ export class MySearchComponent {
 
   searchTextCtrl = new FormControl('');
 
+  // ggg = this.searchTextCtrl.valueChanges.
+
   // TODO searchResults$
   //  handle search query value changes:
   //    then debounce for 400ms (1200ms)
