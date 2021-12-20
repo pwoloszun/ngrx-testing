@@ -25,7 +25,7 @@ export class GetUserComponent implements OnDestroy {
   handleDownloadUser() {
     const userId = 100;
 
-    this.fakeApiService
+    const sub = this.fakeApiService
       .failedRequest$(`/user/${userId}`, `Cant download User id=${userId}`)
       .pipe(
         retry(2),
@@ -35,6 +35,8 @@ export class GetUserComponent implements OnDestroy {
           return EMPTY;
         })
       ).subscribe(fullObserver('get user'));
+
+    this.allSubscriptions.push(sub);
   }
 
   ngOnDestroy() {
