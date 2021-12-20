@@ -3,20 +3,28 @@
 <label class="mt-2">
   <span>Repository name:</span>
   <form [formGroup]="searchForm">
-    <input formControlName="searchQuery" type="text" class="ml-2" />
+    <input formControlName="searchQuery"
+           type="text"
+           class="ml-2" />
   </form>
 </label>
 
 <div *ngIf="(searchResults$ | async) as searchResults">
   <h2>Repositories</h2>
 
-  <div *ngIf="searchResults.length > 0" fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px" fxFlexFill>
+  <div *ngIf="searchResults.length > 0"
+       fxLayout="row"
+       fxLayout.xs="column"
+       fxLayoutGap="10px"
+       fxFlexFill>
     <div fxFlex="50">
-      <div *ngFor="let result of searchResults" fxLayout="row">
+      <div *ngFor="let result of searchResults"
+           fxLayout="row">
         <div fxFlex="70">
           {{ result.name }}
         </div>
-        <button (click)="selectRepoHandler(result)" fxFlex="30">Owner info</button>
+        <button (click)="selectRepoHandler(result)"
+                fxFlex="30">Owner info</button>
       </div>
     </div>
 
@@ -24,17 +32,20 @@
       <div *ngIf="(selectedOwner$ | async) as selectedOwner">
         <h4>{{ selectedOwner.login }}</h4>
 
-        <img [attr.src]="selectedOwner.avatar_url" width="200" height="auto" alt="avatar" />
+        <img [attr.src]="selectedOwner.avatar_url"
+             width="200"
+             height="auto"
+             alt="avatar" />
       </div>
 
-      <nts-loader [isLoading]="isLoading$ | async">
+      <!-- <nts-loader [isLoading]="isLoading$ | async">
         <div *ngIf="(ownerAllRepos$ | async) as ownerAllRepos">
           <h6>All Repos</h6>
           <div *ngFor="let repo of ownerAllRepos">
             {{ repo.name }}
           </div>
         </div>
-      </nts-loader>
+      </nts-loader> -->
 
     </div>
   </div>
