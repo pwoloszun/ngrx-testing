@@ -1,11 +1,16 @@
 <div class="loader">
+  <div>
+    <!-- TODO: loaded -->
 
-  <div *ngIf="isLoading; else loadedContent" class="spinner">
-    <mat-spinner></mat-spinner>
+    <!-- TODO: error -->
+    <mat-card class="mat-elevation-z8 loader-error">
+      <mat-card-title> <strong>Error:</strong> {{errorMessage}} </mat-card-title>
+    </mat-card>
+
+    <!-- TODO: pending -->
+    <div class="loader-spinner">
+      <mat-spinner></mat-spinner>
+    </div>
+
   </div>
-
-  <ng-template #loadedContent>
-    <ng-content></ng-content>
-  </ng-template>
-
 </div>
