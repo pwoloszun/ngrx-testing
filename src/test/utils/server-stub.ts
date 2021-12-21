@@ -1,8 +1,6 @@
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 
-import getApiUrl from 'src/api/getApiUrl';
-
 import { handlers } from './default-handlers';
 
 export const server = setupServer(...handlers);
@@ -30,7 +28,6 @@ export const stubServerApi = {
 
 function serverUseJsonApi(method: ServerMethod, path: string, respJsonData: any, options: StubOptions): void {
   const fullUrl = getApiUrl(path);
-
   server.use(
     rest[method](fullUrl, (req, res, ctx) => {
       const args = [
@@ -42,4 +39,11 @@ function serverUseJsonApi(method: ServerMethod, path: string, respJsonData: any,
       return res(...args);
     }),
   );
+}
+
+
+const BASE_URL = ``;
+
+function getApiUrl(path: string): string {
+  return `${BASE_URL}${path}`;
 }
