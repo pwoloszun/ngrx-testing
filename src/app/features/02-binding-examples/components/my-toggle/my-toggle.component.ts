@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class MyToggleComponent implements OnInit {
 
   // TODO
+  // css classes: 'mat-warn', 'mat-primary'
+
   ngOnInit() {
   }
 
