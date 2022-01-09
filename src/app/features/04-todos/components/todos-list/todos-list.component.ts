@@ -6,7 +6,7 @@ import {
   Output,
 } from '@angular/core';
 
-interface TodoListItem {
+export interface TodoListItem {
   title: string;
   description?: string;
 }

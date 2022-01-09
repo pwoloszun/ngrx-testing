@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { TodoFormVm } from '../../components/todos-form/todos-form.component';
+import { TodoFormValues } from '../../components/todos-form/todos-form.component';
 
 @Component({
   selector: 'nts-todos',

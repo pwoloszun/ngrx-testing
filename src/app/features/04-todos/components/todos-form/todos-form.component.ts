@@ -1,8 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
-export interface TodoFormVm {
+export interface TodoFormValues {
   title: string;
-  description?: string;
+  description: string;
 }
 
 @Component({
