@@ -15,7 +15,6 @@ import { TodosComponent } from './todos.component';
 import { TODOS_DATA } from '../../fake-data/todos-data';
 import { TodosListComponent } from '../../components/todos-list/todos-list.component';
 import { TodosFormComponent } from '../../components/todos-form/todos-form.component';
-import { MyManageTodosService } from '../../services/my-manage-todos.service';
 
 describe('TodosComponent', () => {
 

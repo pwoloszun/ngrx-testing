@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { TodoFormVm } from '../../components/todos-form/todos-form.component';
-import { MyManageTodosService, Todo } from '../../services/my-manage-todos.service';
 
 @Component({
   selector: 'nts-todos',

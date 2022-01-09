@@ -1,4 +1,12 @@
-const TODOS_DATA = [
+export interface Todo {
+  id: number;
+  title: string;
+  description?: string;
+}
+
+export type TodoParams = Omit<Todo, 'id'>;
+
+const TODOS_DATA: Todo[] = [
   {
     title: 'rrrr',
     description: 'sd',
