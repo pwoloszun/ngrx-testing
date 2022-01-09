@@ -22,6 +22,8 @@ import { SmartHeroesListComponent } from './tasks/smart-heroes-list/smart-heroes
 import { UserInterestsFormComponent } from './forms/user-interests-form/user-interests-form.component';
 import { LoginFormExampleComponent } from './forms/login-form-example/login-form-example.component';
 import { FormInfoComponent } from './forms/form-info/form-info.component';
+import { PureCounterComponent } from './examples/pure-counter/pure-counter.component';
+import { SmartCounterComponent } from './examples/smart-counter/smart-counter.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { FormInfoComponent } from './forms/form-info/form-info.component';
     SmartHeroesListComponent,
     UserInterestsFormComponent,
     LoginFormExampleComponent,
-    FormInfoComponent
+    FormInfoComponent,
+    PureCounterComponent,
+    SmartCounterComponent
   ],
   imports: [
     CommonModule,
