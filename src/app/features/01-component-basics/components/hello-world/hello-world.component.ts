@@ -7,12 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HelloWorldComponent implements OnInit {
 
-  myData = 'batman!!';
+  // myData = `batman!!`;
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }
+
+
+
 
 // const people = [
 //   { id: 100, name: 'bob' },
