@@ -19,8 +19,10 @@ export class TodosComponent implements OnInit {
   }
 
   createTodoHandler(params: TodoFormValues) {
-    //TODO
+    const { title, description } = params;
     const id = Math.random();
+    const todo = { id, title, description };
+    this.todos = [...this.todos, todo];
   }
 
   ngOnInit() {
