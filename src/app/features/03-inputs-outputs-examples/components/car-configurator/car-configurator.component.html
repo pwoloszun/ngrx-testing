@@ -8,10 +8,13 @@
   </div>
 
   <div>
-    <nts-option-picker label="Choose engine type"></nts-option-picker>
+    <nts-option-picker label="Choose engine type"
+                       [options]="engines"></nts-option-picker>
 
-    <nts-option-picker label="Select color"></nts-option-picker>
+    <nts-option-picker [label]="'Select color'"
+                       [options]="colors"></nts-option-picker>
 
-    <nts-option-picker label="Your drive wheel?"></nts-option-picker>
+    <nts-option-picker label="Your drive wheel?"
+                       [options]="driveWheels"></nts-option-picker>
   </div>
 </div>

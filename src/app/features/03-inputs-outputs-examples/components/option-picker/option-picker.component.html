@@ -1,11 +1,7 @@
 <div class="option-picker">
-  <span>LABEL_TODO</span>
+  <span>{{ label }}</span>
 
-  <button>
-    OPTION_TODO
-  </button>
-
-  <button>
-    OPTION_TODO
+  <button *ngFor="let op of options">
+    {{ op.value }}
   </button>
 </div>
