@@ -9,7 +9,6 @@ export class HelloWorldComponent {
 
   myData = { name: `batman!! ${Math.random()}` };
 
-  myUrl = 'http://myimg..com/someimg.jpg';
 
 }
 
