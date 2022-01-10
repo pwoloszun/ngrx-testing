@@ -1,15 +1,18 @@
 <div class="parent">
   <h3>Parent</h3>
   <div>
-    <input [(ngModel)]="parentMsg"/>
+    <input [(ngModel)]="parentMsg" />
+
+    <!-- <input [value]="parentMsg" (change)="logMessage($event)"/> -->
+
     <p>
       Parent: {{parentMsg}}
     </p>
   </div>
   <div>
-    <nts-child
-      [text]="parentMsg"
-      (messageSent)="logMessage($event)"
-    ></nts-child>
+
+    <nts-child [text]="parentMsg"
+               (messageSent)="logMessage($event)"></nts-child>
+
   </div>
 </div>
