@@ -1,7 +1,7 @@
 <div class="option-picker">
   <span>{{ label }}</span>
 
-  <button *ngFor="let op of options">
+  <button *ngFor="let op of options" (click)="optionClickHandler(op)">
     {{ op.value }}
   </button>
 </div>

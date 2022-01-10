@@ -30,6 +30,19 @@ export class CarConfiguratorComponent implements OnInit {
     { id: 300, value: 'Rear-Wheel-Drive' },
   ];
 
+  selectedEngine: IOptionPickerOption | null = null;
+  selectedColor: IOptionPickerOption | null = null;
+
+  engineChangeHandler(engine: IOptionPickerOption) {
+    this.selectedEngine = engine;
+  }
+
+  colorChangeHandler(color: IOptionPickerOption) {
+    this.selectedColor = color;
+  }
+
+  driveWheelChangeHndler() { }
+
   ngOnInit() {
   }
 }

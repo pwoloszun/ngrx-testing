@@ -2,19 +2,21 @@
   <h5>CarConfigurator</h5>
   <div class="chosen-config">
     <h3>Current config</h3>
-    <h3>Engine: ENGINE_TODO</h3>
-    <h3>Color: COLOR_TODO</h3>
+    <h3>Engine: {{ selectedEngine?.value }}</h3>
+    <h3>Color: {{ selectedColor?.value }}</h3>
     <h3>Drive Wheel: DRIVE_WHEEL_TODO</h3>
   </div>
 
   <div>
     <nts-option-picker label="Choose engine type"
-                       [options]="engines"></nts-option-picker>
+                       [options]="engines"
+                       (optionSelect)="engineChangeHandler($event)"></nts-option-picker>
 
     <nts-option-picker [label]="'Select color'"
-                       [options]="colors"></nts-option-picker>
+                       [options]="colors"
+                       (optionSelect)="colorChangeHandler($event)"></nts-option-picker>
 
-    <nts-option-picker label="Your drive wheel?"
-                       [options]="driveWheels"></nts-option-picker>
+    <!-- <nts-option-picker label="Your drive wheel?"
+                       [options]="driveWheels"></nts-option-picker> -->
   </div>
 </div>
