@@ -11,3 +11,11 @@
 </div>
 
 <div [ngClass]="{'ggg-hhh': 123 > 456, 'yyy-uuu':false}"></div> -->
+
+<ul>
+  <li *ngFor="let person of people" (click)="personClickHandler(person)">
+    <div>
+      <h3>{{ person.name }}</h3>
+    </div>
+  </li>
+</ul>

@@ -9,6 +9,16 @@ export class HelloWorldComponent {
 
   myData = { name: `batman!! ${Math.random()}` };
 
+  people = [
+    { id: 100, name: 'bob' },
+    { id: 200, name: 'ed' },
+    { id: 300, name: 'kate' },
+    { id: 400, name: 'helen' },
+  ];
+
+  personClickHandler(person: any) {
+    console.log('pers:', person);
+  }
 
 }
 
@@ -17,9 +27,3 @@ export class HelloWorldComponent {
 
 
 
-// const people = [
-//   { id: 100, name: 'bob' },
-//   { id: 200, name: 'ed' },
-//   { id: 300, name: 'kate' },
-//   { id: 400, name: 'helen' },
-// ];
