@@ -20,6 +20,7 @@ export class TodosComponent implements OnInit {
 
   createTodoHandler(params: TodoFormValues) {
     //TODO
+    const id = Math.random();
   }
 
   ngOnInit() {
