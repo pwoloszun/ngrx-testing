@@ -4,9 +4,11 @@
   </div>
   <div class="mdl-cell mdl-cell--6-col graybox">
 
+    <!-- Pure/Presentation/Dumb component -->
     <nts-todos-list [items]="todos"
                     (deleteItem)="deleteTodoHandler($event)"></nts-todos-list>
 
+    <!-- Pure/Presentation/Dumb component -->
     <nts-todos-form (createItem)="createTodoHandler($event)"></nts-todos-form>
 
   </div>
