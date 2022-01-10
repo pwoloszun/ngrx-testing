@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventBindingExampleComponent implements OnInit {
 
+  // state
   value = 0;
 
   increment() {

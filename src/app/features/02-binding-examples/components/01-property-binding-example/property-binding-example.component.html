@@ -2,16 +2,26 @@
 
 <div *ngIf="bob">
   <div>
-    <input [value]="bob.name"/>
+    <input [value]="bob.name" />
+
+    <!-- pseudo code -->
+    const inputDomEl = ...
+    inputDomEl.value = bob.name;
+    inputDomEl['value'] = bob.name;
+
   </div>
-  <hr/>
+
+  <p [innerText]="bob.name">lorem impusm</p>
+
+  <hr />
 
   <div>
     <button [disabled]="isBtnDisabled">Click me!</button>
   </div>
-  <hr/>
+  <hr />
 
   <div>
-    <img [src]="url" class="small-img"/>
+    <img [src]="url"
+         class="small-img" />
   </div>
 </div>
