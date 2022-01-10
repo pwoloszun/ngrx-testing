@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
+function selectButtonText(isVisible: boolean): string {
+  return isVisible ? 'Toggle Hide' : 'Toggle Show';
+}
+
 @Component({
   selector: 'nts-my-toggle',
   templateUrl: './my-toggle.component.html',
@@ -7,33 +11,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyToggleComponent implements OnInit {
 
-  // state
+  // primary/essential state
   isVisible = true;
-  btnText = 'Toggle Hide';
-  cssClass = {
-    'mat-primary': true,
-    'mat-warn': false
-  };
 
-  toggleHandler() {
-    if (this.isVisible) {
-      this.isVisible = false;
-      this.btnText = 'Show Text';
-      this.cssClass = {
-        'mat-primary': false,
-        'mat-warn': true
-      }
-    } else {
-      this.isVisible = true;
-      this.btnText = 'Hide Text';
-      this.cssClass = {
-        'mat-primary': true,
-        'mat-warn': false
-      }
-    }
+  // derived/computed state
+  get btnText(): string {
+    return selectButtonText(this.isVisible);
   }
 
-  // css classes: 'mat-warn', 'mat-primary'
+  get cssClass(): any {
+    return this.isVisible ? { 'mat-primary': true } : { 'mat-warn': true };
+  }
+
+  toggleHandler() {
+    this.isVisible = !this.isVisible;
+  }
 
   ngOnInit() { }
 
