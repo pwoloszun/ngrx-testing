@@ -8,7 +8,8 @@
       <h2 matLine>
         {{ item.title }}
       </h2>
-      <button mat-icon-button
+      <button (click)="itemClickHandler(item)"
+              mat-icon-button
               class="remove-btn"
               aria-label="Remove"
               role="button">
