@@ -1,11 +1,12 @@
 <div class="lorem-cont">
   <h3>Text</h3>
 
-  <button mat-raised-button
-          class="mat-primary">
-    BTN_TEXT_TODO
+  <button (click)="toggleHandler()"
+          mat-raised-button
+          [ngClass]="cssClass">
+    {{ btnText }}
   </button>
-  <p>
+  <p *ngIf="isVisible">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis cursus nisi eu sapien finibus elementum. Integer
     porta mi orci, congue malesuada velit varius eu. Fusce quis ante fermentum, tempus nisi nec, luctus neque.
     Maecenas in laoreet ante, aliquet rutrum justo. Phasellus placerat felis erat, et dapibus libero mollis eget.
