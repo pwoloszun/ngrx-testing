@@ -10,6 +10,11 @@ export class TwoWayBindingExampleComponent implements OnInit {
   message: any;
   types: string[] = [];
 
+  messageTextChangeHandler($event: string) {
+    this.message.text = $event;
+    // ajax req
+  }
+
   ngOnInit(): void {
     this.types = [
       'Private',
