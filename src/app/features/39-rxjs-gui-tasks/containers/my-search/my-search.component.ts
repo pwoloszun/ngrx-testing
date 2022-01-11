@@ -34,21 +34,21 @@ export class MySearchComponent {
     delay(1200)
   );
 
-  resultsTmp: string[] = [];
+  // resultsTmp: string[] = [];
 
-  private subscriptions: Subscription[] = [];
+  // private subscriptions: Subscription[] = [];
 
   constructor(private searchApiService: SearchApiService) { }
 
   ngOnInit() {
-    const sub = this.searchResults$.subscribe((results) => {
-      this.resultsTmp = results;
-    });
-    this.subscriptions.push(sub);
+    // const sub = this.searchResults$.subscribe((results) => {
+    //   this.resultsTmp = results;
+    // });
+    // this.subscriptions.push(sub);
   }
 
   ngOnDestroy() {
-    this.subscriptions.forEach((s) => s.unsubscribe());
+    // this.subscriptions.forEach((s) => s.unsubscribe());
   }
 
 }
