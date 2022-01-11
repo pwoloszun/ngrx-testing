@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { of } from 'rxjs';
-import { debounceTime, distinctUntilChanged, mergeMap, concatMap, switchMap, filter } from 'rxjs/operators';
+import { of, Subscription } from 'rxjs';
+import { debounceTime, distinctUntilChanged, mergeMap, concatMap, switchMap, filter, delay } from 'rxjs/operators';
 
 import { SearchApiService } from '@api/search-api.service';
 
@@ -24,12 +24,31 @@ export class MySearchComponent {
   //    then send querySearch$ request to server & cancel any previous pending request(s)
   //    then render search results on UI
 
+
   searchResults$ = of([
     'bob',
     'batman',
-    'imba!'
-  ]);
+    'imba!',
+    'a qq!'
+  ]).pipe(
+    delay(1200)
+  );
+
+  resultsTmp: string[] = [];
+
+  private subscriptions: Subscription[] = [];
 
   constructor(private searchApiService: SearchApiService) { }
+
+  ngOnInit() {
+    const sub = this.searchResults$.subscribe((results) => {
+      this.resultsTmp = results;
+    });
+    this.subscriptions.push(sub);
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach((s) => s.unsubscribe());
+  }
 
 }
