@@ -33,6 +33,14 @@ export class MyFormValidationTaskComponent implements OnInit {
 
   });
 
+  get areDetailsEnabledCtrl() {
+    return this.myForm.get('areDetailsEnabled') as FormControl;
+  }
+
+  get heightCtrl() {
+    return this.myForm.get('height') as FormControl;
+  }
+
   constructor(private formBuilder: FormBuilder) { }
 
   submitHandler(event: any) {
@@ -45,6 +53,12 @@ export class MyFormValidationTaskComponent implements OnInit {
   ngOnInit(): void {
     // TODO 1:
     //    if !areDetailsEnabled then set 'height' to null
+    this.areDetailsEnabledCtrl
+      .valueChanges.subscribe((isDetailsEnabled) => {
+        if (!isDetailsEnabled) {
+          this.heightCtrl.setValue(null);
+        }
+      });
 
 
     // TODO 2:

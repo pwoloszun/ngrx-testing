@@ -17,13 +17,16 @@
 
   <div>
     <label>
-      <input type="checkbox" />
+      <input formControlName="areDetailsEnabled"
+             type="checkbox" />
       Enable details
     </label>
   </div>
 
-  <div class="checkboxCont">
-    <input type="number"
+  <div *ngIf="areDetailsEnabledCtrl.value"
+       class="checkboxCont">
+    <input formControlName="height"
+           type="number"
            placeholder="Your height" />
   </div>
 
