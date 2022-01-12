@@ -24,17 +24,17 @@ export class MySimpleFormComponent {
   ];
 
   // TODO 1 build form:
-  // formValues = {
-  //   email: '',
-  //   password: '',
+  myForm = this.formBuilder.group({
+    email: [''],
+    password: [''],
 
-  //   primaryAddress: {
-  //     city: '',
-  //     street: '',
-  //   },
-  //   emailsFrequency: '',
-  //   isAgreementConfirmed: false
-  // }
+    primaryAddress: this.formBuilder.group({
+      // city: '',
+      street: [''],
+    }),
+    // emailsFrequency: '',
+    isAgreementConfirmed: [false]
+  });
 
   // TODO 2 validations:
   //  email: required
@@ -47,7 +47,7 @@ export class MySimpleFormComponent {
   submitHandler(event: any) {
     event.preventDefault();
     // TODO: log all form values
-    console.log('simple form value');
+    console.log('simple form value', this.myForm.value);
   }
 
 }

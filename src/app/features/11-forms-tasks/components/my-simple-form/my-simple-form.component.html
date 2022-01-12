@@ -1,19 +1,23 @@
-<form class="my-form-cont">
+<form [formGroup]="myForm"
+      (submit)="submitHandler($event)"
+      class="my-form-cont">
   <h3>My simple form</h3>
 
   <div>
     Email:
-    <input type="email"
+    <input formControlName="email"
+           type="email"
            required />
   </div>
 
   <div>
     Password:
-    <input type="password"
+    <input formControlName="password"
+           type="password"
            required />
   </div>
 
-  <div>
+  <div formGroupName="primaryAddress">
     Primary Address:
 
     <div>
@@ -35,7 +39,8 @@
     </div>
     <div>
       Street:
-      <input type="text" />
+      <input formControlName="street"
+             type="text" />
     </div>
   </div>
 
@@ -63,7 +68,8 @@
 
   <div>
     <label>
-      <input type="checkbox"
+      <input formControlName="isAgreementConfirmed"
+             type="checkbox"
              required />
       Some Agreement
     </label>
@@ -73,5 +79,5 @@
     <button type="submit">Send</button>
   </div>
 
-  <!-- <nts-form-info [formGroup]="myForm"></nts-form-info> -->
+  <nts-form-info [formGroup]="myForm"></nts-form-info>
 </form>
