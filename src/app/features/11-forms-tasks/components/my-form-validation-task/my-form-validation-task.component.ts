@@ -76,6 +76,15 @@ export class MyFormValidationTaskComponent implements OnInit {
 
     getInterestsByType$('sport').subscribe((interests) => {
       // console.log('interests:', interests);
+
+    });
+
+    this.selectedInterestTypeCtrl.valueChanges.pipe(
+      switchMap((interestType) => {
+        return getInterestsByType$(interestType);
+      })
+    ).subscribe((interests) => {
+      console.log('type:', interests);
       this.availableInterestLabels = interests;
       this.buildAvailableInterests(interests);
     });
@@ -91,10 +100,9 @@ export class MyFormValidationTaskComponent implements OnInit {
   }
 
   private buildAvailableInterests(interests: string[]) {
-    // TODO labels
-    // TODO checkbox values
-    const interestsFormCtrls = interests.map((int) => {
-      return this.formBuilder.control(false);
+    const interestsFormCtrls = interests.map((interestName) => {
+      const intValue = this.selectedInterestsMap[interestName];
+      return this.formBuilder.control(intValue);
     });
     const availableInterestsFormArray = this.formBuilder.array(interestsFormCtrls);
 
@@ -105,7 +113,7 @@ export class MyFormValidationTaskComponent implements OnInit {
         interestValues.forEach((value: boolean, i: number) => {
           const interestName = this.availableInterestLabels[i];
           // console.log('interestName:', interestName, value);
-          this.selectedInterestsMap[interestName] = value;
+          this.selectedInterestsMap[interestName] = !!value;
         });
       });
   }
