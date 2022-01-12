@@ -53,6 +53,11 @@ export class BCollectionInFormExampleComponent implements OnInit {
       return this.formBuilder.control(false);
     });
     return this.formBuilder.array(toppingCtrls, [/* validators */]);
+    // return new FormArray([
+    //   new FormControl(false),
+    //   new FormControl(true),
+    //   new FormControl(false),
+    // ]);
   }
 
 }
