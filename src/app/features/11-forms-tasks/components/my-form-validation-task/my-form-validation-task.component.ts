@@ -4,6 +4,7 @@ import { map, switchMap } from 'rxjs/operators';
 
 import { countriesDict } from '../../dictionaries/countries.dict';
 import { getInterestsByType$, interestTypesDict } from '../../dictionaries/interests.dict';
+import { forEach } from 'lodash';
 
 @Component({
   selector: 'nts-my-form-validation-task',
@@ -16,11 +17,7 @@ export class MyFormValidationTaskComponent implements OnInit {
   allInterestTypes = interestTypesDict;
 
   // TODO
-  selectedInterestsMap: any = {
-    'ski-jumping': false,
-    'basketball': true,
-    'soccer': true,
-  };
+  selectedInterestsMap: any = {};
 
   availableInterestLabels: string[] = [];
 
@@ -60,7 +57,11 @@ export class MyFormValidationTaskComponent implements OnInit {
     event.preventDefault();
 
     // TODO 4: include selectedInterestsMap in form values
-    console.log('form task value');
+    const allFormValues = {
+      ...this.myForm.value,
+      selectedInterestsMap: this.selectedInterestsMap
+    };
+    console.log('AJAX REQ: form task value', allFormValues);
   }
 
   ngOnInit(): void {
@@ -100,5 +101,14 @@ export class MyFormValidationTaskComponent implements OnInit {
     const availableInterestsFormArray = this.formBuilder.array(interestsFormCtrls);
 
     this.myForm.setControl('availableInterests', availableInterestsFormArray);
+
+    this.availableInterestsCtrl.valueChanges
+      .subscribe((interestValues) => {
+        interestValues.forEach((value: boolean, i: number) => {
+          const interestName = this.availableInterestLabels[i];
+          // console.log('interestName:', interestName, value);
+          this.selectedInterestsMap[interestName] = value;
+        });
+      });
   }
 }
