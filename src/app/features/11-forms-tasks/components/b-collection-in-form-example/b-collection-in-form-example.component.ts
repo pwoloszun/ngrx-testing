@@ -46,6 +46,8 @@ export class BCollectionInFormExampleComponent implements OnInit {
       toppings: this.buildToppingsArrayCtrl(),
       selectedSauce: [this.availableSauces[0].id],
     });
+
+    // this.pizzaForm.get('name')?.valueChanges.pipe
   }
 
   private buildToppingsArrayCtrl(): FormArray {
