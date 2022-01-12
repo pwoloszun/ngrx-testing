@@ -4,18 +4,9 @@ import { startsWithCapitalLetterValidator } from './starts-with-capital-letter.v
 
 export const defaultNameValidator: ValidatorFn = (control) => {
   const requiredValidationResult = Validators.required(control);
-  const minLengthValidationResult = Validators.minLength(3)(control);
-  const capitalLetterValidationResult = startsWithCapitalLetterValidator(control);
+  // TODO: min length 3
+  // TODO: starts with capital letter
 
-  const allValidationsResult = Object.assign({},
-    requiredValidationResult,
-    minLengthValidationResult,
-    capitalLetterValidationResult
-  );
-
-  if (Object.keys(allValidationsResult).length < 1) {
-    return null;
-  } else {
-    return allValidationsResult;
-  }
+  //  TODO return merged validation results
+  return null;
 };
