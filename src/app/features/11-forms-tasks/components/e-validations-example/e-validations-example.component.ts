@@ -48,6 +48,8 @@ export class EValidationsExampleComponent implements OnInit {
 
   private initForm() {
     this.myForm = this.fb.group({
+      yyyUuu: ['', [Validators.required, Validators.minLength(2)]],
+
       fullName: ['', [defaultNameValidator]],
       title: ['', [startsWithCapitalLetterValidator]],
       dateOfBirth: ['', Validators.pattern(/^\d{4}-\d{2}-\d{2}$/)],

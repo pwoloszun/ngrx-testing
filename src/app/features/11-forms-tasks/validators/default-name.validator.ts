@@ -8,5 +8,15 @@ export const defaultNameValidator: ValidatorFn = (control) => {
   // TODO: starts with capital letter
 
   //  TODO return merged validation results
-  return null;
+  // return null;
+
+  const result = {
+    invalidDefaultName: true
+  };
+
+  return {
+    ...requiredValidationResult,
+    ...result
+  };
+
 };
