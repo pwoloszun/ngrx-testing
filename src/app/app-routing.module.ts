@@ -46,6 +46,11 @@ const appRoutes: Routes = [
   },
 
   {
+    path: 'forms-tasks',
+    loadChildren: () => import('./features/11-forms-tasks/forms-tasks.module').then((m) => m.FormsTasksModule),
+  },
+
+  {
     path: 'routing-tasks',
     loadChildren: () => import('./features/routing-tasks/routing-tasks.module').then((m) => m.RoutingTasksModule),
   },
