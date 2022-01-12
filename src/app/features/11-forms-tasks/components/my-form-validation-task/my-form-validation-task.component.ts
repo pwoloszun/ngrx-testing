@@ -65,19 +65,12 @@ export class MyFormValidationTaskComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // TODO 1:
-    //    if !areDetailsEnabled then set 'height' to null
     this.areDetailsEnabledCtrl
       .valueChanges.subscribe((isDetailsEnabled) => {
         if (!isDetailsEnabled) {
           this.heightCtrl.setValue(null);
         }
       });
-
-    getInterestsByType$('sport').subscribe((interests) => {
-      // console.log('interests:', interests);
-
-    });
 
     this.selectedInterestTypeCtrl.valueChanges.pipe(
       switchMap((interestType) => {
@@ -89,14 +82,6 @@ export class MyFormValidationTaskComponent implements OnInit {
       this.buildAvailableInterests(interests);
     });
 
-    // TODO 2:
-    //    on selectedInterestType change do:
-    //      getInterestsByType$
-    //      buildAvailableInterests
-
-    // TODO 3:
-    //    on form value changes do:
-    //      based on availableInterests update selectedInterestsMap
   }
 
   private buildAvailableInterests(interests: string[]) {
