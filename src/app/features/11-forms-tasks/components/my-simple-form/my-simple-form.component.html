@@ -22,18 +22,13 @@
 
     <div>
       City:
-      <select>
+      <select formControlName="city">
         <option value=""
                 disabled>Choose your city</option>
         <!-- TODO -->
-        <option>
-          City 1 TODO
-        </option>
-        <option>
-          City 2 TODO
-        </option>
-        <option>
-          City 3 TODO
+        <option [ngValue]="city.value"
+                *ngFor="let city of cities">
+          {{ city.label }}
         </option>
       </select>
     </div>
@@ -47,23 +42,14 @@
   <div>
     Do you want to receive emails:
     <div>
-      <label>
-        <input type="radio" />
-        Mail Freq 1 TODO
+      <label *ngFor="let emailFreq of emailsFrequencyOptions">
+        <input formControlName="emailsFrequency"
+               [value]="emailFreq.value"
+               type="radio" />
+        {{ emailFreq.label }}
       </label>
     </div>
-    <div>
-      <label>
-        <input type="radio" />
-        Mail Freq 2 TODO
-      </label>
-    </div>
-    <div>
-      <label>
-        <input type="radio" />
-        Mail Freq 3 TODO
-      </label>
-    </div>
+
   </div>
 
   <div>

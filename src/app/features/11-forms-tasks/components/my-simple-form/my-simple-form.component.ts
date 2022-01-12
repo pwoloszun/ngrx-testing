@@ -29,10 +29,10 @@ export class MySimpleFormComponent {
     password: [''],
 
     primaryAddress: this.formBuilder.group({
-      // city: '',
+      city: [''],
       street: [''],
     }),
-    // emailsFrequency: '',
+    emailsFrequency: [''],
     isAgreementConfirmed: [false]
   });
 
