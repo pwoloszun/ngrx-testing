@@ -4,19 +4,29 @@
   <h3>Simple Form</h3>
   Name: <input [formControl]="singleNameCtrl" />
 
-  Age: <input [formControl]="singleNameCtrl"
+  Age: <input [formControl]="singleAgeCtrl"
          type="number" />
 
   <button type="submit">Sub single ctrl</button>
 </form>
 
+
+
+
+
+
+
 <hr />
 
-<form [formGroup]="formGroupOne"
+<form [formGroup]="formGroupTwo"
       (ngSubmit)="submitHandler()"
       class="myForm">
 
   <div>
+    <input formControlName="yyyUuu"
+           type="number" />
+
+
     <input formControlName="login"
            placeholder="Enter Login"
            type="text" />
@@ -62,4 +72,4 @@
 
 </form>
 
-<nts-form-info [formGroup]="formGroupOne"></nts-form-info>
+<nts-form-info [formGroup]="formGroupTwo"></nts-form-info>

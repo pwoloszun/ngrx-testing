@@ -25,19 +25,21 @@ export class ABuildFormExampleComponent implements OnInit {
 
   ngOnInit(): void {
     this.initSingleCtrls();
-    this.initFormOne();
+    // this.initFormOne();
     this.initFormTwo();
 
     // TODO: read/write values
   }
 
   private initSingleCtrls(): void {
-    this.singleNameCtrl = new FormControl('');
-    this.singleAgeCtrl = new FormControl(0);
+    this.singleNameCtrl = new FormControl('abc');
+    this.singleAgeCtrl = new FormControl(123);
   }
+
 
   private initFormOne(): void {
     this.formGroupOne = new FormGroup({
+      yyyUuu: new FormControl(456),
       login: new FormControl(''),
       password: new FormControl(''),
       luckyNumber: new FormControl(0),
@@ -49,7 +51,10 @@ export class ABuildFormExampleComponent implements OnInit {
 
   private initFormTwo(): void {
     this.formGroupTwo = this.fb.group({
-      login: [''],
+      yyyUuu: [456],
+      login: ['batm2'],
+      login2: new FormControl('batm2'),
+      login3: this.fb.control('batm2'),
       password: [''],
       luckyNumber: [0],
       dob: ['1996-01-14'],
