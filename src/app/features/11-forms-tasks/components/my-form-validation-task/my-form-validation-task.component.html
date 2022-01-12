@@ -62,19 +62,15 @@
       <label>Choose your Interests</label>
     </p>
 
-    <label>
-      <input type="checkbox" />
-      Interest 1 TODO
-    </label>
-    <label>
-      <input type="checkbox" />
-      Interest 2 TODO
-    </label>
-    <label>
-      <input type="checkbox" />
-      Interest 3 TODO
-    </label>
+    <label formArrayName="availableInterests"
+           *ngFor="let intCtrl of availableInterestsCtrl.controls; let i = index;">
 
+      <input [formControlName]="i"
+             type="checkbox" />
+
+      {{ availableInterestLabels[i] }}
+
+    </label>
   </div>
 
 

@@ -41,6 +41,10 @@ export class MyFormValidationTaskComponent implements OnInit {
     return this.myForm.get('areDetailsEnabled') as FormControl;
   }
 
+  get availableInterestsCtrl() {
+    return this.myForm.get('availableInterests') as FormArray;
+  }
+
   get heightCtrl() {
     return this.myForm.get('height') as FormControl;
   }
@@ -65,6 +69,13 @@ export class MyFormValidationTaskComponent implements OnInit {
       });
 
 
+    console.log('qq');
+    getInterestsByType$('sport').subscribe((interests) => {
+      console.log('interests:', interests);
+      this.availableInterestLabels = interests;
+      this.buildAvailableInterests(interests);
+    });
+
     // TODO 2:
     //    on selectedInterestType change do:
     //      getInterestsByType$
@@ -75,9 +86,14 @@ export class MyFormValidationTaskComponent implements OnInit {
     //      based on availableInterests update selectedInterestsMap
   }
 
-  buildAvailableInterests(interests: string[]) {
+  private buildAvailableInterests(interests: string[]) {
     // TODO labels
     // TODO checkbox values
-    //    this.myForm.setControl('availableInterests', this.formBuilder.array([]));
+    const interestsFormCtrls = interests.map((int) => {
+      return this.formBuilder.control(false);
+    });
+    const availableInterestsFormArray = this.formBuilder.array(interestsFormCtrls);
+
+    this.myForm.setControl('availableInterests', availableInterestsFormArray);
   }
 }
