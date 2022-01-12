@@ -60,6 +60,10 @@ export class ABuildFormExampleComponent implements OnInit {
       dob: ['1996-01-14'],
       hasAgreed: [false],
       comments: [''],
+      myDetails: this.fb.group({
+        distance: [200],
+        myName: ['a qq!']
+      })
     });
   }
 }
