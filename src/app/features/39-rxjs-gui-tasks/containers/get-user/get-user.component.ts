@@ -25,6 +25,18 @@ export class GetUserComponent implements OnDestroy {
   handleDownloadUser() {
     const userId = 100;
 
+    const sub = this.fakeApiService
+      .failedRequest$(`/user/${userId}`, `Cant't find User ID=100`).pipe(
+        retry(2),
+        catchError((err) => {
+          this.openErrorSnackBar(err.message, 5);
+          this.logError(err);
+          return NEVER;
+        })
+      ).subscribe();
+
+    this.allSubscriptions.push(sub);
+
     // TODO: fail fetch '/user/:id' with error `Cant't find User ID=100`
     //  then: retry up to 2 times (of total 3)
     //  then: handle error:
