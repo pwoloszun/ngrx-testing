@@ -15,7 +15,12 @@ export class MyFormValidationTaskComponent implements OnInit {
   allCountries = countriesDict;
   allInterestTypes = interestTypesDict;
 
-  selectedInterestsMap: any = {};
+  // TODO
+  selectedInterestsMap: any = {
+    'ski-jumping': false,
+    'basketball': true,
+    'soccer': true,
+  };
 
   availableInterestLabels: string[] = [];
 
