@@ -33,63 +33,33 @@ export class MyFormValidationTaskComponent implements OnInit {
 
   });
 
-  get areDetailsEnabledControl(): FormControl {
-    return this.myForm.get('areDetailsEnabled') as FormControl;
-  }
-
-  get selectedInterestTypeControl(): FormControl {
-    return this.myForm.get('selectedInterestType') as FormControl;
-  }
-
-  get availableInterestsControls(): AbstractControl[] {
-    return (this.myForm.get('availableInterests') as FormArray).controls;
-  }
-
-  constructor(private formBuilder: FormBuilder) {
-  }
+  constructor(private formBuilder: FormBuilder) { }
 
   submitHandler(event: any) {
     event.preventDefault();
-    const { value } = this.myForm;
-    value.selectedInterestsMap = this.selectedInterestsMap;
-    console.log('form task value', value);
+
+    // TODO 4: include selectedInterestsMap in form values
+    console.log('form task value');
   }
 
   ngOnInit(): void {
-    this.areDetailsEnabledControl.valueChanges.subscribe((areDetailsEnabled) => {
-      if (!areDetailsEnabled) {
-        this.myForm.get('height')?.setValue(null);
-      }
-    });
-
-    this.selectedInterestTypeControl.valueChanges
-      .pipe(
-        switchMap((interestType) => {
-          return getInterestsByType$(interestType);
-        })
-      )
-      .subscribe((interests: string[]) => {
-        this.buildAvailableInterests(interests);
-      });
+    // TODO 1:
+    //    if !areDetailsEnabled then set 'height' to null
 
 
-    this.myForm.valueChanges
-      .pipe(
-        map((formValue) => formValue.availableInterests),
-      )
-      .subscribe((selected: boolean[]) => {
-        this.availableInterestLabels.forEach((interest, i) => {
-          this.selectedInterestsMap[interest] = selected[i];
-        });
-      });
+    // TODO 2:
+    //    on selectedInterestType change do:
+    //      getInterestsByType$
+    //      buildAvailableInterests
+
+    // TODO 3:
+    //    on form value changes do:
+    //      based on availableInterests update selectedInterestsMap
   }
 
   buildAvailableInterests(interests: string[]) {
-    this.availableInterestLabels = interests;
-    const selectedValues = interests.map((interest) => {
-      const isSelected = !!this.selectedInterestsMap[interest];
-      return this.formBuilder.control(isSelected);
-    });
-    this.myForm.setControl('availableInterests', this.formBuilder.array(selectedValues));
+    // TODO labels
+    // TODO checkbox values
+    //    this.myForm.setControl('availableInterests', this.formBuilder.array([]));
   }
 }

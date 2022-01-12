@@ -4,14 +4,12 @@
   <h5>My Form Validation task</h5>
 
   <div>
-    <input formControlName="fullName"
-           placeholder="Your name?"
+    <input placeholder="Your name?"
            type="text" />
   </div>
 
   <div>
-    <input formControlName="age"
-           placeholder="Enter your age"
+    <input placeholder="Enter your age"
            type="number" />
   </div>
 
@@ -19,16 +17,13 @@
 
   <div>
     <label>
-      <input formControlName="areDetailsEnabled"
-             type="checkbox" />
+      <input type="checkbox" />
       Enable details
     </label>
   </div>
 
-  <div *ngIf="areDetailsEnabledControl.value"
-       class="checkboxCont">
-    <input formControlName="height"
-           type="number"
+  <div class="checkboxCont">
+    <input type="number"
            placeholder="Your height" />
   </div>
 
@@ -36,10 +31,12 @@
 
   <div>
     <label>Select Country</label>
-    <select formControlName="country">
-      <option *ngFor="let country of allCountries"
-              [ngValue]="country.id">
-        {{ country.name }}
+    <select>
+      <option>
+        Country 1 TODO
+      </option>
+      <option>
+        Country 2 TODO
       </option>
     </select>
   </div>
@@ -48,24 +45,32 @@
 
   <div>
     <label>Select your interest type</label>
-    <select formControlName="selectedInterestType">
-      <option *ngFor="let interestType of allInterestTypes"
-              [ngValue]="interestType.id">
-        {{ interestType.name }}
+    <select>
+      <option>
+        Interest Type 1 TODO
+      </option>
+      <option>
+        Interest Type 2 TODO
       </option>
     </select>
   </div>
 
-  <div formArrayName="availableInterests">
+  <div>
     <p>
       <label>Choose your Interests</label>
     </p>
 
-    <label *ngFor="let interest of availableInterestsControls; let i = index">
-      <input [formControlName]="i"
-             id="interest-{{i}}"
-             type="checkbox" />
-      {{ availableInterestLabels[i] }}
+    <label>
+      <input type="checkbox" />
+      Interest 1 TODO
+    </label>
+    <label>
+      <input type="checkbox" />
+      Interest 2 TODO
+    </label>
+    <label>
+      <input type="checkbox" />
+      Interest 3 TODO
     </label>
 
   </div>
@@ -74,8 +79,7 @@
   <hr />
 
   <div>
-    <button [disabled]="!myForm.valid"
-            type="submit">Submit</button>
+    <button type="submit">Submit</button>
   </div>
 
   <hr />
