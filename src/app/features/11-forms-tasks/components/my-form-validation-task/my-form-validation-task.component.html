@@ -35,27 +35,26 @@
   <div>
     <label>Select Country</label>
     <select>
-      <option>
-        Country 1 TODO
-      </option>
-      <option>
-        Country 2 TODO
-      </option>
+      <option> country TODO</option>
     </select>
   </div>
+
 
   <hr />
 
   <div>
     <label>Select your interest type</label>
-    <select>
-      <option>
-        Interest Type 1 TODO
-      </option>
-      <option>
-        Interest Type 2 TODO
+    <select formControlName="selectedInterestType">
+      <option value=""
+              disabled> </option>
+      <option *ngFor="let intType of allInterestTypes"
+              [ngValue]="intType.id">
+        {{ intType.name }}
       </option>
     </select>
+
+    <h1>TMP: {{ selectedInterestTypeCtrl.value }}</h1>
+
   </div>
 
   <div>

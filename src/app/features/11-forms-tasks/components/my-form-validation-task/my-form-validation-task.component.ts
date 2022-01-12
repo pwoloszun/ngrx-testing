@@ -33,6 +33,10 @@ export class MyFormValidationTaskComponent implements OnInit {
 
   });
 
+  get selectedInterestTypeCtrl() {
+    return this.myForm.get('selectedInterestType') as FormControl;
+  }
+
   get areDetailsEnabledCtrl() {
     return this.myForm.get('areDetailsEnabled') as FormControl;
   }
