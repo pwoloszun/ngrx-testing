@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { of, Subscription } from 'rxjs';
-import { debounceTime, distinctUntilChanged, mergeMap, concatMap, switchMap, filter, delay } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, mergeMap, concatMap, switchMap, filter, delay, mergeMapTo } from 'rxjs/operators';
 
 import { SearchApiService } from '@api/search-api.service';
 
-const MIN_SEARCH_QUERY_LENGTH = 2;
+const MIN_SEARCH_QUERY_LENGTH = 3;
 
 @Component({
   selector: 'nts-my-search',
@@ -16,9 +16,14 @@ export class MySearchComponent {
 
   searchTextCtrl = new FormControl('');
 
-  gggHhh$ = this.searchTextCtrl.valueChanges.pipe(
-
-  )
+  searchResults$ = this.searchTextCtrl.valueChanges.pipe(
+    debounceTime(600),
+    filter((query) => query.length >= MIN_SEARCH_QUERY_LENGTH),
+    distinctUntilChanged(),
+    switchMap((query: string) => {
+      return this.searchApiService.querySearch$(query);
+    })
+  );
 
   // TODO searchResults$
   //  handle search query value changes:
@@ -27,16 +32,6 @@ export class MySearchComponent {
   //    then ignore if query has not changed
   //    then send querySearch$ request to server & cancel any previous pending request(s)
   //    then render search results on UI
-
-
-  searchResults$ = of([
-    'bob',
-    'batman',
-    'imba!',
-    'a qq!'
-  ]).pipe(
-    delay(1200)
-  );
 
   // resultsTmp: string[] = [];
 
