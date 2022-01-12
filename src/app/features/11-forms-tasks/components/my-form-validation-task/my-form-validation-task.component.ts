@@ -74,10 +74,8 @@ export class MyFormValidationTaskComponent implements OnInit {
         }
       });
 
-
-    console.log('qq');
     getInterestsByType$('sport').subscribe((interests) => {
-      console.log('interests:', interests);
+      // console.log('interests:', interests);
       this.availableInterestLabels = interests;
       this.buildAvailableInterests(interests);
     });
