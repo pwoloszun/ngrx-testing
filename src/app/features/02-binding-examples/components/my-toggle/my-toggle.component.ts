@@ -32,30 +32,3 @@ export class MyToggleComponent implements OnInit {
   }
 
 }
-
-
-
-
-
-class MyPerson {
-
-  private _name = 'bob';
-
-  get name() {
-    return this._name.toUpperCase();
-  }
-
-  set name(value: string) {
-
-  }
-
-}
-
-// client code
-const bob = new MyPerson();
-console.log('name:', bob.name);
-
-bob.name = 'ed';
-
-
-
