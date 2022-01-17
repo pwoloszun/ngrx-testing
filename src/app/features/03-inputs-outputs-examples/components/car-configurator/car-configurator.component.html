@@ -9,7 +9,10 @@
 
   <div>
     <nts-option-picker label="Choose engine type"
-                       [options]="engines"></nts-option-picker>
+                       [options]="engines"
+                       optionSelect="engineChangeHandler($event)"
+
+                       ></nts-option-picker>
 
     <nts-option-picker label="Select color"
                        [options]="colors"></nts-option-picker>
