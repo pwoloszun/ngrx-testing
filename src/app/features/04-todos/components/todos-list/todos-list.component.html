@@ -1,5 +1,5 @@
 <mat-card class="todos-list-container">
-  <mat-card-title>Todos List (TODO)</mat-card-title>
+  <mat-card-title>Todos List ({{ items.length }})</mat-card-title>
 
   <mat-list role="list">
 
@@ -9,7 +9,8 @@
       <h2 matLine>
         {{ item.title }}
       </h2>
-      <button mat-icon-button
+      <button (click)="removeClickHandler(item)"
+              mat-icon-button
               class="remove-btn"
               aria-label="Remove"
               role="button">

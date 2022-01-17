@@ -18,7 +18,13 @@ export interface TodoListItem {
 })
 export class TodosListComponent<T extends TodoListItem> implements OnInit {
 
-  @Input() items!: TodoListItem[];
+  @Input() items!: T[];
+
+  @Output() itemRemove = new EventEmitter<T>();
+
+  removeClickHandler(item: T) {
+    this.itemRemove.emit(item);
+  }
 
   ngOnInit() {
   }
