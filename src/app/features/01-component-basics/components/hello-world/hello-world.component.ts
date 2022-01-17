@@ -5,11 +5,22 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './hello-world.component.html',
   styleUrls: ['./hello-world.component.css']
 })
-export class HelloWorldComponent implements OnInit {
+export class HelloWorldComponent {
 
-  // myData = `batman!!`;
+  // state - SINGLE SOURCE OF TRUTH
+  myData = `batman!! ${Math.random()}`;
 
-  ngOnInit() { }
+  person = {
+    name: 'bob',
+    age: 123,
+    children: [{ name: 'kate' }]
+  };
+
+  constructor() {
+    setTimeout(() => {
+      this.person.children[0].name = `catlyn ${Math.random()}`;
+    }, 2000);
+  }
 
 }
 
