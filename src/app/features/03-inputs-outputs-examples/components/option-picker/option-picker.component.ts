@@ -17,6 +17,12 @@ export class OptionPickerComponent implements OnInit {
   @Input() label!: string;
   @Input() options: IOptionPickerOption[] = [];
 
+  @Output() optionSelect = new EventEmitter<IOptionPickerOption>();
+
+  optionClickHandler(op: IOptionPickerOption) {
+    this.optionSelect.emit(op);
+  }
+
   ngOnInit() {
   }
 }
