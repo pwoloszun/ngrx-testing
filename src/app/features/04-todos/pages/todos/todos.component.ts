@@ -4,6 +4,9 @@ import { Observable } from 'rxjs';
 import { TodoFormValues } from '../../components/todos-form/todos-form.component';
 import { Todo, TODOS_DATA } from '../../fake-data/todos-data';
 
+// Smart component/Container
+//    GOOD: WHAT app/functionality should do
+//    BAD: HOW app implements application logic
 @Component({
   selector: 'nts-todos',
   templateUrl: './todos.component.html',
