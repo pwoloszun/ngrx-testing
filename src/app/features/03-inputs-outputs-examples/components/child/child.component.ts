@@ -8,7 +8,9 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class ChildComponent implements OnInit {
 
   @Input() text!: string;
+
   @Output() messageSent = new EventEmitter<string>();
+
 
   childText!: string;
 
