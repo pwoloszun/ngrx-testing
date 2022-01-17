@@ -1,10 +1,14 @@
 <h3 class="hello-world">
   Hello world!!
-
-  {{ myData.toUpperCase() }}
-
 </h3>
 
-<h1>My person: {{ person.children[0].name }}</h1>
 
-<!-- <img [src]="photoUrl" /> -->
+<ul>
+  <li *ngFor="let person of people"
+      (click)="personClickHandler(person)">
+    <div>
+      <h1>{{ person.name }}</h1>
+      <small>{{ person.id }}</small>
+    </div>
+  </li>
+</ul>
