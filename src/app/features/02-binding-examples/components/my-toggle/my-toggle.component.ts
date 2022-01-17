@@ -7,21 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyToggleComponent implements OnInit {
 
-  // state
+  // state primary/essential
   isVisible = true;
-  btnCssClasses: any = { 'mat-primary': true };
-  btnText = 'Toggle Hide';
+
+  // state derived/computed
+  get btnCssClasses(): any {
+    return this.isVisible ? { 'mat-primary': true } : { 'mat-warn': true };
+  }
+
+  get btnText(): string {
+    return this.isVisible ? 'Toggle Hide' : 'Toggle Show';
+  }
 
   toggleClickHandler() {
-    if (this.isVisible) {
-      this.isVisible = false;
-      this.btnCssClasses = { 'mat-warn': true };
-      this.btnText = 'Toggle Show';
-    } else {
-      this.isVisible = true;
-      this.btnCssClasses = { 'mat-primary': true };
-      this.btnText = 'Toggle Hide';
-    }
+    this.isVisible = !this.isVisible;
   }
 
   ngOnInit() {
