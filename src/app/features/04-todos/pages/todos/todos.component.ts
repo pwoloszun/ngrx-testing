@@ -4,6 +4,7 @@ import { TodoFormValues } from '../../components/todos-form/todos-form.component
 import { Todo } from '../../fake-data/todos-data';
 import { ManageTodosService } from '../../services/manage-todos.service';
 
+// thin
 // Smart component/Container
 //    GOOD: WHAT app/functionality should do
 //    BAD: HOW app implements application logic
@@ -17,6 +18,7 @@ export class TodosComponent implements OnInit {
     return this.manageTodosService.todos;
   }
 
+  // feature facade
   constructor(private manageTodosService: ManageTodosService) { }
 
   todoRemoveHandler(todo: Todo) {
