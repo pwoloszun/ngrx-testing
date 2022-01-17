@@ -7,8 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TwoWayBindingExampleComponent implements OnInit {
 
+  // state
   message: any;
   types: string[] = [];
+
+  messageTextChangeHandler($event: string) {
+    this.message.text = $event;
+    // ajax req
+    console.log('EMULATED ajax req:',);
+  }
 
   ngOnInit(): void {
     this.types = [
