@@ -2,10 +2,11 @@
   <mat-card-title>Todo Form</mat-card-title>
   <div class="form-container">
 
-    <form>
+    <form (ngSubmit)="submitHandler()">
       <mat-form-field>
 
-        <input matInput
+        <input [(ngModel)]="titleTmp"
+               matInput
                placeholder="Title"
                name="title" />
 
@@ -13,7 +14,8 @@
 
       <mat-form-field>
 
-        <input matInput
+        <input [(ngModel)]="descriptionTmp"
+               matInput
                placeholder="Description"
                name="description" />
 

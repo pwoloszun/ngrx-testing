@@ -12,7 +12,19 @@ export interface TodoFormValues {
 })
 export class TodosFormComponent implements OnInit {
 
-  // TODO
+  titleTmp = '';
+  descriptionTmp = '';
+
+  @Output() createItem = new EventEmitter<TodoFormValues>();
+
+  submitHandler() {
+    const params: TodoFormValues = {
+      title: this.titleTmp,
+      description: this.descriptionTmp
+    };
+    this.createItem.emit(params);
+  }
+
   ngOnInit() {
   }
 
