@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { TodoFormValues } from '../../components/todos-form/todos-form.component';
+import { TODOS_DATA } from '../../fake-data/todos-data';
 
 @Component({
   selector: 'nts-todos',
@@ -9,7 +10,7 @@ import { TodoFormValues } from '../../components/todos-form/todos-form.component
 })
 export class TodosComponent implements OnInit {
 
-  constructor() { }
+  todos = TODOS_DATA;
 
   ngOnInit() {
     // TODO
