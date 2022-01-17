@@ -16,6 +16,8 @@ export class HelloWorldComponent {
     children: [{ name: 'kate' }]
   };
 
+  photoUrl = 'http://costam.jpg';
+
   constructor() {
     setTimeout(() => {
       this.person.children[0].name = `catlyn ${Math.random()}`;
