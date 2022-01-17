@@ -4,10 +4,10 @@
   <mat-list role="list">
 
     <!-- FOR -->
-    <mat-list-item>
+    <mat-list-item *ngFor="let item of items">
       <mat-divider></mat-divider>
       <h2 matLine>
-        TITLE_TODO
+        {{ item.title }}
       </h2>
       <button mat-icon-button
               class="remove-btn"
@@ -17,12 +17,15 @@
       </button>
 
       <p matLine>
-        <span class="demo-2"> TITLE_DESCRIPTION </span>
+        <span class="demo-2">
+          {{ item.description }}
+        </span>
       </p>
     </mat-list-item>
 
 
   </mat-list>
 
-  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  <mat-progress-bar *ngIf="!items"
+                    mode="indeterminate"></mat-progress-bar>
 </mat-card>

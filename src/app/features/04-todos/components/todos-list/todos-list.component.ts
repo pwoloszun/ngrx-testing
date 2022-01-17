@@ -18,7 +18,7 @@ export interface TodoListItem {
 })
 export class TodosListComponent<T extends TodoListItem> implements OnInit {
 
-  //TODO
+  @Input() items!: TodoListItem[];
 
   ngOnInit() {
   }
