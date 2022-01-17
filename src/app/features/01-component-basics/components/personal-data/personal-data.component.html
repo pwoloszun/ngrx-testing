@@ -1,12 +1,12 @@
 <div>
   <h1>
     <label>Name:</label>
-    NAME_TODO
+    {{ batman.name }}
   </h1>
   <h3>
-    Age: AGE_TODO
+    Age: {{ batman.age }}
   </h3>
-  <p><label>email:</label> MAIL_TODO</p>
+  <p><label>email:</label> {{ batman.email }} </p>
 
-  IMAGE_TODO
+  <img [src]="batman.url" />
 </div>
