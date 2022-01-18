@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Todo } from '../../fake-data/todos-data';
 
-import { ManageTodosService } from '../../services/manage-todos.service';
+import { InMemoryManageTodosService } from '../../services/in-memory-manage-todos.service';
+import { TodoFormValues } from '../todos-form/todos-form.component';
 
 @Component({
   selector: 'nts-in-memory-todo-list',
@@ -14,7 +16,7 @@ export class InMemoryTodoListComponent implements OnInit {
   }
 
   // feature facade
-  constructor(private manageTodosService: ManageTodosService) { }
+  constructor(private manageTodosService: InMemoryManageTodosService) { }
 
   todoRemoveHandler(todo: Todo) {
     this.manageTodosService.removeTodo(todo);

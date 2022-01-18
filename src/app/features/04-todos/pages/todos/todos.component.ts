@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { TodoFormValues } from '../../components/todos-form/todos-form.component';
 import { Todo } from '../../fake-data/todos-data';
+import { InMemoryManageTodosService } from '../../services/in-memory-manage-todos.service';
 import { ManageTodosService } from '../../services/manage-todos.service';
 
 // thin
@@ -19,7 +20,9 @@ export class TodosComponent implements OnInit {
   }
 
   // feature facade
+  // constructor(private manageTodosService: InMemoryManageTodosService) { }
   constructor(private manageTodosService: ManageTodosService) { }
+
 
   todoRemoveHandler(todo: Todo) {
     this.manageTodosService.removeTodo(todo);
