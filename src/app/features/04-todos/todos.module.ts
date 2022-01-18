@@ -7,6 +7,7 @@ import { TodosListComponent } from './components/todos-list/todos-list.component
 import { TodosFormComponent } from './components/todos-form/todos-form.component';
 import { TodosComponent } from './pages/todos/todos.component';
 import { TodosRoutingModule } from './todos-routing.module';
+import { InMemoryTodoListComponent } from './components/in-memory-todo-list/in-memory-todo-list.component';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { TodosRoutingModule } from './todos-routing.module';
     TodosListComponent,
     TodosFormComponent,
     TodosComponent,
+    InMemoryTodoListComponent,
   ],
 })
 export class TodosModule {
