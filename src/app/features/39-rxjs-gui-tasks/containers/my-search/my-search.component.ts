@@ -23,22 +23,6 @@ export class MySearchComponent {
     switchMap((query) => this.searchApiService.querySearch$(query)),
   );
 
-  // TODO searchResults$
-  //  handle search query value changes:
-  //    then debounce for 400ms (1200ms)
-  //    then ignore query if shorter than MIN_SEARCH_QUERY_LENGTH
-  //    then ignore if query has not changed
-  //    then send querySearch$ request to server & cancel any previous pending request(s)
-  //    then render search results on UI
-
-  // searchResults$ = of([
-  //   'bob',
-  //   'batman',
-  //   'imba!'
-  // ]).pipe(
-  //   delay(1200)
-  // );
-
   constructor(private searchApiService: SearchApiService) { }
 
 }
