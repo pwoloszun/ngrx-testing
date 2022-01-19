@@ -30,6 +30,16 @@ export class GetUserComponent implements OnDestroy {
     //  then: handle error:
     //    show snackbar with error msg for 10secs
     //    & log error at: '/log/error'
+    this.fakeApiService
+      .failedRequest$(`/user/${userId}`, `Cand download user with ID=${userId}`).pipe(
+        retry(2),
+        catchError((err) => {
+          this.openErrorSnackBar(err.message, 5);
+          this.logError(err);
+          return NEVER;
+        })
+      ).subscribe(fullObserver('handle errro example'));
+
   }
 
   ngOnDestroy() {
