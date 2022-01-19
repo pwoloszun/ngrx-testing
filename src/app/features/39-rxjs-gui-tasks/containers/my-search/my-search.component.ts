@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { of, Subscription } from 'rxjs';
-import { debounceTime, distinctUntilChanged, mergeMap, concatMap, switchMap, filter } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, mergeMap, concatMap, switchMap, filter, delay } from 'rxjs/operators';
 
 import { SearchApiService } from '@api/search-api.service';
 
@@ -28,11 +28,9 @@ export class MySearchComponent {
     'bob',
     'batman',
     'imba!'
-  ]);
-
-  tmpSearchResults: string[] = [];
-
-  private subscriptions: Subscription[] = [];
+  ]).pipe(
+    delay(1200)
+  );
 
   constructor(private searchApiService: SearchApiService) { }
 
@@ -42,15 +40,6 @@ export class MySearchComponent {
     //   error(err) { },
     //   complete() { },
     // });
-
-    const sub = this.searchResults$.subscribe((results) => {
-      this.tmpSearchResults = results;
-    });
-    this.subscriptions.push(sub);
-  }
-
-  ngOnDestroy() {
-    this.subscriptions.forEach((s) => s.unsubscribe());
   }
 
 }
