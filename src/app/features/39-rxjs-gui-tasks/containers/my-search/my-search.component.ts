@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { of, Subscription } from 'rxjs';
+import { Observable, of, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged, mergeMap, concatMap, switchMap, filter, delay, debounce, exhaustMap } from 'rxjs/operators';
 
 import { SearchApiService } from '@api/search-api.service';
@@ -16,13 +16,29 @@ export class MySearchComponent {
 
   searchTextCtrl = new FormControl('');
 
+  // searchResults$ = this.searchTextCtrl.valueChanges.pipe(
+  //   debounceTime(400),
+  //   filter((query) => query.length >= MIN_SEARCH_QUERY_LENGTH),
+  //   distinctUntilChanged(),
+  //   switchMap((query) => this.searchApiService.querySearch$(query)),
+  // );
+
   searchResults$ = this.searchTextCtrl.valueChanges.pipe(
-    debounceTime(400),
-    filter((query) => query.length >= MIN_SEARCH_QUERY_LENGTH),
-    distinctUntilChanged(),
+    quickSearch(400, MIN_SEARCH_QUERY_LENGTH),
     switchMap((query) => this.searchApiService.querySearch$(query)),
   );
 
   constructor(private searchApiService: SearchApiService) { }
 
+}
+
+// ===
+function quickSearch(debounceInMs: number, minLength: number) {
+  return function (source$: Observable<any>) {
+    return source$.pipe(
+      debounceTime(debounceInMs),
+      filter((query) => query.length >= minLength),
+      distinctUntilChanged(),
+    );
+  };
 }
