@@ -34,12 +34,4 @@ export class MySearchComponent {
 
   constructor(private searchApiService: SearchApiService) { }
 
-  ngOnInit() {
-    // this.searchResults$.subscribe({
-    //   next(val) { },
-    //   error(err) { },
-    //   complete() { },
-    // });
-  }
-
 }
