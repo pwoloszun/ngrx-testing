@@ -2,11 +2,20 @@ import { merge } from 'lodash';
 import { render, screen, within } from '@testing-library/angular';
 import userEvent from '@testing-library/user-event';
 
+import { SharedModule } from '@app/shared/shared.module';
+
 import { PureOptionPickerComponent } from './pure-option-picker.component';
 
 describe('PureOptionPickerComponent', () => {
 
-  fit('should render input title', () => {
+  fit('should render input title', async () => {
+    await render(PureOptionPickerComponent, {
+      componentProperties: {},
+      imports: [
+        SharedModule
+      ]
+    });
+
     expect(true).toEqual(false);
   });
 
