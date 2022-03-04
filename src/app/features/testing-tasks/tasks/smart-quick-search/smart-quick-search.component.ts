@@ -4,7 +4,7 @@ import { debounceTime, distinctUntilChanged, filter, switchMap, tap } from 'rxjs
 
 import { NbaPlayersApiService } from '@app/core/api/nba/nba-players-api.service';
 
-const QUERY_MIN_LENGTH = 1;
+const QUERY_MIN_LENGTH = 2;
 
 @Component({
   selector: 'nts-smart-quick-search',

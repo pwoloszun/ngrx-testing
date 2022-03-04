@@ -1,11 +1,20 @@
+import { NbaPlayersApiService } from '@app/core/api/nba/nba-players-api.service';
+import { SharedModule } from '@app/shared/shared.module';
 import { render, screen, within } from '@testing-library/angular';
 import userEvent from '@testing-library/user-event';
 
+import { stubServerApi } from 'src/test/utils/server-stub';
+
 import { SmartQuickSearchComponent } from './smart-quick-search.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { PureListComponent } from '../pure-list/pure-list.component';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('SmartQuickSearchComponent', () => {
 
-  xit('should render search field', async () => {
+  fit('should render search field', async () => {
+    await renderComponent();
+
     expect(true).toEqual(false);
   });
 
@@ -14,6 +23,23 @@ describe('SmartQuickSearchComponent', () => {
   });
 
 });
+
+
+async function renderComponent() {
+  await render(SmartQuickSearchComponent, {
+    declarations: [
+      PureListComponent,
+    ],
+    providers: [
+      NbaPlayersApiService,
+    ],
+    imports: [
+      ReactiveFormsModule,
+      HttpClientModule,
+      SharedModule,
+    ]
+  });
+}
 
 
 // const jsonEntities = [
