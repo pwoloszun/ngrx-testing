@@ -4,23 +4,30 @@ import userEvent from '@testing-library/user-event';
 
 import { SharedModule } from '@app/shared/shared.module';
 
+import { createEventEmitterSpy } from '../../../../../test/utils/create-spy';
 import { PureOptionPickerComponent } from './pure-option-picker.component';
 
 describe('PureOptionPickerComponent', () => {
 
-  fit('should render input title', async () => {
-    await render(PureOptionPickerComponent, {
-      componentProperties: {},
-      imports: [
-        SharedModule
-      ]
+  fit('should render input title & button for each input item', async () => {
+    const props = generateProps({
+      title: 'my test title'
+    });
+    const { items } = props;
+    await renderComponent(props);
+
+    await screen.findByText(/my test title/i);
+
+    const itemButtons = await screen.findAllByRole('button', { hidden: true });
+
+    expect(itemButtons.length).toEqual(items!.length);
+
+    items!.forEach((item, index) => {
+      const btn = itemButtons[index];
+      expect(btn).toHaveTextContent(item.text);
     });
 
-    expect(true).toEqual(false);
-  });
-
-  fit('should render button for each input item', () => {
-    expect(true).toEqual(false);
+    // expect(true).toEqual(false);
   });
 
   xit('should not select button for undefined selectedItem prop', () => {
@@ -39,10 +46,33 @@ describe('PureOptionPickerComponent', () => {
 
 type Props = Partial<PureOptionPickerComponent<any>>;
 
-// const items = [
-//   { id: 100, text: 'first item' },
-//   { id: 200, text: 'second item' },
-//   { id: 300, text: 'third item' },
-//   { id: 400, text: 'fourth item' },
-//   { id: 500, text: 'fifth item' },
-// ];
+async function renderComponent(componentProperties: Props = {}) {
+  await render(PureOptionPickerComponent, {
+    componentProperties,
+    imports: [
+      SharedModule
+    ]
+  });
+}
+
+function generateProps(props: Props = {}): Props {
+  const title = 'some title';
+  const items = [
+    { id: 100, text: 'first item' },
+    { id: 200, text: 'second item' },
+    { id: 300, text: 'third item' },
+    { id: 400, text: 'fourth item' },
+    { id: 500, text: 'fifth item' },
+  ];
+
+  const selectedItem = undefined;
+
+  const itemSelect = createEventEmitterSpy();
+  const defaultProps: Props = {
+    title,
+    items,
+    selectedItem,
+    itemSelect
+  };
+  return merge({}, defaultProps, props);
+}
