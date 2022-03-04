@@ -16,8 +16,16 @@ describe('PureCounterComponent', () => {
     // expect(true).toEqual(false);
   });
 
-  xit('should TODO1', () => {
-    expect(true).toEqual(false);
+  it(`should emit 'increment' event on Inc Btn click`, async () => {
+    const props = generateProps();
+    const { increment } = props;
+    await renderCompoonent(props);
+
+    const incBtn = await screen.findByRole('button', { name: /Increment/i, hidden: true });
+    userEvent.click(incBtn);
+
+    expect(increment!.emit).toHaveBeenCalledTimes(1);
+    expect(increment!.emit).toHaveBeenCalledWith();
   });
 
 });
@@ -32,10 +40,12 @@ async function renderCompoonent(componentProperties: Props) {
 
 function generateProps(props: Props = {}): Props {
   const value = 200;
-  // const increment: any = () => { };
+  const increment: any = {
+    emit: jest.fn()
+  };
   const defaultProps: Props = {
     value,
-    // increment,
+    increment,
   };
   return merge({}, defaultProps, props);
 }
