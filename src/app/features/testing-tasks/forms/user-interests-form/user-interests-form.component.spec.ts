@@ -5,8 +5,15 @@ import { render, screen, within } from '@testing-library/angular';
 import userEvent from '@testing-library/user-event';
 
 import { UserInterestsFormComponent } from './user-interests-form.component';
+import { SharedModule } from '@app/shared/shared.module';
 
 describe('UserInterestsFormComponent', () => {
+
+  fit('should enable submit button when form is valid', async () => {
+    await renderComponent();
+
+    expect(true).toEqual(false);
+  });
 
   xit('should render form containing controls', async () => {
     expect(true).toEqual(false);
@@ -21,6 +28,16 @@ describe('UserInterestsFormComponent', () => {
   });
 
 });
+
+async function renderComponent() {
+  await render(UserInterestsFormComponent, {
+    imports: [
+      ReactiveFormsModule,
+      SharedModule,
+      HttpClientModule,
+    ]
+  });
+}
 
 // const defaultDto = {
 //   fullName: 'Bob Smith',
