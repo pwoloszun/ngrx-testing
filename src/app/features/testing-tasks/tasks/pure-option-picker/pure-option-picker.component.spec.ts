@@ -38,7 +38,7 @@ describe('PureOptionPickerComponent', () => {
     expect(true).toEqual(false);
   });
 
-  it('should emit "itemSelect" event on button click', async () => {
+  fit('should emit "itemSelect" event on button click', async () => {
     const props = generateProps();
     const { items, itemSelect } = props;
     await renderComponent(props);
