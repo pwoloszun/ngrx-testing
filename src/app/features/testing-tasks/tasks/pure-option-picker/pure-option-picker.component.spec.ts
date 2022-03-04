@@ -6,11 +6,11 @@ import { PureOptionPickerComponent } from './pure-option-picker.component';
 
 describe('PureOptionPickerComponent', () => {
 
-  xit('should render input title', () => {
+  fit('should render input title', () => {
     expect(true).toEqual(false);
   });
 
-  xit('should render button for each input item', () => {
+  fit('should render button for each input item', () => {
     expect(true).toEqual(false);
   });
 
