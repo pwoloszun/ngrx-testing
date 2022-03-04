@@ -9,7 +9,7 @@ import { PureOptionPickerComponent } from './pure-option-picker.component';
 
 describe('PureOptionPickerComponent', () => {
 
-  fit('should render input title & button for each input item', async () => {
+  it('should render input title & button for each input item', async () => {
     const props = generateProps({
       title: 'my test title'
     });
