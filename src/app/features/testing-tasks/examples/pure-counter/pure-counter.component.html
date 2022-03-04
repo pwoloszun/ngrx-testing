@@ -1,7 +1,11 @@
 <div class="pure-counter">
   <h3>VALUE: {{value}}</h3>
-  <a role="button"
-     mat-raised-button
-     color="warn"
-     (click)="incrementBtnHandler()">Increment</a>
+
+  <div role="region"
+       aria-label="Main Increment">
+    <a role="button"
+       mat-raised-button
+       color="warn"
+       (click)="incrementBtnHandler()">Increment</a>
+  </div>
 </div>

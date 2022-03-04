@@ -21,7 +21,22 @@ describe('PureCounterComponent', () => {
     const { increment } = props;
     await renderCompoonent(props);
 
+    // less restrictive
     const incBtn = await screen.findByRole('button', { name: /Increment/i, hidden: true });
+    userEvent.click(incBtn);
+
+    expect(increment!.emit).toHaveBeenCalledTimes(1);
+    expect(increment!.emit).toHaveBeenCalledWith();
+  });
+
+  it(`RESTRICTIVE should emit 'increment' event on Inc Btn click`, async () => {
+    const props = generateProps();
+    const { increment } = props;
+    await renderCompoonent(props);
+
+    // more restrictive
+    const mainIncRegion = await screen.findByRole('region', { name: /Main Increment/i, hidden: true });
+    const incBtn = await within(mainIncRegion).findByRole('button', { name: /Increment/i, hidden: true });
     userEvent.click(incBtn);
 
     expect(increment!.emit).toHaveBeenCalledTimes(1);
