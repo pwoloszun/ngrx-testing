@@ -38,7 +38,7 @@ describe('PureOptionPickerComponent', () => {
     expect(true).toEqual(false);
   });
 
-  xit('should emit "itemSelect" event on button click', () => {
+  fit('should emit "itemSelect" event on button click', () => {
     expect(true).toEqual(false);
   });
 
